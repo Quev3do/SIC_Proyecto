@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 /**
  *
  * @author Usuario
+ * 
  */
 public class ClaseConexion {
     private String usuario;
