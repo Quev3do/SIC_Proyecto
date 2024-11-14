@@ -12,6 +12,7 @@ import java.util.logging.Logger;
  * 
  */
 
+
 public class ClaseConexion {
     private String usuario;
     private String pass;
