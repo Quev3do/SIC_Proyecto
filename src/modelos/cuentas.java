@@ -22,6 +22,15 @@ public class cuentas {
     private int id_cuenta;
     private String tipo_cuenta;
     private String nombre_cuenta;
+    private double saldo;
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
     
     private ClaseConexion claseConexion;
     private Connection conexionDB;
@@ -70,6 +79,7 @@ public class cuentas {
                 cuenta.setId_cuenta(consulta.getInt("id_cuenta"));
                 cuenta.setTipo_cuenta(consulta.getString("tipo_cuenta"));
                 cuenta.setNombre_cuenta(consulta.getString("nombre_cuenta"));
+                cuenta.setSaldo(consulta.getDouble("saldo"));
                 this.listaCuentas.add(cuenta);
             }
             return this.listaCuentas;
@@ -81,11 +91,12 @@ public class cuentas {
     
     public int insertCuenta(cuentas itemI){
         try {
-            String sql = "INSERT INTO tbl_cuentas(tipo_cuenta, nombre_cuenta) VALUES(?,?)";
+            String sql = "INSERT INTO tbl_cuentas(tipo_cuenta, nombre_cuenta, saldo) VALUES(?,?,?)";
             this.conexionDB = this.claseConexion.iniciarConexion();
             pstm = this.conexionDB.prepareStatement(sql);
             pstm.setString(1, itemI.getTipo_cuenta());
             pstm.setString(2, itemI.getNombre_cuenta());
+            pstm.setDouble(3, itemI.getSaldo());
             int respuesta = pstm.executeUpdate();
             
             return respuesta;
@@ -97,11 +108,12 @@ public class cuentas {
     
     public int editCuenta(cuentas itemE){
         try {
-            String sql = "UPDATE tbl_cuentas set tipo_cuenta = ?, nombre_cuenta = ?, where idcuenta = ?";
+            String sql = "UPDATE tbl_cuentas set tipo_cuenta = ?, nombre_cuenta = ?, saldo = ? where id_cuenta = ?";
             this.conexionDB = this.claseConexion.iniciarConexion();
             pstm = this.conexionDB.prepareStatement(sql);
             pstm.setString(1, itemE.getTipo_cuenta());
             pstm.setString(2, itemE.getNombre_cuenta());
+            pstm.setDouble(3, itemE.getSaldo());
             pstm.setInt(4, itemE.getId_cuenta());
             int respuesta = pstm.executeUpdate();
             

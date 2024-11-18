@@ -4,17 +4,42 @@
  */
 package vistas.libro_mayor;
 
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableModel;
+//import Utilidades_configuracion.CustomCellLabelTable;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JOptionPane;
+
+import modelos.cuentas;
+import modelos.documentos;
+import modelos.users;
+import modelos.logs;
+import modelos.libro_diario;
+
+import vistas.Inicio.Inicio;
+
 /**
  *
  * @author jonat
  */
 public class LibroMayorVista extends javax.swing.JFrame {
 
+    public ArrayList<cuentas> listaCuentas;
+    public ArrayList<documentos> listaDocumentos;
+    public ArrayList<users> listaUsers;
+    public ArrayList<logs> listaLogs;
+    cuentas cuenta1;
+    
     /**
      * Creates new form LibroMayorVista
      */
     public LibroMayorVista() {
         initComponents();
+        cuenta1 = new cuentas();
+        cargarTabla();
     }
 
     /**
@@ -35,15 +60,11 @@ public class LibroMayorVista extends javax.swing.JFrame {
         btnAplicarFiltro = new javax.swing.JButton();
         lblHastaMes = new javax.swing.JLabel();
         lblDesdeMes = new javax.swing.JLabel();
-        lblHastaAño = new javax.swing.JLabel();
-        lblDesdeAño = new javax.swing.JLabel();
         lblBalance = new javax.swing.JLabel();
         lblDebe = new javax.swing.JLabel();
         lblHaber = new javax.swing.JLabel();
-        boxHastaMes = new javax.swing.JComboBox<>();
-        boxHastaAño = new javax.swing.JComboBox<>();
-        boxDesdeMes = new javax.swing.JComboBox<>();
-        boxDesdeAño = new javax.swing.JComboBox<>();
+        txtfecha2 = new javax.swing.JFormattedTextField();
+        txtfecha1 = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Libro Mayor");
@@ -51,22 +72,33 @@ public class LibroMayorVista extends javax.swing.JFrame {
         btnInicio.setBackground(new java.awt.Color(181, 229, 29));
         btnInicio.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
         btnInicio.setText("Inicio");
+        btnInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInicioActionPerformed(evt);
+            }
+        });
 
         tblLibroMayor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
-                "Descripción", "Debe", "Haber"
+                "Cuenta", "Debe", "Haber"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblLibroMayor);
 
         btnQuitarFiltro.setBackground(new java.awt.Color(220, 101, 57));
         btnQuitarFiltro.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
+        btnQuitarFiltro.setForeground(new java.awt.Color(255, 255, 255));
         btnQuitarFiltro.setText("Remover Filtro de Fecha");
 
         btnExportarExcel.setBackground(new java.awt.Color(181, 229, 29));
@@ -75,23 +107,16 @@ public class LibroMayorVista extends javax.swing.JFrame {
 
         btnAplicarFiltro.setBackground(new java.awt.Color(37, 150, 190));
         btnAplicarFiltro.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
+        btnAplicarFiltro.setForeground(new java.awt.Color(255, 255, 255));
         btnAplicarFiltro.setText("Aplicar Filtro de Fecha");
 
         lblHastaMes.setBackground(new java.awt.Color(0, 0, 0));
         lblHastaMes.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
-        lblHastaMes.setText("Hasta Mes");
+        lblHastaMes.setText("Hasta");
 
         lblDesdeMes.setBackground(new java.awt.Color(0, 0, 0));
         lblDesdeMes.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
-        lblDesdeMes.setText("Desde Mes");
-
-        lblHastaAño.setBackground(new java.awt.Color(0, 0, 0));
-        lblHastaAño.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
-        lblHastaAño.setText("Hasta Año");
-
-        lblDesdeAño.setBackground(new java.awt.Color(0, 0, 0));
-        lblDesdeAño.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
-        lblDesdeAño.setText("Desde Año");
+        lblDesdeMes.setText("Desde");
 
         lblBalance.setBackground(new java.awt.Color(0, 0, 0));
         lblBalance.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
@@ -99,19 +124,15 @@ public class LibroMayorVista extends javax.swing.JFrame {
 
         lblDebe.setBackground(new java.awt.Color(0, 0, 0));
         lblDebe.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
-        lblDebe.setText("B_debe");
+        lblDebe.setText("0.00");
 
         lblHaber.setBackground(new java.awt.Color(0, 0, 0));
         lblHaber.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
-        lblHaber.setText("B_haber");
+        lblHaber.setText("0.00");
 
-        boxHastaMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        txtfecha2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy-MM-dd"))));
 
-        boxHastaAño.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        boxDesdeMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        boxDesdeAño.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        txtfecha1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy-MM-dd"))));
 
         javax.swing.GroupLayout Jpanel_LibroMayorLayout = new javax.swing.GroupLayout(Jpanel_LibroMayor);
         Jpanel_LibroMayor.setLayout(Jpanel_LibroMayorLayout);
@@ -119,89 +140,67 @@ public class LibroMayorVista extends javax.swing.JFrame {
             Jpanel_LibroMayorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Jpanel_LibroMayorLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(Jpanel_LibroMayorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(Jpanel_LibroMayorLayout.createSequentialGroup()
-                        .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Jpanel_LibroMayorLayout.createSequentialGroup()
-                        .addComponent(lblBalance)
-                        .addGap(131, 131, 131)
-                        .addComponent(lblDebe)
-                        .addGap(55, 55, 55)
-                        .addComponent(lblHaber)))
+                .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(Jpanel_LibroMayorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Jpanel_LibroMayorLayout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addGroup(Jpanel_LibroMayorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGap(29, 29, 29)
+                        .addComponent(lblBalance)
+                        .addGap(97, 97, 97)
+                        .addComponent(lblDebe)
+                        .addGap(113, 113, 113)
+                        .addComponent(lblHaber))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addGroup(Jpanel_LibroMayorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Jpanel_LibroMayorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(btnQuitarFiltro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAplicarFiltro, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(Jpanel_LibroMayorLayout.createSequentialGroup()
+                            .addGap(0, 2, Short.MAX_VALUE)
                             .addGroup(Jpanel_LibroMayorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblHastaMes)
-                                .addComponent(lblDesdeAño)
-                                .addComponent(lblHastaAño))
-                            .addGroup(Jpanel_LibroMayorLayout.createSequentialGroup()
-                                .addComponent(lblDesdeMes)
-                                .addGap(3, 3, 3)))
-                        .addGap(32, 32, 32)
-                        .addGroup(Jpanel_LibroMayorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(boxHastaMes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(Jpanel_LibroMayorLayout.createSequentialGroup()
-                                .addGroup(Jpanel_LibroMayorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(boxDesdeMes, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(boxDesdeAño, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(boxHastaAño, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Jpanel_LibroMayorLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(Jpanel_LibroMayorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnQuitarFiltro, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnExportarExcel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnAplicarFiltro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(22, 22, 22))
+                                .addComponent(lblDesdeMes, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(lblHastaMes, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(Jpanel_LibroMayorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtfecha2, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtfecha1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(btnExportarExcel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18))
         );
         Jpanel_LibroMayorLayout.setVerticalGroup(
             Jpanel_LibroMayorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Jpanel_LibroMayorLayout.createSequentialGroup()
-                .addGap(4, 4, 4)
                 .addGroup(Jpanel_LibroMayorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Jpanel_LibroMayorLayout.createSequentialGroup()
-                        .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(8, 8, 8)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addGap(18, 18, 18))
                     .addGroup(Jpanel_LibroMayorLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(Jpanel_LibroMayorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(Jpanel_LibroMayorLayout.createSequentialGroup()
-                                .addGroup(Jpanel_LibroMayorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblDesdeMes)
-                                    .addComponent(boxDesdeMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(29, 29, 29)
-                                .addGroup(Jpanel_LibroMayorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblHastaMes)
-                                    .addComponent(boxHastaMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(35, 35, 35)
-                                .addGroup(Jpanel_LibroMayorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblDesdeAño)
-                                    .addComponent(boxDesdeAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(35, 35, 35)
-                                .addGroup(Jpanel_LibroMayorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblHastaAño)
-                                    .addComponent(boxHastaAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                                .addComponent(btnAplicarFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnQuitarFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(4, 4, 4))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addGroup(Jpanel_LibroMayorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(Jpanel_LibroMayorLayout.createSequentialGroup()
-                                .addGap(38, 38, 38)
-                                .addComponent(btnExportarExcel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(Jpanel_LibroMayorLayout.createSequentialGroup()
-                                .addGap(62, 62, 62)
-                                .addGroup(Jpanel_LibroMayorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblHaber)
-                                    .addComponent(lblDebe)
-                                    .addComponent(lblBalance))))
-                        .addGap(27, 27, 27))))
+                        .addContainerGap()
+                        .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(Jpanel_LibroMayorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblDebe)
+                    .addComponent(lblBalance)
+                    .addComponent(lblHaber))
+                .addGap(27, 27, 27))
+            .addGroup(Jpanel_LibroMayorLayout.createSequentialGroup()
+                .addGap(9, 9, 9)
+                .addGroup(Jpanel_LibroMayorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDesdeMes)
+                    .addComponent(txtfecha1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(Jpanel_LibroMayorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblHastaMes)
+                    .addComponent(txtfecha2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(148, 148, 148)
+                .addComponent(btnAplicarFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnQuitarFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnExportarExcel, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         getContentPane().add(Jpanel_LibroMayor, java.awt.BorderLayout.CENTER);
@@ -209,6 +208,55 @@ public class LibroMayorVista extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
+        Inicio ini = new Inicio();
+        ini.show();
+        this.dispose();
+    }//GEN-LAST:event_btnInicioActionPerformed
+
+    public void cargarTabla(){
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo = (DefaultTableModel)this.tblLibroMayor.getModel();
+        modelo.setRowCount(0);
+        
+        listaCuentas = cuenta1.getCuentas();
+        
+        for(cuentas item : listaCuentas){
+            System.out.println(item.getTipo_cuenta());
+            
+            double debe, haber;
+            
+            String tipo = item.getTipo_cuenta();
+            
+            if(tipo.equals("activo") || tipo.equals("patrimonio")){
+                debe = item.getSaldo();
+            }else{
+                debe = 0;
+            }
+            
+            if(tipo.equals("pasivo") || tipo.equals("gastos") || tipo.equals("ingresos")){
+                haber = item.getSaldo();
+            }else{
+                haber = 0;
+            }
+            
+            modelo.addRow(new Object[]{item.getNombre_cuenta(),
+                debe,
+                haber
+            });
+            
+            lblDebe.setText(String.valueOf(debe+ Double.parseDouble(lblDebe.getText())));
+            lblHaber.setText(String.valueOf(haber + Double.parseDouble(lblHaber.getText())));
+        }
+        
+        this.tblLibroMayor.setModel(modelo);
+    }
+    
+    public void diseñoTabla(){
+        
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -235,6 +283,7 @@ public class LibroMayorVista extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(LibroMayorVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -246,10 +295,6 @@ public class LibroMayorVista extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Jpanel_LibroMayor;
-    private javax.swing.JComboBox<String> boxDesdeAño;
-    private javax.swing.JComboBox<String> boxDesdeMes;
-    private javax.swing.JComboBox<String> boxHastaAño;
-    private javax.swing.JComboBox<String> boxHastaMes;
     private javax.swing.JButton btnAplicarFiltro;
     private javax.swing.JButton btnExportarExcel;
     private javax.swing.JButton btnInicio;
@@ -257,11 +302,11 @@ public class LibroMayorVista extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblBalance;
     private javax.swing.JLabel lblDebe;
-    private javax.swing.JLabel lblDesdeAño;
     private javax.swing.JLabel lblDesdeMes;
     private javax.swing.JLabel lblHaber;
-    private javax.swing.JLabel lblHastaAño;
     private javax.swing.JLabel lblHastaMes;
     private javax.swing.JTable tblLibroMayor;
+    private javax.swing.JFormattedTextField txtfecha1;
+    private javax.swing.JFormattedTextField txtfecha2;
     // End of variables declaration//GEN-END:variables
 }   
