@@ -47,7 +47,6 @@ public class LibroMayorVista extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Libro Mayor");
-        setPreferredSize(new java.awt.Dimension(800, 600));
 
         btnInicio.setBackground(new java.awt.Color(181, 229, 29));
         btnInicio.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N

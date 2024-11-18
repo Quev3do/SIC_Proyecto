@@ -4,6 +4,8 @@
  */
 package vistas.Inicio;
 
+import vistas.documentos.DocumentosVista;
+
 /**
  *
  * @author jajon
@@ -36,6 +38,7 @@ public class Inicio extends javax.swing.JFrame {
         btnAgregar_Transaccion2 = new javax.swing.JButton();
         btnAgregar_Transaccion3 = new javax.swing.JButton();
         btnAgregar_Transaccion4 = new javax.swing.JButton();
+        btnAgregar_Transaccion5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -43,6 +46,11 @@ public class Inicio extends javax.swing.JFrame {
         btnCerrar2.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
         btnCerrar2.setForeground(new java.awt.Color(255, 255, 255));
         btnCerrar2.setText("Cerrar");
+        btnCerrar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrar2ActionPerformed(evt);
+            }
+        });
 
         btnAgregar_Transaccion.setBackground(new java.awt.Color(51, 204, 0));
         btnAgregar_Transaccion.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
@@ -71,15 +79,25 @@ public class Inicio extends javax.swing.JFrame {
         btnAgregar_Transaccion2.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
         btnAgregar_Transaccion2.setText("Libro Diario");
 
-        btnAgregar_Transaccion3.setBackground(new java.awt.Color(102, 102, 255));
+        btnAgregar_Transaccion3.setBackground(new java.awt.Color(51, 153, 255));
         btnAgregar_Transaccion3.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
         btnAgregar_Transaccion3.setForeground(new java.awt.Color(255, 255, 255));
-        btnAgregar_Transaccion3.setText("Users");
+        btnAgregar_Transaccion3.setText("Documentos");
+        btnAgregar_Transaccion3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregar_Transaccion3ActionPerformed(evt);
+            }
+        });
 
         btnAgregar_Transaccion4.setBackground(new java.awt.Color(204, 204, 0));
         btnAgregar_Transaccion4.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
         btnAgregar_Transaccion4.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregar_Transaccion4.setText("Logs");
+
+        btnAgregar_Transaccion5.setBackground(new java.awt.Color(102, 102, 255));
+        btnAgregar_Transaccion5.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
+        btnAgregar_Transaccion5.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregar_Transaccion5.setText("Users");
 
         javax.swing.GroupLayout Panel_InicioLayout = new javax.swing.GroupLayout(Panel_Inicio);
         Panel_Inicio.setLayout(Panel_InicioLayout);
@@ -91,19 +109,20 @@ public class Inicio extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_InicioLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(Panel_InicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnAgregar_Transaccion3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(Panel_InicioLayout.createSequentialGroup()
                         .addComponent(lblUser, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnCerrar2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Panel_InicioLayout.createSequentialGroup()
-                        .addGroup(Panel_InicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnAgregar_Transaccion2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnAgregar_Transaccion4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(Panel_InicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnAgregar_Transaccion2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAgregar_Transaccion4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAgregar_Transaccion5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(Panel_InicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnAgregar_Transaccion1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnAgregar_Transaccion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE))))
+                            .addComponent(btnAgregar_Transaccion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAgregar_Transaccion3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE))))
                 .addGap(19, 19, 19))
         );
         Panel_InicioLayout.setVerticalGroup(
@@ -123,7 +142,9 @@ public class Inicio extends javax.swing.JFrame {
                     .addComponent(btnAgregar_Transaccion4, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAgregar_Transaccion1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addComponent(btnAgregar_Transaccion3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(Panel_InicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAgregar_Transaccion5, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAgregar_Transaccion3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -144,6 +165,16 @@ public class Inicio extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAgregar_Transaccion3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregar_Transaccion3ActionPerformed
+        DocumentosVista docv = new DocumentosVista();
+        docv.show();
+        this.dispose();
+    }//GEN-LAST:event_btnAgregar_Transaccion3ActionPerformed
+
+    private void btnCerrar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrar2ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCerrar2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -187,6 +218,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregar_Transaccion2;
     private javax.swing.JButton btnAgregar_Transaccion3;
     private javax.swing.JButton btnAgregar_Transaccion4;
+    private javax.swing.JButton btnAgregar_Transaccion5;
     private javax.swing.JButton btnCerrar2;
     private javax.swing.JPanel jPanelTitulo;
     private javax.swing.JLabel lblInicio;
