@@ -18,7 +18,7 @@ public class ClaseConexion {
     public ClaseConexion() {
         this.usuario = "postgres";
         this.pass = "adanque12dst";
-        this.url = "jdbc:postgresql://localhost:5432/SIC_BD";
+        this.url = "jdbc:postgresql://localhost:5432/SIC_BD_2";
     }
     public Connection iniciarConexion(){
         try {
