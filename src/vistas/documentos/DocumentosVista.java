@@ -106,7 +106,7 @@ public class DocumentosVista extends javax.swing.JFrame {
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
         Inicio ini = new Inicio();
         ini.show();
-        this.disable();
+        this.dispose();
     }//GEN-LAST:event_btnInicioActionPerformed
 
     /**
