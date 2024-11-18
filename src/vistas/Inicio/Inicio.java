@@ -5,6 +5,7 @@
 package vistas.Inicio;
 
 import vistas.documentos.DocumentosVista;
+import vistas.libro_mayor.LibroMayorVista;
 
 /**
  *
@@ -56,6 +57,11 @@ public class Inicio extends javax.swing.JFrame {
         btnAgregar_Transaccion.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
         btnAgregar_Transaccion.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregar_Transaccion.setText("Libro Mayor");
+        btnAgregar_Transaccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregar_TransaccionActionPerformed(evt);
+            }
+        });
 
         lblUser.setBackground(new java.awt.Color(0, 0, 0));
         lblUser.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
@@ -175,6 +181,12 @@ public class Inicio extends javax.swing.JFrame {
     private void btnCerrar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrar2ActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCerrar2ActionPerformed
+
+    private void btnAgregar_TransaccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregar_TransaccionActionPerformed
+        LibroMayorVista sisi = new LibroMayorVista();
+        sisi.show();
+        this.dispose();
+    }//GEN-LAST:event_btnAgregar_TransaccionActionPerformed
 
     /**
      * @param args the command line arguments

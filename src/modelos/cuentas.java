@@ -23,14 +23,6 @@ public class cuentas {
     private String tipo_cuenta;
     private String nombre_cuenta;
     private double saldo;
-
-    public double getSaldo() {
-        return saldo;
-    }
-
-    public void setSaldo(double saldo) {
-        this.saldo = saldo;
-    }
     
     private ClaseConexion claseConexion;
     private Connection conexionDB;
@@ -66,6 +58,14 @@ public class cuentas {
     public cuentas() {
         this.claseConexion = new ClaseConexion();
         this.listaCuentas = new ArrayList<cuentas>();
+    }
+    
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
     }
     
     public ArrayList<cuentas> getCuentas(){
