@@ -4,16 +4,23 @@
  */
 package vistas.users;
 
+import vistas.Inicio.Inicio;
+
+import modelos.users;
+
 /**
  *
  * @author Usuario
  */
 public class usersCrear extends javax.swing.JFrame {
+    
+    users user;
 
     /**
      * Creates new form usersCrear
      */
     public usersCrear() {
+        user = new users();
         initComponents();
     }
 
@@ -177,9 +184,34 @@ public class usersCrear extends javax.swing.JFrame {
     }//GEN-LAST:event_btnborrarActionPerformed
 
     private void btncrear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncrear1ActionPerformed
-        // TODO add your handling code here:
+        String str = txttelefono.getText();
+        if(isNumeric(str)){
+            user.setUser_phone(Integer.parseInt(str));
+            user.setUser_email(txtemail.getText());
+            user.setUser_name(txtnombre.getText());
+            user.setUser_pass(txtpassword.getText());
+            user.setUser_rol(String.valueOf(cmbrol.getSelectedItem()));
+            
+            if(user.insertUser(user) > 0){
+                System.out.println("Se agrego al usuario: " + user.getUser_name());
+            }else{
+                System.out.println("No se agrego.");
+            }
+        }else{
+            System.out.println("Error, no es un numero");
+        }
+        
     }//GEN-LAST:event_btncrear1ActionPerformed
 
+    
+    public static boolean isNumeric(String str) { 
+        try {  
+            Double.parseDouble(str);  
+            return true;
+        } catch(NumberFormatException e){  
+            return false;  
+        }  
+    }
     /**
      * @param args the command line arguments
      */
