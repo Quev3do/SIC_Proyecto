@@ -4,6 +4,8 @@
  */
 package vistas.documentos;
 
+import vistas.documentos.DocumentosVista;
+
 /**
  *
  * @author jajon
@@ -33,21 +35,25 @@ public class CrearDocumento extends javax.swing.JFrame {
         lblFecha_doc = new javax.swing.JLabel();
         lblFecha_ingreso = new javax.swing.JLabel();
         btnIngresar = new javax.swing.JButton();
-        boxFecha_Ingreso = new javax.swing.JComboBox<>();
-        boxCodigo_Doc = new javax.swing.JComboBox<>();
-        boxFecha_Doc = new javax.swing.JComboBox<>();
         jPanelTitulo = new javax.swing.JPanel();
         lblCreate_Doc = new javax.swing.JLabel();
+        txtcodigo = new javax.swing.JTextField();
+        txtfechareg = new javax.swing.JFormattedTextField();
+        txtfechadoc = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DocumentosCrear");
-        setPreferredSize(new java.awt.Dimension(800, 600));
 
         Panel_CrearDocumento.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnInicio.setBackground(new java.awt.Color(181, 229, 29));
         btnInicio.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
         btnInicio.setText("Inicio");
+        btnInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInicioActionPerformed(evt);
+            }
+        });
         Panel_CrearDocumento.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 100, 40));
 
         lblFechaActual.setBackground(new java.awt.Color(0, 0, 0));
@@ -72,17 +78,9 @@ public class CrearDocumento extends javax.swing.JFrame {
 
         btnIngresar.setBackground(new java.awt.Color(37, 150, 190));
         btnIngresar.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
+        btnIngresar.setForeground(new java.awt.Color(255, 255, 255));
         btnIngresar.setText("Ingresar");
         Panel_CrearDocumento.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 420, 170, 50));
-
-        boxFecha_Ingreso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        Panel_CrearDocumento.add(boxFecha_Ingreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, 160, -1));
-
-        boxCodigo_Doc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        Panel_CrearDocumento.add(boxCodigo_Doc, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 160, -1));
-
-        boxFecha_Doc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        Panel_CrearDocumento.add(boxFecha_Doc, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 160, -1));
 
         jPanelTitulo.setBackground(new java.awt.Color(153, 153, 255));
         jPanelTitulo.setForeground(new java.awt.Color(255, 204, 204));
@@ -91,9 +89,26 @@ public class CrearDocumento extends javax.swing.JFrame {
         lblCreate_Doc.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 24)); // NOI18N
         lblCreate_Doc.setForeground(new java.awt.Color(255, 255, 255));
         lblCreate_Doc.setText("Crear un Documento");
-        jPanelTitulo.add(lblCreate_Doc, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, -1, 40));
+        jPanelTitulo.add(lblCreate_Doc, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, -1, 40));
 
-        Panel_CrearDocumento.add(jPanelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 40));
+        Panel_CrearDocumento.add(jPanelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 40));
+        Panel_CrearDocumento.add(txtcodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 170, 30));
+
+        txtfechareg.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy-MM-dd"))));
+        txtfechareg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfecharegActionPerformed(evt);
+            }
+        });
+        Panel_CrearDocumento.add(txtfechareg, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 170, 30));
+
+        txtfechadoc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy-MM-dd"))));
+        txtfechadoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfechadocActionPerformed(evt);
+            }
+        });
+        Panel_CrearDocumento.add(txtfechadoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 170, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -108,6 +123,20 @@ public class CrearDocumento extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtfecharegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfecharegActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfecharegActionPerformed
+
+    private void txtfechadocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfechadocActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfechadocActionPerformed
+
+    private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
+        DocumentosVista docv = new DocumentosVista();
+        docv.show();
+        this.dispose();
+    }//GEN-LAST:event_btnInicioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,9 +175,6 @@ public class CrearDocumento extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Panel_CrearDocumento;
-    private javax.swing.JComboBox<String> boxCodigo_Doc;
-    private javax.swing.JComboBox<String> boxFecha_Doc;
-    private javax.swing.JComboBox<String> boxFecha_Ingreso;
     private javax.swing.JButton btnIngresar;
     private javax.swing.JButton btnInicio;
     private javax.swing.JPanel jPanelTitulo;
@@ -157,5 +183,8 @@ public class CrearDocumento extends javax.swing.JFrame {
     private javax.swing.JLabel lblFechaActual;
     private javax.swing.JLabel lblFecha_doc;
     private javax.swing.JLabel lblFecha_ingreso;
+    private javax.swing.JTextField txtcodigo;
+    private javax.swing.JFormattedTextField txtfechadoc;
+    private javax.swing.JFormattedTextField txtfechareg;
     // End of variables declaration//GEN-END:variables
 }

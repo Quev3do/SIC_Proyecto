@@ -98,7 +98,7 @@ public class users {
                 user.setUser_name(consulta.getString("user_name"));
                 user.setUser_email(consulta.getString("user_email"));
                 user.setUser_phone(consulta.getInt("user_phone"));
-                user.setUser_pass(consulta.getString("user_pass"));
+                user.setUser_pass(consulta.getString("user_password"));
                 user.setUser_rol(consulta.getString("user_rol"));
                 this.listaUsers.add(user);
             }

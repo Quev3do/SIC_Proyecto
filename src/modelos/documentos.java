@@ -79,7 +79,7 @@ public class documentos {
                 docu.setId_documento(consulta.getInt("id_documento"));
                 docu.setCodigo_doc(consulta.getString("codigo_doc"));
                 docu.setFecha_doc(consulta.getString("fecha_doc"));
-                docu.setFecha_registro_doc(consulta.getString("fecha_registro_doc"));
+                docu.setFecha_registro_doc(consulta.getString("fecha_registro"));
                 this.listaDocumentos.add(docu);
             }
             return this.listaDocumentos;
@@ -91,7 +91,7 @@ public class documentos {
     
     public int insertDocumento(documentos itemI){
         try {
-            String sql = "INSERT INTO tbl_documentos(codigo_doc, fecha_doc, fecha_registro_doc) VALUES(?,?,?)";
+            String sql = "INSERT INTO tbl_documentos(codigo_doc, fecha_doc, fecha_registro) VALUES(?,?,?)";
             this.conexionDB = this.claseConexion.iniciarConexion();
             pstm = this.conexionDB.prepareStatement(sql);
             pstm.setString(1, itemI.getCodigo_doc());
@@ -108,7 +108,7 @@ public class documentos {
     
     public int editDocumento(documentos itemE){
         try {
-            String sql = "UPDATE tbl_documentos set codigo_doc = ?, fecha_doc = ?, fecha_registro_doc = ?,  "
+            String sql = "UPDATE tbl_documentos set codigo_doc = ?, fecha_doc = ?, fecha_registro = ?,  "
                     + "where id_documento = ?";
             this.conexionDB = this.claseConexion.iniciarConexion();
             pstm = this.conexionDB.prepareStatement(sql);

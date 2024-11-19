@@ -4,19 +4,32 @@
  */
 package vistas.documentos;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import modelos.cuentas;
+import modelos.documentos;
+import modelos.logs;
+import modelos.users;
 import vistas.Inicio.Inicio;
+import vistas.documentos.CrearDocumento;
 
 /**
  *
  * @author Usuario
  */
 public class DocumentosVista extends javax.swing.JFrame {
+    
+
+    public ArrayList<documentos> listaDocumentos;
+    documentos docu;
 
     /**
      * Creates new form DocumentosVista
      */
     public DocumentosVista() {
         initComponents();
+        docu = new documentos();
+        cargarTabla();
     }
 
     /**
@@ -47,15 +60,23 @@ public class DocumentosVista extends javax.swing.JFrame {
 
         tblDocumentos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Descripción", "Debe", "Haber"
+                "id", "Codigo", "Fecha doc", "Fecha reg"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblDocumentos);
 
         btnAplicarFiltro.setBackground(new java.awt.Color(102, 255, 0));
@@ -67,6 +88,11 @@ public class DocumentosVista extends javax.swing.JFrame {
         btnAplicarFiltro1.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
         btnAplicarFiltro1.setForeground(new java.awt.Color(255, 255, 255));
         btnAplicarFiltro1.setText("Agregar Documento");
+        btnAplicarFiltro1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAplicarFiltro1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -109,6 +135,31 @@ public class DocumentosVista extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnInicioActionPerformed
 
+    private void btnAplicarFiltro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAplicarFiltro1ActionPerformed
+        CrearDocumento cdoc = new CrearDocumento();
+        cdoc.show();
+        this.dispose();
+    }//GEN-LAST:event_btnAplicarFiltro1ActionPerformed
+
+    public void cargarTabla(){
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo = (DefaultTableModel)this.tblDocumentos.getModel();
+        modelo.setRowCount(0);
+        
+        listaDocumentos = docu.getDocumentos();
+        
+        for (documentos item : listaDocumentos) {
+            modelo.addRow(new Object[]{
+                item.getId_documento(),
+                item.getCodigo_doc(),
+                item.getFecha_doc(),
+                item.getFecha_registro_doc()
+            });
+        }
+        
+        this.tblDocumentos.setModel(modelo);
+    }
+    
     /**
      * @param args the command line arguments
      */
