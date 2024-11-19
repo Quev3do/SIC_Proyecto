@@ -6,16 +6,28 @@ package Login;
 
 import javax.swing.ImageIcon;
 
+import java.util.*;
+
+import modelos.users;
+
+import vistas.Inicio.Inicio;
+
 /**
  *
  * @author jajon
  */
 public class InicioSesion extends javax.swing.JFrame {
+    
+    ArrayList<users> listaUsers;
+    
+    users user;
 
     /**
      * Creates new form InicioSesion
      */
     public InicioSesion() {
+        user = new users();
+        
         initComponents();
     }
 
@@ -38,7 +50,7 @@ public class InicioSesion extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         txt_Usuario = new javax.swing.JTextField();
-        txt_contraseña = new javax.swing.JTextField();
+        txt_contra = new javax.swing.JTextField();
         btnCerrar = new javax.swing.JButton();
         btn_Ingresar = new javax.swing.JButton();
 
@@ -76,9 +88,9 @@ public class InicioSesion extends javax.swing.JFrame {
         txt_Usuario.setForeground(new java.awt.Color(0, 0, 0));
         txt_Usuario.setBorder(null);
 
-        txt_contraseña.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
-        txt_contraseña.setForeground(new java.awt.Color(0, 0, 0));
-        txt_contraseña.setBorder(null);
+        txt_contra.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
+        txt_contra.setForeground(new java.awt.Color(0, 0, 0));
+        txt_contra.setBorder(null);
 
         btnCerrar.setBackground(new java.awt.Color(255, 51, 51));
         btnCerrar.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
@@ -87,6 +99,11 @@ public class InicioSesion extends javax.swing.JFrame {
         btn_Ingresar.setBackground(new java.awt.Color(181, 229, 29));
         btn_Ingresar.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
         btn_Ingresar.setText("Ingresar");
+        btn_Ingresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_IngresarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Panel_IncioSesionLayout = new javax.swing.GroupLayout(Panel_IncioSesion);
         Panel_IncioSesion.setLayout(Panel_IncioSesionLayout);
@@ -98,7 +115,7 @@ public class InicioSesion extends javax.swing.JFrame {
                 .addGroup(Panel_IncioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_IncioSesionLayout.createSequentialGroup()
                         .addComponent(btn_Ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 260, Short.MAX_VALUE)
                         .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Panel_IncioSesionLayout.createSequentialGroup()
                         .addGroup(Panel_IncioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -111,7 +128,7 @@ public class InicioSesion extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(Panel_IncioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
-                                    .addComponent(txt_contraseña)))
+                                    .addComponent(txt_contra)))
                             .addGroup(Panel_IncioSesionLayout.createSequentialGroup()
                                 .addComponent(lblUser2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -141,7 +158,7 @@ public class InicioSesion extends javax.swing.JFrame {
                             .addComponent(lblpass, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(Panel_IncioSesionLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txt_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_contra, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(7, 7, 7)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
@@ -164,6 +181,23 @@ public class InicioSesion extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_IngresarActionPerformed
+        listaUsers = user.getUsers();
+        
+        String name = txt_Usuario.getText();
+        String pass = txt_contra.getText();
+        
+        for(users item : listaUsers){
+            if(name.equals(item.getUser_name()) && pass.equals(item.getUser_pass())){
+                Inicio ini = new Inicio();
+                ini.show();
+                this.dispose();
+            }else{
+                System.out.println("Meh, error, user o password no sirven.");
+            }
+        }
+    }//GEN-LAST:event_btn_IngresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -213,6 +247,6 @@ public class InicioSesion extends javax.swing.JFrame {
     private javax.swing.JLabel lblUser2;
     private javax.swing.JLabel lblpass;
     private javax.swing.JTextField txt_Usuario;
-    private javax.swing.JTextField txt_contraseña;
+    private javax.swing.JTextField txt_contra;
     // End of variables declaration//GEN-END:variables
 }
