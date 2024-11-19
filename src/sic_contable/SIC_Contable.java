@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import vistas.Inicio.Inicio;
+import vistas.users.usersCrear;
 
 /**
  *
@@ -28,7 +29,10 @@ public class SIC_Contable {
         ArrayList<users> listaU = user.getUsers();
         
         Inicio ini = new Inicio();
-        ini.show();
+        //ini.show();
+        
+        usersCrear ucr = new usersCrear();
+        ucr.show();
     }
     
 }

@@ -21,7 +21,12 @@ public class usersCrear extends javax.swing.JFrame {
      */
     public usersCrear() {
         user = new users();
+        
         initComponents();
+        
+        this.cmbrol.addItem("Contador y Auxiliar");
+        this.cmbrol.addItem("Gerente");
+        this.cmbrol.addItem("Administrador");
     }
 
     /**
