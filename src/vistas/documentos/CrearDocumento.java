@@ -33,8 +33,8 @@ public class CrearDocumento extends javax.swing.JFrame {
         lblFechaActual = new javax.swing.JLabel();
         lblCodigo_doc = new javax.swing.JLabel();
         lblFecha_doc = new javax.swing.JLabel();
-        lblFecha_ingreso = new javax.swing.JLabel();
-        btnIngresar = new javax.swing.JButton();
+        lblFecha_Reg = new javax.swing.JLabel();
+        btnGuardar = new javax.swing.JButton();
         jPanelTitulo = new javax.swing.JPanel();
         lblCreate_Doc = new javax.swing.JLabel();
         txtcodigo = new javax.swing.JTextField();
@@ -71,16 +71,16 @@ public class CrearDocumento extends javax.swing.JFrame {
         lblFecha_doc.setText("Fecha del Doc");
         Panel_CrearDocumento.add(lblFecha_doc, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, -1));
 
-        lblFecha_ingreso.setBackground(new java.awt.Color(0, 0, 0));
-        lblFecha_ingreso.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
-        lblFecha_ingreso.setText("Fecha de Ingreso");
-        Panel_CrearDocumento.add(lblFecha_ingreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, -1, -1));
+        lblFecha_Reg.setBackground(new java.awt.Color(0, 0, 0));
+        lblFecha_Reg.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
+        lblFecha_Reg.setText("Fecha de Geg");
+        Panel_CrearDocumento.add(lblFecha_Reg, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, -1, -1));
 
-        btnIngresar.setBackground(new java.awt.Color(37, 150, 190));
-        btnIngresar.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
-        btnIngresar.setForeground(new java.awt.Color(255, 255, 255));
-        btnIngresar.setText("Ingresar");
-        Panel_CrearDocumento.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 420, 170, 50));
+        btnGuardar.setBackground(new java.awt.Color(37, 150, 190));
+        btnGuardar.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
+        btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
+        btnGuardar.setText("Guardar");
+        Panel_CrearDocumento.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 420, 170, 50));
 
         jPanelTitulo.setBackground(new java.awt.Color(153, 153, 255));
         jPanelTitulo.setForeground(new java.awt.Color(255, 204, 204));
@@ -175,14 +175,14 @@ public class CrearDocumento extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Panel_CrearDocumento;
-    private javax.swing.JButton btnIngresar;
+    private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnInicio;
     private javax.swing.JPanel jPanelTitulo;
     private javax.swing.JLabel lblCodigo_doc;
     private javax.swing.JLabel lblCreate_Doc;
     private javax.swing.JLabel lblFechaActual;
+    private javax.swing.JLabel lblFecha_Reg;
     private javax.swing.JLabel lblFecha_doc;
-    private javax.swing.JLabel lblFecha_ingreso;
     private javax.swing.JTextField txtcodigo;
     private javax.swing.JFormattedTextField txtfechadoc;
     private javax.swing.JFormattedTextField txtfechareg;
