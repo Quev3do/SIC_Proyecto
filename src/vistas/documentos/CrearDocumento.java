@@ -6,16 +6,26 @@ package vistas.documentos;
 
 import vistas.documentos.DocumentosVista;
 
+import modelos.documentos;
+import modelos.users;
+import modelos.logs;
+
+import vistas.documentos.DocumentosVista;
+
 /**
  *
  * @author jajon
  */
 public class CrearDocumento extends javax.swing.JFrame {
+    
+    documentos docu;
 
     /**
      * Creates new form CrearDocumento
      */
     public CrearDocumento() {
+        docu = new documentos();
+        
         initComponents();
     }
 
@@ -28,115 +38,118 @@ public class CrearDocumento extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Panel_CrearDocumento = new javax.swing.JPanel();
         btnInicio = new javax.swing.JButton();
-        lblFechaActual = new javax.swing.JLabel();
-        lblCodigo_doc = new javax.swing.JLabel();
-        lblFecha_doc = new javax.swing.JLabel();
-        lblFecha_Reg = new javax.swing.JLabel();
-        btnGuardar = new javax.swing.JButton();
-        jPanelTitulo = new javax.swing.JPanel();
-        lblCreate_Doc = new javax.swing.JLabel();
+        lblDesdeMes2 = new javax.swing.JLabel();
+        lblDesdeMes3 = new javax.swing.JLabel();
+        lblDesdeMes4 = new javax.swing.JLabel();
+        txtfechadoc = new javax.swing.JTextField();
+        txtfechareg = new javax.swing.JTextField();
         txtcodigo = new javax.swing.JTextField();
-        txtfechareg = new javax.swing.JFormattedTextField();
-        txtfechadoc = new javax.swing.JFormattedTextField();
+        btningresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DocumentosCrear");
 
-        Panel_CrearDocumento.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         btnInicio.setBackground(new java.awt.Color(181, 229, 29));
         btnInicio.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
-        btnInicio.setText("Inicio");
+        btnInicio.setText("Regresar");
         btnInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInicioActionPerformed(evt);
             }
         });
-        Panel_CrearDocumento.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 100, 40));
 
-        lblFechaActual.setBackground(new java.awt.Color(0, 0, 0));
-        lblFechaActual.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
-        lblFechaActual.setText("Fecha_hoy");
-        Panel_CrearDocumento.add(lblFechaActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 160, 40));
+        lblDesdeMes2.setBackground(new java.awt.Color(0, 0, 0));
+        lblDesdeMes2.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
+        lblDesdeMes2.setText("Codigo");
 
-        lblCodigo_doc.setBackground(new java.awt.Color(0, 0, 0));
-        lblCodigo_doc.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
-        lblCodigo_doc.setText("Codigo del Doc");
-        Panel_CrearDocumento.add(lblCodigo_doc, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, 40));
+        lblDesdeMes3.setBackground(new java.awt.Color(0, 0, 0));
+        lblDesdeMes3.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
+        lblDesdeMes3.setText("Fecha del registro:");
 
-        lblFecha_doc.setBackground(new java.awt.Color(0, 0, 0));
-        lblFecha_doc.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
-        lblFecha_doc.setText("Fecha del Doc");
-        Panel_CrearDocumento.add(lblFecha_doc, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, -1));
+        lblDesdeMes4.setBackground(new java.awt.Color(0, 0, 0));
+        lblDesdeMes4.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
+        lblDesdeMes4.setText("Fecha documento:");
 
-        lblFecha_Reg.setBackground(new java.awt.Color(0, 0, 0));
-        lblFecha_Reg.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
-        lblFecha_Reg.setText("Fecha de Geg");
-        Panel_CrearDocumento.add(lblFecha_Reg, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, -1, -1));
-
-        btnGuardar.setBackground(new java.awt.Color(37, 150, 190));
-        btnGuardar.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
-        btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
-        btnGuardar.setText("Guardar");
-        Panel_CrearDocumento.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 420, 170, 50));
-
-        jPanelTitulo.setBackground(new java.awt.Color(153, 153, 255));
-        jPanelTitulo.setForeground(new java.awt.Color(255, 204, 204));
-        jPanelTitulo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblCreate_Doc.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 24)); // NOI18N
-        lblCreate_Doc.setForeground(new java.awt.Color(255, 255, 255));
-        lblCreate_Doc.setText("Crear un Documento");
-        jPanelTitulo.add(lblCreate_Doc, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, -1, 40));
-
-        Panel_CrearDocumento.add(jPanelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 40));
-        Panel_CrearDocumento.add(txtcodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 170, 30));
-
-        txtfechareg.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy-MM-dd"))));
-        txtfechareg.addActionListener(new java.awt.event.ActionListener() {
+        btningresar.setBackground(new java.awt.Color(0, 204, 204));
+        btningresar.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
+        btningresar.setText("Ingresar");
+        btningresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtfecharegActionPerformed(evt);
+                btningresarActionPerformed(evt);
             }
         });
-        Panel_CrearDocumento.add(txtfechareg, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 170, 30));
-
-        txtfechadoc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy-MM-dd"))));
-        txtfechadoc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtfechadocActionPerformed(evt);
-            }
-        });
-        Panel_CrearDocumento.add(txtfechadoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 170, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Panel_CrearDocumento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblDesdeMes3)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(31, 31, 31)
+                                .addComponent(btningresar, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(36, 36, 36)
+                                .addComponent(txtfechareg))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnInicio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblDesdeMes2)
+                            .addComponent(lblDesdeMes4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtfechadoc, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+                            .addComponent(txtcodigo))))
+                .addGap(41, 41, 41))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Panel_CrearDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtfechareg, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblDesdeMes2)
+                            .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(36, 36, 36)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblDesdeMes4)
+                            .addComponent(txtfechadoc, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(43, 43, 43)
+                        .addComponent(lblDesdeMes3)))
+                .addGap(54, 54, 54)
+                .addComponent(btningresar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtfecharegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfecharegActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtfecharegActionPerformed
-
-    private void txtfechadocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfechadocActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtfechadocActionPerformed
-
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
-        DocumentosVista docv = new DocumentosVista();
-        docv.show();
+        DocumentosVista ini = new DocumentosVista();
+        ini.show();
         this.dispose();
     }//GEN-LAST:event_btnInicioActionPerformed
+
+    private void btningresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btningresarActionPerformed
+        docu.setCodigo_doc(txtcodigo.getText());
+        docu.setFecha_doc(txtfechadoc.getText());
+        docu.setFecha_registro_doc(txtfechareg.getText());
+        
+        if(docu.insertDocumento(docu)>0){
+          System.out.println("Se agrego el documento.");
+        }else{
+            System.out.println("No se agrego.");
+        }
+    }//GEN-LAST:event_btningresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,17 +187,13 @@ public class CrearDocumento extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Panel_CrearDocumento;
-    private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnInicio;
-    private javax.swing.JPanel jPanelTitulo;
-    private javax.swing.JLabel lblCodigo_doc;
-    private javax.swing.JLabel lblCreate_Doc;
-    private javax.swing.JLabel lblFechaActual;
-    private javax.swing.JLabel lblFecha_Reg;
-    private javax.swing.JLabel lblFecha_doc;
+    private javax.swing.JButton btningresar;
+    private javax.swing.JLabel lblDesdeMes2;
+    private javax.swing.JLabel lblDesdeMes3;
+    private javax.swing.JLabel lblDesdeMes4;
     private javax.swing.JTextField txtcodigo;
-    private javax.swing.JFormattedTextField txtfechadoc;
-    private javax.swing.JFormattedTextField txtfechareg;
+    private javax.swing.JTextField txtfechadoc;
+    private javax.swing.JTextField txtfechareg;
     // End of variables declaration//GEN-END:variables
 }

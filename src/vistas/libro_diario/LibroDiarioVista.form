@@ -52,20 +52,8 @@
                   <EmptySpace pref="41" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" alignment="1" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="btnQuitarFiltro" max="32767" attributes="0"/>
-                          <Component id="btnAplicarFiltro" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="2" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblDesdeMes" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblHastaMes" alignment="1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtfecha2" min="-2" pref="179" max="-2" attributes="0"/>
-                                  <Component id="txtfecha1" min="-2" pref="179" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                          <Component id="btncerrar" pref="238" max="32767" attributes="0"/>
+                          <Component id="btnagregar" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <Component id="btnExportarExcel" alignment="1" min="-2" pref="238" max="-2" attributes="0"/>
                   </Group>
@@ -96,20 +84,10 @@
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               </Group>
               <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblDesdeMes" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtfecha1" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="lblHastaMes" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtfecha2" min="-2" pref="29" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
-                  <Component id="btnAplicarFiltro" min="-2" pref="43" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btnQuitarFiltro" min="-2" pref="43" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="btncerrar" min="-2" pref="43" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="244" max="-2" attributes="0"/>
+                  <Component id="btnagregar" min="-2" pref="43" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnExportarExcel" min="-2" pref="57" max="-2" attributes="0"/>
                   <EmptySpace pref="64" max="32767" attributes="0"/>
@@ -174,7 +152,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="btnQuitarFiltro">
+        <Component class="javax.swing.JButton" name="btncerrar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="39" green="65" red="dc" type="rgb"/>
@@ -185,7 +163,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Remover Filtro de Fecha"/>
+            <Property name="text" type="java.lang.String" value="Cerrar todo"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnExportarExcel">
@@ -199,7 +177,7 @@
             <Property name="text" type="java.lang.String" value="Excel"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnAplicarFiltro">
+        <Component class="javax.swing.JButton" name="btnagregar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="be" green="96" red="25" type="rgb"/>
@@ -210,30 +188,11 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Aplicar Filtro de Fecha"/>
+            <Property name="text" type="java.lang.String" value="Agregar"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblHastaMes">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Meiryo UI" size="14" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Hasta"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblDesdeMes">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Meiryo UI" size="14" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Desde"/>
-          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnagregarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblBalance">
           <Properties>
@@ -266,20 +225,6 @@
               <Font name="Meiryo UI" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="0.00"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JFormattedTextField" name="txtfecha2">
-          <Properties>
-            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-              <Format format="yyyy-MM-dd" subtype="-1" type="1"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JFormattedTextField" name="txtfecha1">
-          <Properties>
-            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-              <Format format="yyyy-MM-dd" subtype="-1" type="1"/>
-            </Property>
           </Properties>
         </Component>
       </SubComponents>

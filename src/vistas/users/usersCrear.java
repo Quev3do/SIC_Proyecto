@@ -185,7 +185,10 @@ public class usersCrear extends javax.swing.JFrame {
     }//GEN-LAST:event_txtpasswordActionPerformed
 
     private void btnborrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnborrarActionPerformed
-        // TODO add your handling code here:
+        txttelefono.setText("");
+        txtemail.setText("");
+        txtnombre.setText("");
+        txtpassword.setText("");
     }//GEN-LAST:event_btnborrarActionPerformed
 
     private void btncrear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncrear1ActionPerformed

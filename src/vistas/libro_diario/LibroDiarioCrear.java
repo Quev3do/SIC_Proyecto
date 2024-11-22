@@ -31,15 +31,22 @@ public class LibroDiarioCrear extends javax.swing.JFrame {
     public ArrayList<documentos> listaDocumentos;
     public ArrayList<users> listaUsers;
     public ArrayList<logs> listaLogs;
+    
+    users user1;
     /*
     public cuentas cuenta;
     public documentos doc;
-    public users user;
+    
     public logs log;
     /**
      * Creates new form LibroDiarioCrear
      */
-    public LibroDiarioCrear() {
+    public LibroDiarioCrear(){
+        initComponents();
+    }
+    
+    public LibroDiarioCrear(users us) {
+        this.user1 = us;
         initComponents();
         
         cuentas cuenta = new cuentas();
@@ -268,7 +275,7 @@ public class LibroDiarioCrear extends javax.swing.JFrame {
     }//GEN-LAST:event_idusercmbActionPerformed
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
-        Inicio ini = new Inicio();
+        Inicio ini = new Inicio(this.user1);
         ini.show();
         this.dispose();
     }//GEN-LAST:event_btnInicioActionPerformed

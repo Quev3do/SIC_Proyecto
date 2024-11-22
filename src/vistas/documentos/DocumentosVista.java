@@ -22,11 +22,17 @@ public class DocumentosVista extends javax.swing.JFrame {
 
     public ArrayList<documentos> listaDocumentos;
     documentos docu;
+    users User;
 
     /**
      * Creates new form DocumentosVista
      */
-    public DocumentosVista() {
+    public DocumentosVista(){
+        initComponents();
+    }
+    
+    public DocumentosVista(users Us) {
+        this.User = Us;
         initComponents();
         docu = new documentos();
         cargarTabla();
@@ -130,7 +136,7 @@ public class DocumentosVista extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
-        Inicio ini = new Inicio();
+        Inicio ini = new Inicio(this.User);
         ini.show();
         this.dispose();
     }//GEN-LAST:event_btnInicioActionPerformed

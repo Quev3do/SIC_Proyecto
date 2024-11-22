@@ -29,6 +29,8 @@ public class InicioSesion extends javax.swing.JFrame {
         user = new users();
         
         initComponents();
+        
+        cargarUsers();
     }
 
     /**
@@ -42,8 +44,6 @@ public class InicioSesion extends javax.swing.JFrame {
 
         Panel_IncioSesion = new javax.swing.JPanel();
         lblPass2 = new javax.swing.JLabel();
-        jPanelTitulo = new javax.swing.JPanel();
-        lblCreate_Doc = new javax.swing.JLabel();
         lblUser2 = new javax.swing.JLabel();
         lblpass = new javax.swing.JLabel();
         lblUser = new javax.swing.JLabel();
@@ -59,15 +59,6 @@ public class InicioSesion extends javax.swing.JFrame {
         lblPass2.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
         lblPass2.setForeground(new java.awt.Color(0, 0, 0));
         lblPass2.setText("Ingrese su Contraseña:");
-
-        jPanelTitulo.setBackground(new java.awt.Color(153, 153, 255));
-        jPanelTitulo.setForeground(new java.awt.Color(255, 204, 204));
-        jPanelTitulo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblCreate_Doc.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 24)); // NOI18N
-        lblCreate_Doc.setForeground(new java.awt.Color(255, 255, 255));
-        lblCreate_Doc.setText("Inicio de Sesion");
-        jPanelTitulo.add(lblCreate_Doc, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, -1, 40));
 
         lblUser2.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
         lblUser2.setForeground(new java.awt.Color(0, 0, 0));
@@ -95,6 +86,11 @@ public class InicioSesion extends javax.swing.JFrame {
         btnCerrar.setBackground(new java.awt.Color(255, 51, 51));
         btnCerrar.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
         btnCerrar.setText("Cerrar");
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarActionPerformed(evt);
+            }
+        });
 
         btn_Ingresar.setBackground(new java.awt.Color(181, 229, 29));
         btn_Ingresar.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
@@ -109,7 +105,6 @@ public class InicioSesion extends javax.swing.JFrame {
         Panel_IncioSesion.setLayout(Panel_IncioSesionLayout);
         Panel_IncioSesionLayout.setHorizontalGroup(
             Panel_IncioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 568, Short.MAX_VALUE)
             .addGroup(Panel_IncioSesionLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(Panel_IncioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -135,13 +130,12 @@ public class InicioSesion extends javax.swing.JFrame {
                                 .addGroup(Panel_IncioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jSeparator1)
                                     .addComponent(txt_Usuario, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE))))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         Panel_IncioSesionLayout.setVerticalGroup(
             Panel_IncioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Panel_IncioSesionLayout.createSequentialGroup()
-                .addComponent(jPanelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(76, 76, 76)
                 .addGroup(Panel_IncioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(Panel_IncioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblUser, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -176,28 +170,36 @@ public class InicioSesion extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Panel_IncioSesion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Panel_IncioSesion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_IngresarActionPerformed
-        listaUsers = user.getUsers();
+        
         
         String name = txt_Usuario.getText();
         String pass = txt_contra.getText();
         
         for(users item : listaUsers){
             if(name.equals(item.getUser_name()) && pass.equals(item.getUser_pass())){
-                Inicio ini = new Inicio();
+                Inicio ini = new Inicio(item);
                 ini.show();
                 this.dispose();
             }else{
-                System.out.println("Meh, error, user o password no sirven.");
+                //System.out.println("Meh, error, user o password no sirven.");
             }
         }
     }//GEN-LAST:event_btn_IngresarActionPerformed
+
+    public void cargarUsers(){
+        listaUsers = user.getUsers();
+    }
+    
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCerrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -238,10 +240,8 @@ public class InicioSesion extends javax.swing.JFrame {
     private javax.swing.JPanel Panel_IncioSesion;
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btn_Ingresar;
-    private javax.swing.JPanel jPanelTitulo;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JLabel lblCreate_Doc;
     private javax.swing.JLabel lblPass2;
     private javax.swing.JLabel lblUser;
     private javax.swing.JLabel lblUser2;

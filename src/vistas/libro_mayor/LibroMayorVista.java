@@ -33,10 +33,17 @@ public class LibroMayorVista extends javax.swing.JFrame {
     public ArrayList<logs> listaLogs;
     cuentas cuenta1;
     
+    users User;
+    
     /**
      * Creates new form LibroMayorVista
      */
-    public LibroMayorVista() {
+    public LibroMayorVista(){
+        initComponents();
+    }
+    
+    public LibroMayorVista(users user) {
+        this.User = user;
         initComponents();
         cuenta1 = new cuentas();
         cargarTabla();

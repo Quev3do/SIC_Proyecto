@@ -23,18 +23,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="Panel_Inicio" min="-2" pref="441" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
+          <Component id="Panel_Inicio" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="Panel_Inicio" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
+          <Component id="Panel_Inicio" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -44,29 +38,25 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="jPanelTitulo" min="-2" pref="442" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="lblUser" min="-2" pref="160" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="118" max="32767" attributes="0"/>
                           <Component id="btnCerrar2" min="-2" pref="123" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="btnAgregar_Transaccion2" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnAgregar_Transaccion4" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnAgregar_Transaccion5" alignment="1" max="32767" attributes="0"/>
+                              <Component id="btnlibroD" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnlogs" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnusers" alignment="1" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="btnAgregar_Transaccion1" alignment="1" max="32767" attributes="0"/>
-                              <Component id="btnAgregar_Transaccion" alignment="1" max="32767" attributes="0"/>
-                              <Component id="btnAgregar_Transaccion3" alignment="1" pref="194" max="32767" attributes="0"/>
+                              <Component id="btncuentas" alignment="1" max="32767" attributes="0"/>
+                              <Component id="btnlibroM" alignment="1" max="32767" attributes="0"/>
+                              <Component id="btndocus" alignment="1" pref="194" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -77,26 +67,25 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="jPanelTitulo" min="-2" pref="40" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnCerrar2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblUser" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnAgregar_Transaccion2" alignment="3" min="-2" pref="108" max="-2" attributes="0"/>
-                      <Component id="btnAgregar_Transaccion" alignment="3" min="-2" pref="108" max="-2" attributes="0"/>
+                      <Component id="btnlibroD" alignment="3" min="-2" pref="108" max="-2" attributes="0"/>
+                      <Component id="btnlibroM" alignment="3" min="-2" pref="108" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnAgregar_Transaccion4" alignment="3" min="-2" pref="108" max="-2" attributes="0"/>
-                      <Component id="btnAgregar_Transaccion1" alignment="3" min="-2" pref="108" max="-2" attributes="0"/>
+                      <Component id="btnlogs" alignment="3" min="-2" pref="108" max="-2" attributes="0"/>
+                      <Component id="btncuentas" alignment="3" min="-2" pref="108" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="31" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnAgregar_Transaccion5" alignment="3" min="-2" pref="108" max="-2" attributes="0"/>
-                      <Component id="btnAgregar_Transaccion3" alignment="3" min="-2" pref="108" max="-2" attributes="0"/>
+                      <Component id="btnusers" alignment="3" min="-2" pref="108" max="-2" attributes="0"/>
+                      <Component id="btndocus" alignment="3" min="-2" pref="108" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -121,7 +110,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCerrar2ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnAgregar_Transaccion">
+        <Component class="javax.swing.JButton" name="btnlibroM">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="cc" red="33" type="rgb"/>
@@ -135,7 +124,7 @@
             <Property name="text" type="java.lang.String" value="Libro Mayor"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgregar_TransaccionActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnlibroMActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblUser">
@@ -149,39 +138,7 @@
             <Property name="text" type="java.lang.String" value="User"/>
           </Properties>
         </Component>
-        <Container class="javax.swing.JPanel" name="jPanelTitulo">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="99" red="99" type="rgb"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="cc" green="cc" red="ff" type="rgb"/>
-            </Property>
-          </Properties>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
-            <Property name="useNullLayout" type="boolean" value="false"/>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JLabel" name="lblInicio">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Yu Gothic UI Light" size="24" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Inicio"/>
-              </Properties>
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="180" y="0" width="150" height="40"/>
-                </Constraint>
-              </Constraints>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Component class="javax.swing.JButton" name="btnAgregar_Transaccion1">
+        <Component class="javax.swing.JButton" name="btncuentas">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="ff" type="rgb"/>
@@ -195,7 +152,7 @@
             <Property name="text" type="java.lang.String" value="Cuentas"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnAgregar_Transaccion2">
+        <Component class="javax.swing.JButton" name="btnlibroD">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ea" green="d9" red="9a" type="rgb"/>
@@ -205,8 +162,11 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Libro Diario"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnlibroDActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnAgregar_Transaccion3">
+        <Component class="javax.swing.JButton" name="btndocus">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="99" red="33" type="rgb"/>
@@ -220,10 +180,10 @@
             <Property name="text" type="java.lang.String" value="Documentos"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgregar_Transaccion3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btndocusActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnAgregar_Transaccion4">
+        <Component class="javax.swing.JButton" name="btnlogs">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="cc" red="cc" type="rgb"/>
@@ -237,7 +197,7 @@
             <Property name="text" type="java.lang.String" value="Logs"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnAgregar_Transaccion5">
+        <Component class="javax.swing.JButton" name="btnusers">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="66" red="66" type="rgb"/>
@@ -250,6 +210,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Users"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnusersActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

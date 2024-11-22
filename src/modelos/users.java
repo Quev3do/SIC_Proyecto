@@ -111,7 +111,7 @@ public class users {
     
     public int insertUser(users itemI){
         try {
-            String sql = "INSERT INTO tbl_users(user_name, user_email, user_phone, user_pass, user_rol) VALUES(?,?,?,?,?)";
+            String sql = "INSERT INTO tbl_users(user_name, user_email, user_phone, user_password, user_rol) VALUES(?,?,?,?,?)";
             this.conexionDB = this.claseConexion.iniciarConexion();
             pstm = this.conexionDB.prepareStatement(sql);
             pstm.setString(1, itemI.getUser_name());
@@ -130,7 +130,7 @@ public class users {
     
     public int editUser(users itemE){
         try {
-            String sql = "UPDATE tbl_users set user_name = ?, user_email = ?, user_phone = ?, user_pass = ?, user_rol = ?,"
+            String sql = "UPDATE tbl_users set user_name = ?, user_email = ?, user_phone = ?, user_password = ?, user_rol = ?,"
                     + " where id_user = ?";
             this.conexionDB = this.claseConexion.iniciarConexion();
             pstm = this.conexionDB.prepareStatement(sql);
