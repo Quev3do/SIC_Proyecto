@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package conexion;
-
 //import java.sql.*;
 //import java.util.logging.Level;
 //import java.util.logging.Logger;
@@ -22,11 +21,11 @@ public class ClaseConexion {
     private final String url;
     private Connection conexion;
 
-    // Constructor
+     // Constructor
     public ClaseConexion() {
-        this.usuario = "postgres"; // Reemplaza con tu usuario de la base de datos
-        this.pass = "1234"; // Reemplaza con tu contraseña de la base de datos
-        this.url = "jdbc:postgresql://localhost:5432/db_sistemas_contables"; // Reemplaza con tu URL de la base de datos
+        this.usuario = "postgres"; // usuario de la base de datos en uso
+        this.pass = "1234"; // contraseña de la base de datos en uso
+        this.url = "jdbc:postgresql://localhost:5432/db_sistemas_contables"; // URL de la base de datos en uso
     }
 
     // Método para iniciar la conexión
