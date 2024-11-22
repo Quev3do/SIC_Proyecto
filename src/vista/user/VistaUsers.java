@@ -4,10 +4,14 @@
  */
 package vista.user;
 
-import vistas.Inicio.Inicio;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  *
@@ -85,6 +89,86 @@ public class VistaUsers extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         add(panelPrincipal);
+
+        // Añadir ActionListeners
+        btnInicio.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Acción para el botón "inicio"
+                JOptionPane.showMessageDialog(null, "Botón inicio presionado");
+            }
+        });
+
+        btnExcel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Acción para el botón "excel"
+                exportTableToExcel(tablaUsuarios);
+            }
+        });
+
+        btnAgregarNuevo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Acción para el botón "agregar nuevo"
+                agregarNuevoUsuario();
+            }
+        });
+    }
+
+    private void exportTableToExcel(JTable table) {
+        try {
+            JFileChooser fileChooser = new JFileChooser();
+            if (fileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+                File file = fileChooser.getSelectedFile();
+                FileWriter fw = new FileWriter(file + ".csv");
+
+                for (int i = 0; i < table.getColumnCount(); i++) {
+                    fw.write(table.getColumnName(i) + ",");
+                }
+                fw.write("\n");
+
+                for (int i = 0; i < table.getRowCount(); i++) {
+                    for (int j = 0; j < table.getColumnCount(); j++) {
+                        fw.write(table.getValueAt(i, j).toString() + ",");
+                    }
+                    fw.write("\n");
+                }
+
+                fw.close();
+                JOptionPane.showMessageDialog(null, "Datos exportados a Excel correctamente.");
+            }
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error al exportar datos: " + e.getMessage());
+        }
+    }
+
+    private void agregarNuevoUsuario() {
+        JTextField idField = new JTextField(5);
+        JTextField nombreField = new JTextField(15);
+        JTextField emailField = new JTextField(15);
+        JTextField telefonoField = new JTextField(10);
+        JTextField rolField = new JTextField(10);
+
+        JPanel myPanel = new JPanel();
+        myPanel.setLayout(new GridLayout(5, 2));
+        myPanel.add(new JLabel("ID:"));
+        myPanel.add(idField);
+        myPanel.add(new JLabel("Nombre:"));
+        myPanel.add(nombreField);
+        myPanel.add(new JLabel("Email:"));
+        myPanel.add(emailField);
+        myPanel.add(new JLabel("Teléfono:"));
+        myPanel.add(telefonoField);
+        myPanel.add(new JLabel("Rol:"));
+        myPanel.add(rolField);
+
+        int result = JOptionPane.showConfirmDialog(null, myPanel, 
+                 "Agregar nuevo usuario", JOptionPane.OK_CANCEL_OPTION);
+        if (result == JOptionPane.OK_OPTION) {
+            DefaultTableModel model = (DefaultTableModel) tablaUsuarios.getModel();
+            model.addRow(new Object[]{idField.getText(), nombreField.getText(), emailField.getText(), telefonoField.getText(), rolField.getText(), "Despedir"});
+        }
     }
 
     public static void main(String[] args) {
