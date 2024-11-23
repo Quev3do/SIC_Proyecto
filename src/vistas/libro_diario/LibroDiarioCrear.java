@@ -20,6 +20,7 @@ import modelos.logs;
 import modelos.libro_diario;
 
 import vistas.Inicio.Inicio;
+import vistas.libro_diario.LibroDiarioVista;
 
 /**
  *
@@ -248,7 +249,7 @@ public class LibroDiarioCrear extends javax.swing.JFrame {
     }//GEN-LAST:event_cuenta1cmbActionPerformed
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
-        Inicio ini = new Inicio(this.user1);
+        LibroDiarioVista ini = new LibroDiarioVista();
         ini.show();
         this.dispose();
     }//GEN-LAST:event_btnInicioActionPerformed

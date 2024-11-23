@@ -112,7 +112,7 @@ public class libro_diario {
             ResultSet consulta = statement.executeQuery(sql);
             while(consulta.next()){
                 libro_diario diario = new libro_diario();
-                diario.setId_lib_diario(consulta.getInt("id_lib_diario"));
+                diario.setId_lib_diario(consulta.getInt("id_lib_dia"));
                 diario.setId_user(consulta.getInt("id_user"));
                 diario.setId_cuenta(consulta.getInt("id_cuenta"));
                 diario.setId_documento(consulta.getInt("id_documento"));

@@ -54,7 +54,7 @@ public class LibroDiarioVista extends javax.swing.JFrame {
         initComponents();
         cuenta1 = new cuentas();
         docu = new documentos();
-        LD = new libro_diario();
+        this.LD = new libro_diario();
         
         lbluser.setText(this.User.getUser_name());
         
@@ -97,11 +97,11 @@ public class LibroDiarioVista extends javax.swing.JFrame {
 
             },
             new String [] {
-                "id", "User", "documento", "cuenta", "debe", "haber", "balance", "fecha"
+                "id", "User", "documento", "cuenta", "debe", "haber", "balance", "fecha", "editar"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, true, true
+                false, false, false, false, false, false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -142,19 +142,18 @@ public class LibroDiarioVista extends javax.swing.JFrame {
         Jpanel_LibroMayorLayout.setHorizontalGroup(
             Jpanel_LibroMayorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Jpanel_LibroMayorLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(Jpanel_LibroMayorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Jpanel_LibroMayorLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtuser)
                         .addGap(27, 27, 27)
                         .addComponent(lbluser)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 601, Short.MAX_VALUE))
                     .addGroup(Jpanel_LibroMayorLayout.createSequentialGroup()
-                        .addContainerGap(122, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1)
+                        .addGap(18, 18, 18)))
                 .addGroup(Jpanel_LibroMayorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btncerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnagregar, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -202,7 +201,7 @@ public class LibroDiarioVista extends javax.swing.JFrame {
         
         listaCuentas = cuenta1.getCuentas();
         listaDocumentos = docu.getDocumentos();
-        listaLD = LD.getLibroDiario();
+        listaLD = this.LD.getLibroDiario();
         listaUsers = this.User.getUsers();
         
         for(libro_diario item : listaLD){
