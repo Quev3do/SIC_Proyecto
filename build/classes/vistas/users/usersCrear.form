@@ -25,31 +25,29 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnInicio" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
-                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                          <Component id="btnborrar" min="-2" pref="187" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="btncrear1" min="-2" pref="187" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                      <Component id="btnborrar" min="-2" pref="187" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btncrear1" min="-2" pref="187" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="lblDesdeMes1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblDesdeMes" alignment="0" max="32767" attributes="0"/>
+                          <Component id="lblDesdeMes2" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblDesdeMes3" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblDesdeMes4" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnInicio" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="lblDesdeMes1" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblDesdeMes" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblDesdeMes2" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblDesdeMes3" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblDesdeMes4" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txttelefono" min="-2" pref="295" max="-2" attributes="0"/>
-                              <Component id="txtnombre" min="-2" pref="295" max="-2" attributes="0"/>
-                              <Component id="txtemail" alignment="0" min="-2" pref="295" max="-2" attributes="0"/>
-                              <Component id="cmbrol" alignment="0" min="-2" pref="295" max="-2" attributes="0"/>
-                              <Component id="txtpassword" min="-2" pref="295" max="-2" attributes="0"/>
-                          </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="txttelefono" min="-2" pref="295" max="-2" attributes="0"/>
+                          <Component id="txtnombre" min="-2" pref="295" max="-2" attributes="0"/>
+                          <Component id="txtemail" alignment="0" min="-2" pref="295" max="-2" attributes="0"/>
+                          <Component id="cmbrol" alignment="0" min="-2" pref="295" max="-2" attributes="0"/>
+                          <Component id="txtpassword" min="-2" pref="295" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -106,7 +104,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Meiryo UI" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Inicio"/>
+        <Property name="text" type="java.lang.String" value="Regresar"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInicioActionPerformed"/>
