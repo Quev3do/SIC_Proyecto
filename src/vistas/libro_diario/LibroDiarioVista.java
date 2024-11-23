@@ -34,8 +34,11 @@ public class LibroDiarioVista extends javax.swing.JFrame {
     public ArrayList<cuentas> listaCuentas;
     public ArrayList<documentos> listaDocumentos;
     public ArrayList<users> listaUsers;
-    public ArrayList<logs> listaLogs;
+    public ArrayList<libro_diario> listaLD;
+    //public ArrayList<logs> listaLogs;
     cuentas cuenta1;
+    documentos docu;
+    libro_diario LD;
     
     users User;
     
@@ -50,6 +53,11 @@ public class LibroDiarioVista extends javax.swing.JFrame {
         this.User = user;
         initComponents();
         cuenta1 = new cuentas();
+        docu = new documentos();
+        LD = new libro_diario();
+        
+        lbluser.setText(this.User.getUser_name());
+        
         cargarTabla();
     }
 
@@ -69,9 +77,8 @@ public class LibroDiarioVista extends javax.swing.JFrame {
         btncerrar = new javax.swing.JButton();
         btnExportarExcel = new javax.swing.JButton();
         btnagregar = new javax.swing.JButton();
-        lblBalance = new javax.swing.JLabel();
-        lblDebe = new javax.swing.JLabel();
-        lblHaber = new javax.swing.JLabel();
+        lbluser = new javax.swing.JLabel();
+        txtuser = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Libro Mayor");
@@ -90,11 +97,11 @@ public class LibroDiarioVista extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Cuenta", "Debe", "Haber"
+                "id", "User", "documento", "cuenta", "debe", "haber", "balance", "fecha"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false, false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -122,68 +129,53 @@ public class LibroDiarioVista extends javax.swing.JFrame {
             }
         });
 
-        lblBalance.setBackground(new java.awt.Color(0, 0, 0));
-        lblBalance.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
-        lblBalance.setText("Balance:");
+        lbluser.setBackground(new java.awt.Color(0, 0, 0));
+        lbluser.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
+        lbluser.setText("User");
 
-        lblDebe.setBackground(new java.awt.Color(0, 0, 0));
-        lblDebe.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
-        lblDebe.setText("0.00");
-
-        lblHaber.setBackground(new java.awt.Color(0, 0, 0));
-        lblHaber.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
-        lblHaber.setText("0.00");
+        txtuser.setBackground(new java.awt.Color(0, 0, 0));
+        txtuser.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
+        txtuser.setText("User:");
 
         javax.swing.GroupLayout Jpanel_LibroMayorLayout = new javax.swing.GroupLayout(Jpanel_LibroMayor);
         Jpanel_LibroMayor.setLayout(Jpanel_LibroMayorLayout);
         Jpanel_LibroMayorLayout.setHorizontalGroup(
             Jpanel_LibroMayorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Jpanel_LibroMayorLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addGroup(Jpanel_LibroMayorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Jpanel_LibroMayorLayout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(lblBalance)
-                        .addGap(97, 97, 97)
-                        .addComponent(lblDebe)
-                        .addGap(113, 113, 113)
-                        .addComponent(lblHaber))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addGroup(Jpanel_LibroMayorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Jpanel_LibroMayorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(btncerrar, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
-                        .addComponent(btnagregar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(btnExportarExcel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18))
+                        .addGap(15, 15, 15)
+                        .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtuser)
+                        .addGap(27, 27, 27)
+                        .addComponent(lbluser)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(Jpanel_LibroMayorLayout.createSequentialGroup()
+                        .addContainerGap(122, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(Jpanel_LibroMayorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btncerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnagregar, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnExportarExcel, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         Jpanel_LibroMayorLayout.setVerticalGroup(
             Jpanel_LibroMayorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Jpanel_LibroMayorLayout.createSequentialGroup()
-                .addGroup(Jpanel_LibroMayorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Jpanel_LibroMayorLayout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addGap(18, 18, 18))
-                    .addGroup(Jpanel_LibroMayorLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(Jpanel_LibroMayorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblDebe)
-                    .addComponent(lblBalance)
-                    .addComponent(lblHaber))
-                .addGap(27, 27, 27))
-            .addGroup(Jpanel_LibroMayorLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(btncerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(244, 244, 244)
+                .addGap(256, 256, 256)
                 .addComponent(btnagregar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnExportarExcel, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addComponent(btnExportarExcel, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(Jpanel_LibroMayorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(Jpanel_LibroMayorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtuser)
+                    .addComponent(lbluser))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         getContentPane().add(Jpanel_LibroMayor, java.awt.BorderLayout.CENTER);
@@ -192,7 +184,7 @@ public class LibroDiarioVista extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
-        Inicio ini = new Inicio();
+        Inicio ini = new Inicio(this.User);
         ini.show();
         this.dispose();
     }//GEN-LAST:event_btnInicioActionPerformed
@@ -209,33 +201,47 @@ public class LibroDiarioVista extends javax.swing.JFrame {
         modelo.setRowCount(0);
         
         listaCuentas = cuenta1.getCuentas();
+        listaDocumentos = docu.getDocumentos();
+        listaLD = LD.getLibroDiario();
+        listaUsers = this.User.getUsers();
         
-        for(cuentas item : listaCuentas){
-            System.out.println(item.getTipo_cuenta());
+        for(libro_diario item : listaLD){
             
-            double debe, haber;
+            String cuenta = "", documento = "", usuario = "";
             
-            String tipo = item.getTipo_cuenta();
-            
-            if(tipo.equals("activo") || tipo.equals("patrimonio")){
-                debe = item.getSaldo();
-            }else{
-                debe = 0;
+            for(cuentas cue : listaCuentas){
+                Integer aux1 = cue.getId_cuenta();
+                Integer aux2 = item.getId_cuenta();
+                if(aux1 == aux2){
+                    cuenta = cue.getNombre_cuenta();
+                }
             }
             
-            if(tipo.equals("pasivo") || tipo.equals("gastos") || tipo.equals("ingresos")){
-                haber = item.getSaldo();
-            }else{
-                haber = 0;
+            for(users use : listaUsers){
+                Integer aux1 = use.getId_user();
+                Integer aux2 = item.getId_user();
+                if(aux1 == aux2){
+                    usuario = use.getUser_name();
+                }
             }
             
-            modelo.addRow(new Object[]{item.getNombre_cuenta(),
-                debe,
-                haber
+            for(documentos doc : listaDocumentos){
+                Integer aux1 = doc.getId_documento();
+                Integer aux2 = item.getId_documento();
+                if(aux1 == aux2){
+                    documento = doc.getCodigo_doc();
+                }
+            }
+            
+            modelo.addRow(new Object[]{item.getId_lib_diario(),
+                usuario,
+                documento,
+                cuenta,
+                item.getDebe(),
+                item.getHaber(),
+                item.getBalance(),
+                item.getFecha()
             });
-            
-            lblDebe.setText(String.valueOf(debe+ Double.parseDouble(lblDebe.getText())));
-            lblHaber.setText(String.valueOf(haber + Double.parseDouble(lblHaber.getText())));
         }
         
         this.tblLibroMayor.setModel(modelo);
@@ -291,9 +297,8 @@ public class LibroDiarioVista extends javax.swing.JFrame {
     private javax.swing.JButton btnagregar;
     private javax.swing.JButton btncerrar;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblBalance;
-    private javax.swing.JLabel lblDebe;
-    private javax.swing.JLabel lblHaber;
+    private javax.swing.JLabel lbluser;
     private javax.swing.JTable tblLibroMayor;
+    private javax.swing.JLabel txtuser;
     // End of variables declaration//GEN-END:variables
 }   
