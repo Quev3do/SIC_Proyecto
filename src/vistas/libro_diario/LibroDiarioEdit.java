@@ -4,18 +4,92 @@
  */
 package vistas.libro_diario;
 
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableModel;
+//import Utilidades_configuracion.CustomCellLabelTable;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JOptionPane;
+
+import modelos.cuentas;
+import modelos.documentos;
+import modelos.users;
+import modelos.logs;
+import modelos.libro_diario;
+
+import vistas.Inicio.Inicio;
+import vistas.libro_diario.LibroDiarioVista;
+
 /**
  *
  * @author Usuario
  */
 public class LibroDiarioEdit extends javax.swing.JFrame {
 
+    public ArrayList<cuentas> listaCuentas;
+    public ArrayList<documentos> listaDocumentos;
+    public ArrayList<users> listaUsers;
+    public ArrayList<logs> listaLogs;
+    
+    users user1;
+    
+    libro_diario LDitem;
     /**
      * Creates new form LibroDiarioEdit
      */
-    public LibroDiarioEdit() {
+    public LibroDiarioEdit(){
         initComponents();
     }
+    
+    public LibroDiarioEdit(users us, libro_diario LDii) {
+        this.LDitem = LDii;
+        this.user1 = us;
+        
+        initComponents();
+        
+        cuentas cuenta = new cuentas();
+        documentos doc = new documentos();
+        logs log = new logs();
+        users user = new users();
+        
+        
+        listaCuentas = cuenta.getCuentas();
+        listaDocumentos = doc.getDocumentos();
+        listaUsers = user.getUsers();
+        listaLogs = log.getLogs();
+        
+        for(cuentas item : listaCuentas){
+            this.cuenta1cmb.addItem(item.getNombre_cuenta());
+        }
+        
+        for(documentos item : listaDocumentos){
+            this.coddoccmb.addItem(item.getCodigo_doc());
+        }
+        //edicion no se que
+        for(cuentas item : listaCuentas){
+            if(LDitem.getId_cuenta() == item.getId_cuenta()){
+                this.cuenta1cmb.setSelectedItem(item.getNombre_cuenta());
+            }
+        }
+        
+        for(documentos item : listaDocumentos){
+            if(LDitem.getId_documento() == item.getId_documento()){
+                this.coddoccmb.setSelectedItem(item.getCodigo_doc());
+            }
+        }
+        
+        if(LDitem.getDebe() == 0){
+            txtvalor.setText(String.valueOf(LDitem.getHaber()));
+        }else{
+            txtvalor.setText(String.valueOf(LDitem.getDebe()));
+        }
+        
+        txtfecha.setText(String.valueOf(LDitem.getFecha()));
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,21 +100,263 @@ public class LibroDiarioEdit extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblDesdeMes3 = new javax.swing.JLabel();
+        btnInicio = new javax.swing.JButton();
+        lblDesdeMes = new javax.swing.JLabel();
+        cuenta1cmb = new javax.swing.JComboBox<>();
+        lblDesdeMes2 = new javax.swing.JLabel();
+        txtvalor = new javax.swing.JTextField();
+        lblDesdeMes4 = new javax.swing.JLabel();
+        coddoccmb = new javax.swing.JComboBox<>();
+        lblDesdeMes5 = new javax.swing.JLabel();
+        txtfecha = new javax.swing.JFormattedTextField();
+        btnagregardoc = new javax.swing.JButton();
+        comunicar = new javax.swing.JLabel();
+        btningresar = new javax.swing.JButton();
+
+        lblDesdeMes3.setBackground(new java.awt.Color(0, 0, 0));
+        lblDesdeMes3.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
+        lblDesdeMes3.setText("Cod Documento");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        btnInicio.setBackground(new java.awt.Color(181, 229, 29));
+        btnInicio.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
+        btnInicio.setText("Regresar");
+        btnInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInicioActionPerformed(evt);
+            }
+        });
+
+        lblDesdeMes.setBackground(new java.awt.Color(0, 0, 0));
+        lblDesdeMes.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
+        lblDesdeMes.setText("cuenta:");
+
+        cuenta1cmb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cuenta1cmbActionPerformed(evt);
+            }
+        });
+
+        lblDesdeMes2.setBackground(new java.awt.Color(0, 0, 0));
+        lblDesdeMes2.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
+        lblDesdeMes2.setText("Monto a efectuar($)");
+
+        lblDesdeMes4.setBackground(new java.awt.Color(0, 0, 0));
+        lblDesdeMes4.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
+        lblDesdeMes4.setText("Cod Documento");
+
+        lblDesdeMes5.setBackground(new java.awt.Color(0, 0, 0));
+        lblDesdeMes5.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
+        lblDesdeMes5.setText("Fecha");
+
+        txtfecha.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy-MM-dd"))));
+
+        btnagregardoc.setBackground(new java.awt.Color(255, 102, 51));
+        btnagregardoc.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
+        btnagregardoc.setForeground(new java.awt.Color(255, 255, 255));
+        btnagregardoc.setText("Agregar Doc");
+
+        comunicar.setBackground(new java.awt.Color(0, 0, 0));
+        comunicar.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
+        comunicar.setText("###");
+
+        btningresar.setBackground(new java.awt.Color(0, 204, 204));
+        btningresar.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
+        btningresar.setText("Actualizar");
+        btningresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btningresarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblDesdeMes5)
+                    .addComponent(lblDesdeMes4)
+                    .addComponent(lblDesdeMes2)
+                    .addComponent(lblDesdeMes)
+                    .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtvalor, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btningresar, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(comunicar))
+                            .addComponent(cuenta1cmb, javax.swing.GroupLayout.Alignment.LEADING, 0, 320, Short.MAX_VALUE)
+                            .addComponent(coddoccmb, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtfecha, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnagregardoc, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDesdeMes)
+                    .addComponent(cuenta1cmb, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(112, 112, 112)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDesdeMes2)
+                    .addComponent(txtvalor, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDesdeMes4)
+                    .addComponent(coddoccmb, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnagregardoc, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDesdeMes5)
+                    .addComponent(txtfecha, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btningresar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comunicar))
+                .addGap(38, 38, 38))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
+        LibroDiarioVista ini = new LibroDiarioVista();
+        ini.show();
+        this.dispose();
+    }//GEN-LAST:event_btnInicioActionPerformed
+
+    private void cuenta1cmbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuenta1cmbActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cuenta1cmbActionPerformed
+
+    private void btningresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btningresarActionPerformed
+        libro_diario libroDiario1 = new libro_diario();
+        
+        cuentas cuenta1 = new cuentas();
+
+        listaCuentas = cuenta1.getCuentas();
+
+        double valor;
+
+        //activo = pasivo + patrimonio
+        //pasivo = activo - patrimonio
+        //patrimonio = activo - pasivo
+
+        String cuenta111 = String.valueOf(cuenta1cmb.getSelectedItem());
+
+
+        Integer id_c1 = 0, id_c2 = 0;
+
+        for(cuentas item : listaCuentas){
+            String aux1 = item.getNombre_cuenta();
+            if(cuenta111.equals(aux1)){
+                id_c1 = item.getId_cuenta();
+            }
+
+        }
+
+        String cod_doc = String.valueOf(coddoccmb.getSelectedItem());
+
+        Integer coddocA = 0;
+
+        for(documentos item : listaDocumentos){
+            String auxD = item.getCodigo_doc();
+            if(cod_doc.equals(auxD)){
+                coddocA = item.getId_documento();
+            }
+        }
+
+        cuenta1.setId_cuenta(id_c1);
+
+
+        for(cuentas item : listaCuentas){
+            if(cuenta1.getId_cuenta() == item.getId_cuenta()){
+                cuenta1.setNombre_cuenta(item.getNombre_cuenta());
+                cuenta1.setTipo_cuenta(item.getTipo_cuenta());
+            }
+
+        }
+
+        valor = Double.parseDouble(txtvalor.getText());
+        System.out.println(valor);
+
+        libroDiario1.setId_cuenta(id_c1);
+        libroDiario1.setId_user(this.user1.getId_user());
+        libroDiario1.setFecha(txtfecha.getText());
+        libroDiario1.setId_documento(coddocA);
+
+
+
+        //--------- EDITAR CON CUIDADO, ES IMPORTANTE SABER COMO ACTUALIZARAS LA BD EN SU CONJUNTO
+
+        for(cuentas itm : listaCuentas){
+            if(libroDiario1.getId_cuenta() == itm.getId_cuenta()){
+                String tipo = itm.getTipo_cuenta();
+
+                if(tipo.equals("activo") || tipo.equals("patrimonio")){
+                    //System.out.println("aqui");
+                    libroDiario1.setDebe(valor);
+                    double db = (valor - cuenta1.getSaldo());
+                    cuenta1.setSaldo(db);
+                    libroDiario1.setBalance(cuenta1.getSaldo());
+                    cuenta1.setTipo_cuenta(itm.getTipo_cuenta());
+                    cuenta1.setNombre_cuenta(itm.getNombre_cuenta());
+                }
+                if(tipo.equals("pasivo") || tipo.equals("gastos") || tipo.equals("ingresos")){
+                    libroDiario1.setHaber(valor);
+                    double hb = (valor - cuenta1.getSaldo());
+                    cuenta1.setSaldo(hb);
+                    libroDiario1.setBalance(cuenta1.getSaldo());
+                    cuenta1.setTipo_cuenta(itm.getTipo_cuenta());
+                    cuenta1.setNombre_cuenta(itm.getNombre_cuenta());
+                }
+            }
+        }
+
+        
+
+        comunicar.setText(" ");
+
+        if(libroDiario1.editLibroD(libroDiario1)>0){
+            System.out.println("Se ha editado el registro 1.");
+            comunicar.setText((comunicar.getText() + " ld1E"));
+
+            logs log1 = new logs();
+            log1.setId_user(this.user1.getId_user());
+            log1.setFecha_log(txtfecha.getText());
+            log1.setAccion("Edicion de LD");
+
+            if(log1.insertLog(log1)>0){
+                System.out.println("Se ha editado el registro el log 1.");
+            }
+        }else{
+            System.out.println("No se edito.");
+        }
+
+        //////
+
+        if(cuenta1.editCuenta(cuenta1)>0){
+            System.out.println("Se ha editado la cuenta 1 saldo");
+            comunicar.setText((comunicar.getText() + "- c1E"));
+        }else{
+            System.out.println("No se edito.");
+        }
+
+
+
+    }//GEN-LAST:event_btningresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +394,18 @@ public class LibroDiarioEdit extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnInicio;
+    private javax.swing.JButton btnagregardoc;
+    private javax.swing.JButton btningresar;
+    private javax.swing.JComboBox<String> coddoccmb;
+    private javax.swing.JLabel comunicar;
+    private javax.swing.JComboBox<String> cuenta1cmb;
+    private javax.swing.JLabel lblDesdeMes;
+    private javax.swing.JLabel lblDesdeMes2;
+    private javax.swing.JLabel lblDesdeMes3;
+    private javax.swing.JLabel lblDesdeMes4;
+    private javax.swing.JLabel lblDesdeMes5;
+    private javax.swing.JFormattedTextField txtfecha;
+    private javax.swing.JTextField txtvalor;
     // End of variables declaration//GEN-END:variables
 }

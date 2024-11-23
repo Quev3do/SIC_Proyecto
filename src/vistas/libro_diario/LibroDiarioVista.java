@@ -12,7 +12,6 @@ import javax.swing.table.DefaultTableModel;
 //import Utilidades_configuracion.CustomCellLabelTable;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.JOptionPane;
 
 import modelos.cuentas;
 import modelos.documentos;
@@ -59,6 +58,22 @@ public class LibroDiarioVista extends javax.swing.JFrame {
         lbluser.setText(this.User.getUser_name());
         
         cargarTabla();
+        
+        tblLibroMayor.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent e){
+                int fila = tblLibroMayor.rowAtPoint(e.getPoint());
+                int col = tblLibroMayor.columnAtPoint(e.getPoint());
+                
+                if(fila>=0 && col==8){
+                    //editar
+                    LibroDiarioEdit LDed = new LibroDiarioEdit(User, listaLD.get(fila));
+                    LDed.setVisible(true);
+                    listaLD.clear();
+                    cargarTabla();
+                }
+            }
+        });
     }
 
     /**

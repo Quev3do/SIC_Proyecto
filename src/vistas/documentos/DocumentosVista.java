@@ -66,10 +66,7 @@ public class DocumentosVista extends javax.swing.JFrame {
 
         tblDocumentos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "id", "Codigo", "Fecha doc", "Fecha reg"
