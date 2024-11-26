@@ -195,6 +195,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Remover Filtro de Fecha"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnQuitarFiltroActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnExportarExcel">
           <Properties>
@@ -220,6 +223,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Aplicar Filtro de Fecha"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAplicarFiltroActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblHastaMes">
           <Properties>

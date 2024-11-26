@@ -12,12 +12,14 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
+import modelos.balance;
 
 import modelos.cuentas;
 import modelos.documentos;
 import modelos.users;
 import modelos.logs;
 import modelos.libro_diario;
+import modelos.libro_mayor_filtro;
 
 import vistas.Inicio.Inicio;
 
@@ -107,6 +109,11 @@ public class LibroMayorVista extends javax.swing.JFrame {
         btnQuitarFiltro.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
         btnQuitarFiltro.setForeground(new java.awt.Color(255, 255, 255));
         btnQuitarFiltro.setText("Remover Filtro de Fecha");
+        btnQuitarFiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQuitarFiltroActionPerformed(evt);
+            }
+        });
 
         btnExportarExcel.setBackground(new java.awt.Color(181, 229, 29));
         btnExportarExcel.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
@@ -116,6 +123,11 @@ public class LibroMayorVista extends javax.swing.JFrame {
         btnAplicarFiltro.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
         btnAplicarFiltro.setForeground(new java.awt.Color(255, 255, 255));
         btnAplicarFiltro.setText("Aplicar Filtro de Fecha");
+        btnAplicarFiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAplicarFiltroActionPerformed(evt);
+            }
+        });
 
         lblHastaMes.setBackground(new java.awt.Color(0, 0, 0));
         lblHastaMes.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
@@ -221,10 +233,42 @@ public class LibroMayorVista extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnInicioActionPerformed
 
-    public void cargarTabla(){
-        DefaultTableModel modelo = new DefaultTableModel();
-        modelo = (DefaultTableModel)this.tblLibroMayor.getModel();
+    private void btnAplicarFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAplicarFiltroActionPerformed
+        DefaultTableModel modelo = (DefaultTableModel)this.tblLibroMayor.getModel();
         modelo.setRowCount(0);
+        
+        String fechaI = txtfecha1.getText();
+        String fechaF = txtfecha2.getText();
+        
+        balance balanc = new balance().getTotalDebeHaberPorRango(fechaI,fechaF);
+        ArrayList<libro_mayor_filtro> datosFiltrados = new libro_mayor_filtro().libroMayorFiltro(fechaI,fechaF);
+        
+        for(libro_mayor_filtro dato: datosFiltrados){
+            modelo.addRow(new Object[]{
+                dato.getIdCuenta(),
+                dato.getNombreCuenta(),
+                dato.getTotalDebe(),
+                dato.getTotalHaber()
+            });
+        }
+        
+        this.tblLibroMayor.setModel(modelo);
+        
+        lblDebe.setText(balanc.getDebeGlobal());
+        lblHaber.setText(balanc.getHaberGlobal());
+    }//GEN-LAST:event_btnAplicarFiltroActionPerformed
+
+    private void btnQuitarFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarFiltroActionPerformed
+        cargarTabla();
+    }//GEN-LAST:event_btnQuitarFiltroActionPerformed
+
+    public void cargarTabla(){
+        DefaultTableModel modelo = (DefaultTableModel)this.tblLibroMayor.getModel();
+        modelo.setRowCount(0);
+        
+        if(listaCuentas != null){
+            listaCuentas.clear();
+        }
         
         listaCuentas = cuenta1.getCuentas();
         
