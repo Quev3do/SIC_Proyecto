@@ -35,6 +35,14 @@ public class DocumentosVista extends javax.swing.JFrame {
         this.User = Us;
         initComponents();
         docu = new documentos();
+        
+        String rol = User.getUser_rol();
+        
+        if(rol.equals("Gerente")){
+            btnaddDoc.setVisible(false);
+            btnaddDoc.disable();
+        }
+        
         cargarTabla();
     }
 
@@ -51,7 +59,7 @@ public class DocumentosVista extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDocumentos = new javax.swing.JTable();
         btnAplicarFiltro = new javax.swing.JButton();
-        btnAplicarFiltro1 = new javax.swing.JButton();
+        btnaddDoc = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,13 +95,13 @@ public class DocumentosVista extends javax.swing.JFrame {
         btnAplicarFiltro.setForeground(new java.awt.Color(0, 0, 0));
         btnAplicarFiltro.setText("Excel");
 
-        btnAplicarFiltro1.setBackground(new java.awt.Color(37, 150, 190));
-        btnAplicarFiltro1.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
-        btnAplicarFiltro1.setForeground(new java.awt.Color(255, 255, 255));
-        btnAplicarFiltro1.setText("Agregar Documento");
-        btnAplicarFiltro1.addActionListener(new java.awt.event.ActionListener() {
+        btnaddDoc.setBackground(new java.awt.Color(37, 150, 190));
+        btnaddDoc.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
+        btnaddDoc.setForeground(new java.awt.Color(255, 255, 255));
+        btnaddDoc.setText("Agregar Documento");
+        btnaddDoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAplicarFiltro1ActionPerformed(evt);
+                btnaddDocActionPerformed(evt);
             }
         });
 
@@ -109,7 +117,7 @@ public class DocumentosVista extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAplicarFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAplicarFiltro1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnaddDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -119,7 +127,7 @@ public class DocumentosVista extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnAplicarFiltro1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnaddDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(118, 118, 118)
                         .addComponent(btnAplicarFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -138,11 +146,11 @@ public class DocumentosVista extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnInicioActionPerformed
 
-    private void btnAplicarFiltro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAplicarFiltro1ActionPerformed
+    private void btnaddDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddDocActionPerformed
         CrearDocumento cdoc = new CrearDocumento();
         cdoc.show();
         this.dispose();
-    }//GEN-LAST:event_btnAplicarFiltro1ActionPerformed
+    }//GEN-LAST:event_btnaddDocActionPerformed
 
     public void cargarTabla(){
         DefaultTableModel modelo = new DefaultTableModel();
@@ -200,8 +208,8 @@ public class DocumentosVista extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAplicarFiltro;
-    private javax.swing.JButton btnAplicarFiltro1;
     private javax.swing.JButton btnInicio;
+    private javax.swing.JButton btnaddDoc;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblDocumentos;
     // End of variables declaration//GEN-END:variables
