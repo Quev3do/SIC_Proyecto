@@ -8,6 +8,7 @@ import javax.swing.ImageIcon;
 
 
 import java.util.*;
+import javax.swing.JOptionPane;
 
 import modelos.users;
 
@@ -179,23 +180,28 @@ public class InicioSesion extends javax.swing.JFrame {
 
     private void btn_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_IngresarActionPerformed
         
-        
-        String name = txt_Usuario.getText();
-        String pass = txt_contra.getText();
-        
-        for(users item : listaUsers){
-            if(name.equals(item.getUser_name()) && pass.equals(item.getUser_pass())){
-                Inicio ini = new Inicio(item);
-                ini.show();
-                this.dispose();
-            }else{
-                //System.out.println("Meh, error, user o password no sirven.");
-            }
+    String name = txt_Usuario.getText().trim();
+    String pass = txt_contra.getText().trim();
+    
+    boolean encontrado = false;
+
+    for (users item : listaUsers) {
+        if (name.equalsIgnoreCase(item.getUser_name().trim()) && pass.equals(item.getUser_pass().trim())) {
+            Inicio ini = new Inicio(item); // Si coinciden, inicia sesión
+            ini.show();
+            this.dispose();
+            encontrado = true;
+            break;
         }
+    }
+
+    if (!encontrado) {
+        JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos.");
+    }
     }//GEN-LAST:event_btn_IngresarActionPerformed
 
     public void cargarUsers(){
-        listaUsers = user.getUsers();
+    listaUsers = user.getUsers();
     }
     
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed

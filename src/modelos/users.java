@@ -86,28 +86,28 @@ public class users {
         this.listaUsers = new ArrayList<users>();
     }
     
-    public ArrayList<users> getUsers(){
-        try{
-            conexionDB = claseConexion.iniciarConexion();
-            statement = conexionDB.createStatement();
-            String sql = "SELECT * FROM tbl_users";
-            ResultSet consulta = statement.executeQuery(sql);
-            while(consulta.next()){
-                users user = new users();
-                user.setId_user(consulta.getInt("id_user"));
-                user.setUser_name(consulta.getString("user_name"));
-                user.setUser_email(consulta.getString("user_email"));
-                user.setUser_phone(consulta.getInt("user_phone"));
-                user.setUser_pass(consulta.getString("user_password"));
-                user.setUser_rol(consulta.getString("user_rol"));
-                this.listaUsers.add(user);
-            }
-            return this.listaUsers;
-        } catch (SQLException ex) {
-            Logger.getLogger(users.class.getName()).log(Level.SEVERE, null, ex);
+   public ArrayList<users> getUsers() {
+    try {
+        conexionDB = claseConexion.iniciarConexion();
+        statement = conexionDB.createStatement();
+        String sql = "SELECT * FROM tbl_users";
+        ResultSet consulta = statement.executeQuery(sql);
+        while (consulta.next()) {
+            users user = new users();
+            user.setId_user(consulta.getInt("id_user"));
+            user.setUser_name(consulta.getString("user_name"));
+            user.setUser_email(consulta.getString("user_email"));
+            user.setUser_phone(consulta.getInt("user_phone"));
+            user.setUser_pass(consulta.getString("user_password"));
+            user.setUser_rol(consulta.getString("user_rol"));
+            this.listaUsers.add(user);
         }
-        return null;
+        return this.listaUsers;
+    } catch (SQLException ex) {
+        Logger.getLogger(users.class.getName()).log(Level.SEVERE, null, ex);
     }
+    return new ArrayList<>();
+}
     
     public int insertUser(users itemI){
         try {
@@ -130,8 +130,8 @@ public class users {
     
     public int editUser(users itemE){
         try {
-            String sql = "UPDATE tbl_users set user_name = ?, user_email = ?, user_phone = ?, user_password = ?, user_rol = ?,"
-                    + " where id_user = ?";
+            String sql = "UPDATE tbl_users SET user_name = ?, user_email = ?, user_phone = ?, user_password = ?, user_rol = ? WHERE id_user = ?";
+
             this.conexionDB = this.claseConexion.iniciarConexion();
             pstm = this.conexionDB.prepareStatement(sql);
             pstm.setString(1, itemE.getUser_name());
