@@ -43,7 +43,7 @@ public class DocumentoEditar extends javax.swing.JFrame {
 
         btnInicio.setBackground(new java.awt.Color(181, 229, 29));
         btnInicio.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
-        btnInicio.setText("Inicio");
+        btnInicio.setText("Regresar");
         btnInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInicioActionPerformed(evt);
