@@ -4,6 +4,8 @@
  */
 package vistas.documentos;
 
+import com.github.lgooddatepicker.components.DatePickerSettings;
+
 /**
  *
  * @author jajon
@@ -15,6 +17,14 @@ public class DocumentoEditar extends javax.swing.JFrame {
      */
     public DocumentoEditar() {
         initComponents();
+        
+         DatePickerSettings dateSettingsDoc_Cambio = new DatePickerSettings();
+        dateSettingsDoc_Cambio.setFormatForDatesCommonEra("yyyy-MM-dd");
+        datePickerReg_Cambio.setSettings(dateSettingsDoc_Cambio);
+        
+        DatePickerSettings dateSettingsReg_Cambio = new DatePickerSettings();
+        dateSettingsReg_Cambio.setFormatForDatesCommonEra("yyyy-MM-dd"); 
+        datePickerReg_Cambio.setSettings(dateSettingsReg_Cambio);
     }
 
     /**
@@ -32,12 +42,12 @@ public class DocumentoEditar extends javax.swing.JFrame {
         lbl_FechaDoc = new javax.swing.JLabel();
         lbl_FechaRes = new javax.swing.JLabel();
         txtcodigo_Cambio = new javax.swing.JTextField();
-        txtfechareg_Cambio = new javax.swing.JTextField();
-        txtfechadoc_Cambio = new javax.swing.JTextField();
         btn_Cancelar = new javax.swing.JButton();
         btn_GuardarCambios = new javax.swing.JButton();
         lbl_id = new javax.swing.JLabel();
         lbl_ID_Cambio = new javax.swing.JLabel();
+        datePickerDoc_Cambio = new com.github.lgooddatepicker.components.DatePicker();
+        datePickerReg_Cambio = new com.github.lgooddatepicker.components.DatePicker();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -102,27 +112,32 @@ public class DocumentoEditar extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lbl_FechaDoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnInicio, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
                         .addGap(373, 373, 373))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_Codigo)
                             .addComponent(lbl_FechaRes)
                             .addComponent(lbl_id))
-                        .addGap(61, 61, 61)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(61, 61, 61)
                                 .addComponent(lbl_ID_Cambio)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtfechadoc_Cambio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
-                                    .addComponent(txtfechareg_Cambio, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtcodigo_Cambio))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                .addGap(91, 91, 91)
+                                .addComponent(datePickerReg_Cambio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lbl_Codigo)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(lbl_FechaDoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(datePickerDoc_Cambio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtcodigo_Cambio, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(60, 60, 60))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,15 +152,15 @@ public class DocumentoEditar extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_Codigo)
                     .addComponent(txtcodigo_Cambio, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
+                .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_FechaDoc)
-                    .addComponent(txtfechadoc_Cambio, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
+                    .addComponent(datePickerDoc_Cambio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_FechaRes)
-                    .addComponent(txtfechareg_Cambio, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52)
+                    .addComponent(datePickerReg_Cambio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(57, 57, 57)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_GuardarCambios, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -230,6 +245,8 @@ public class DocumentoEditar extends javax.swing.JFrame {
     private javax.swing.JButton btnInicio;
     private javax.swing.JButton btn_Cancelar;
     private javax.swing.JButton btn_GuardarCambios;
+    private static com.github.lgooddatepicker.components.DatePicker datePickerDoc_Cambio;
+    private static com.github.lgooddatepicker.components.DatePicker datePickerReg_Cambio;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbl_Codigo;
     private javax.swing.JLabel lbl_FechaDoc;
@@ -237,7 +254,5 @@ public class DocumentoEditar extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_ID_Cambio;
     private javax.swing.JLabel lbl_id;
     private javax.swing.JTextField txtcodigo_Cambio;
-    private javax.swing.JTextField txtfechadoc_Cambio;
-    private javax.swing.JTextField txtfechareg_Cambio;
     // End of variables declaration//GEN-END:variables
 }

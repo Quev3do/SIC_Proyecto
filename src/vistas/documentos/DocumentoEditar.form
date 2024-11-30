@@ -53,34 +53,41 @@
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="lbl_FechaDoc" max="32767" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
                           <Component id="btnInicio" pref="128" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="373" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lbl_Codigo" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lbl_FechaRes" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lbl_id" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                                   <Component id="lbl_ID_Cambio" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="txtfechadoc_Cambio" alignment="0" pref="208" max="32767" attributes="0"/>
-                                      <Component id="txtfechareg_Cambio" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtcodigo_Cambio" max="32767" attributes="0"/>
-                                  </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
+                                  <Component id="datePickerReg_Cambio" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="lbl_Codigo" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="lbl_FechaDoc" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="datePickerDoc_Cambio" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtcodigo_Cambio" min="-2" pref="208" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -99,19 +106,19 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lbl_Codigo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtcodigo_Cambio" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="txtcodigo_Cambio" alignment="0" min="-2" pref="35" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lbl_FechaDoc" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtfechadoc_Cambio" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="datePickerDoc_Cambio" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lbl_FechaRes" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtfechareg_Cambio" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="datePickerReg_Cambio" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btn_Cancelar" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
                       <Component id="btn_GuardarCambios" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
@@ -171,10 +178,6 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtcodigo_Cambio">
         </Component>
-        <Component class="javax.swing.JTextField" name="txtfechareg_Cambio">
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtfechadoc_Cambio">
-        </Component>
         <Component class="javax.swing.JButton" name="btn_Cancelar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -224,6 +227,18 @@
             </Property>
             <Property name="text" type="java.lang.String" value="id"/>
           </Properties>
+        </Component>
+        <Component class="com.github.lgooddatepicker.components.DatePicker" name="datePickerDoc_Cambio">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.github.lgooddatepicker.components.DatePicker()"/>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+          </AuxValues>
+        </Component>
+        <Component class="com.github.lgooddatepicker.components.DatePicker" name="datePickerReg_Cambio">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.github.lgooddatepicker.components.DatePicker()"/>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

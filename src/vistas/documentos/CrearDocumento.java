@@ -4,6 +4,7 @@
  */
 package vistas.documentos;
 
+import com.github.lgooddatepicker.components.DatePickerSettings;
 import vistas.documentos.DocumentosVista;
 
 import modelos.documentos;
@@ -27,6 +28,15 @@ public class CrearDocumento extends javax.swing.JFrame {
         docu = new documentos();
         
         initComponents();
+        
+        DatePickerSettings dateSettingsDoc = new DatePickerSettings();
+        dateSettingsDoc.setFormatForDatesCommonEra("yyyy-MM-dd");
+        datePickerReg.setSettings(dateSettingsDoc);
+        
+        DatePickerSettings dateSettingsReg = new DatePickerSettings();
+        dateSettingsReg.setFormatForDatesCommonEra("yyyy-MM-dd"); 
+        datePickerReg.setSettings(dateSettingsReg);
+        
     }
 
     /**
@@ -42,10 +52,10 @@ public class CrearDocumento extends javax.swing.JFrame {
         lblDesdeMes2 = new javax.swing.JLabel();
         lblDesdeMes3 = new javax.swing.JLabel();
         lblDesdeMes4 = new javax.swing.JLabel();
-        txtfechadoc = new javax.swing.JTextField();
-        txtfechareg = new javax.swing.JTextField();
         txtcodigo = new javax.swing.JTextField();
         btningresar = new javax.swing.JButton();
+        datePickerReg = new com.github.lgooddatepicker.components.DatePicker();
+        datePickerDoc1 = new com.github.lgooddatepicker.components.DatePicker();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DocumentosCrear");
@@ -88,23 +98,20 @@ public class CrearDocumento extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblDesdeMes3)
+                        .addGap(188, 188, 188)
+                        .addComponent(btningresar, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(31, 31, 31)
-                                .addComponent(btningresar, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(36, 36, 36)
-                                .addComponent(txtfechareg))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btnInicio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblDesdeMes2)
-                            .addComponent(lblDesdeMes4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(btnInicio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblDesdeMes2)
+                                .addComponent(lblDesdeMes4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lblDesdeMes3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtfechadoc, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
-                            .addComponent(txtcodigo))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(datePickerReg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(datePickerDoc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(41, 41, 41))
         );
         layout.setVerticalGroup(
@@ -114,18 +121,18 @@ public class CrearDocumento extends javax.swing.JFrame {
                 .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtfechareg, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblDesdeMes2)
                             .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblDesdeMes4)
-                            .addComponent(txtfechadoc, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(43, 43, 43)
-                        .addComponent(lblDesdeMes3)))
-                .addGap(54, 54, 54)
+                        .addComponent(lblDesdeMes4))
+                    .addComponent(datePickerDoc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(52, 52, 52)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDesdeMes3)
+                    .addComponent(datePickerReg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(49, 49, 49)
                 .addComponent(btningresar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(55, Short.MAX_VALUE))
         );
@@ -189,11 +196,11 @@ public class CrearDocumento extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInicio;
     private javax.swing.JButton btningresar;
+    private static com.github.lgooddatepicker.components.DatePicker datePickerDoc1;
+    private static com.github.lgooddatepicker.components.DatePicker datePickerReg;
     private javax.swing.JLabel lblDesdeMes2;
     private javax.swing.JLabel lblDesdeMes3;
     private javax.swing.JLabel lblDesdeMes4;
     private javax.swing.JTextField txtcodigo;
-    private javax.swing.JTextField txtfechadoc;
-    private javax.swing.JTextField txtfechareg;
     // End of variables declaration//GEN-END:variables
 }
