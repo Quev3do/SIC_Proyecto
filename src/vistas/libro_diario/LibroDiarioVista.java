@@ -112,11 +112,11 @@ public class LibroDiarioVista extends javax.swing.JFrame {
 
             },
             new String [] {
-                "id", "User", "documento", "cuenta", "debe", "haber", "balance", "fecha", "editar"
+                "id", "User", "documento", "cuenta", "debe", "haber", "balance", "fecha"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, true, true
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
