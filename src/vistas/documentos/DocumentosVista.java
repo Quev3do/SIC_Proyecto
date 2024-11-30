@@ -147,7 +147,7 @@ public class DocumentosVista extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInicioActionPerformed
 
     private void btnaddDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddDocActionPerformed
-        CrearDocumento cdoc = new CrearDocumento();
+        CrearDocumento cdoc = new CrearDocumento(User);
         cdoc.show();
         this.dispose();
     }//GEN-LAST:event_btnaddDocActionPerformed

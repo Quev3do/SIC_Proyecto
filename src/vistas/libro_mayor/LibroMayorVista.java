@@ -291,7 +291,8 @@ public class LibroMayorVista extends javax.swing.JFrame {
                 haber = 0;
             }
             
-            modelo.addRow(new Object[]{item.getNombre_cuenta(),
+            modelo.addRow(new Object[]{item.getId_cuenta(),
+                item.getNombre_cuenta(),
                 debe,
                 haber
             });

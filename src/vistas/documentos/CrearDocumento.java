@@ -12,6 +12,8 @@ import modelos.logs;
 
 import vistas.documentos.DocumentosVista;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author jajon
@@ -19,11 +21,19 @@ import vistas.documentos.DocumentosVista;
 public class CrearDocumento extends javax.swing.JFrame {
     
     documentos docu;
+    
+    users User;
 
     /**
      * Creates new form CrearDocumento
      */
-    public CrearDocumento() {
+    public CrearDocumento(){
+        initComponents();
+    }
+    
+    public CrearDocumento(users us) {
+        this.User = us;
+        
         docu = new documentos();
         
         initComponents();
@@ -148,6 +158,20 @@ public class CrearDocumento extends javax.swing.JFrame {
           System.out.println("Se agrego el documento.");
         }else{
             System.out.println("No se agrego.");
+        }
+        
+        logs log = new logs();
+        
+        LocalDate fecha_ahora = LocalDate.now();
+        
+        log.setFecha_log(String.valueOf(fecha_ahora));
+        log.setId_user(User.getId_user());
+        log.setAccion("Se edito un documento.");
+        
+        if(log.insertLog(log)>0){
+            System.out.println("Se agrego el log.");
+        }else{
+            System.out.println("No se agrego el log.");
         }
     }//GEN-LAST:event_btningresarActionPerformed
 
