@@ -44,7 +44,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="datePickerReg" min="-2" max="-2" attributes="0"/>
                           <Component id="txtcodigo" min="-2" pref="202" max="-2" attributes="0"/>
-                          <Component id="datePickerDoc1" min="-2" max="-2" attributes="0"/>
+                          <Component id="datePickerDoc" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -67,7 +67,7 @@
                       <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                       <Component id="lblDesdeMes4" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="datePickerDoc1" min="-2" max="-2" attributes="0"/>
+                  <Component id="datePickerDoc" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -151,7 +151,7 @@
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
       </AuxValues>
     </Component>
-    <Component class="com.github.lgooddatepicker.components.DatePicker" name="datePickerDoc1">
+    <Component class="com.github.lgooddatepicker.components.DatePicker" name="datePickerDoc">
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.github.lgooddatepicker.components.DatePicker()"/>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>

@@ -5,6 +5,8 @@
 package vistas.documentos;
 
 import com.github.lgooddatepicker.components.DatePickerSettings;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
 import vistas.documentos.DocumentosVista;
 
 import modelos.documentos;
@@ -31,7 +33,7 @@ public class CrearDocumento extends javax.swing.JFrame {
         
         DatePickerSettings dateSettingsDoc = new DatePickerSettings();
         dateSettingsDoc.setFormatForDatesCommonEra("yyyy-MM-dd");
-        datePickerReg.setSettings(dateSettingsDoc);
+        datePickerDoc.setSettings(dateSettingsDoc);
         
         DatePickerSettings dateSettingsReg = new DatePickerSettings();
         dateSettingsReg.setFormatForDatesCommonEra("yyyy-MM-dd"); 
@@ -55,7 +57,7 @@ public class CrearDocumento extends javax.swing.JFrame {
         txtcodigo = new javax.swing.JTextField();
         btningresar = new javax.swing.JButton();
         datePickerReg = new com.github.lgooddatepicker.components.DatePicker();
-        datePickerDoc1 = new com.github.lgooddatepicker.components.DatePicker();
+        datePickerDoc = new com.github.lgooddatepicker.components.DatePicker();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DocumentosCrear");
@@ -111,7 +113,7 @@ public class CrearDocumento extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(datePickerReg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(datePickerDoc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(datePickerDoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(41, 41, 41))
         );
         layout.setVerticalGroup(
@@ -127,7 +129,7 @@ public class CrearDocumento extends javax.swing.JFrame {
                             .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(43, 43, 43)
                         .addComponent(lblDesdeMes4))
-                    .addComponent(datePickerDoc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(datePickerDoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDesdeMes3)
@@ -147,15 +149,35 @@ public class CrearDocumento extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInicioActionPerformed
 
     private void btningresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btningresarActionPerformed
-        docu.setCodigo_doc(txtcodigo.getText());
-        docu.setFecha_doc(txtfechadoc.getText());
-        docu.setFecha_registro_doc(txtfechareg.getText());
+         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+    // Validar que los campos no estén vacíos
+    if (txtcodigo.getText().isEmpty() || datePickerDoc.getDate() == null || datePickerReg.getDate() == null) {
+        JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios. Por favor, complétalos.", "Campos incompletos", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+
+    // Obtener y formatear las fechas
+    String fechaDoc = datePickerDoc.getDate().format(formatter);
+    String fechaReg = datePickerReg.getDate().format(formatter);
+
+    // Asignar valores al objeto documento
+    docu.setCodigo_doc(txtcodigo.getText());
+    docu.setFecha_doc(fechaDoc);
+    docu.setFecha_registro_doc(fechaReg);
+
+    // Intentar insertar el documento en la base de datos
+    if (docu.insertDocumento(docu) > 0) {
+        JOptionPane.showMessageDialog(this, "Documento agregado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
         
-        if(docu.insertDocumento(docu)>0){
-          System.out.println("Se agrego el documento.");
-        }else{
-            System.out.println("No se agrego.");
-        }
+        // Limpiar los campos
+        txtcodigo.setText(""); // Limpia el campo de texto
+        datePickerDoc.setDate(null); // Limpia el DatePicker de la fecha del documento
+        datePickerReg.setDate(null); // Limpia el DatePicker de la fecha de registro
+    } else {
+        JOptionPane.showMessageDialog(this, "Hubo un error al agregar el documento. Inténtalo nuevamente.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
     }//GEN-LAST:event_btningresarActionPerformed
 
     /**
@@ -196,7 +218,7 @@ public class CrearDocumento extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInicio;
     private javax.swing.JButton btningresar;
-    private static com.github.lgooddatepicker.components.DatePicker datePickerDoc1;
+    private static com.github.lgooddatepicker.components.DatePicker datePickerDoc;
     private static com.github.lgooddatepicker.components.DatePicker datePickerReg;
     private javax.swing.JLabel lblDesdeMes2;
     private javax.swing.JLabel lblDesdeMes3;

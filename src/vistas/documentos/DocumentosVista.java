@@ -4,7 +4,12 @@
  */
 package vistas.documentos;
 
+import com.sun.jdi.connect.spi.Connection;
+import java.beans.Statement;
+import java.lang.System.Logger;
+import java.lang.System.Logger.Level;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.table.DefaultTableModel;
 import modelos.cuentas;
 import modelos.documentos;
@@ -18,8 +23,8 @@ import vistas.documentos.CrearDocumento;
  * @author Usuario
  */
 public class DocumentosVista extends javax.swing.JFrame {
-    
-
+  
+       
     public ArrayList<documentos> listaDocumentos;
     documentos docu;
     users User;

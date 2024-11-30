@@ -20,7 +20,7 @@ public class DocumentoEditar extends javax.swing.JFrame {
         
          DatePickerSettings dateSettingsDoc_Cambio = new DatePickerSettings();
         dateSettingsDoc_Cambio.setFormatForDatesCommonEra("yyyy-MM-dd");
-        datePickerReg_Cambio.setSettings(dateSettingsDoc_Cambio);
+        datePickerDoc_Cambio.setSettings(dateSettingsDoc_Cambio);
         
         DatePickerSettings dateSettingsReg_Cambio = new DatePickerSettings();
         dateSettingsReg_Cambio.setFormatForDatesCommonEra("yyyy-MM-dd"); 

@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -139,4 +140,31 @@ public class documentos {
         }
         return 0;
     }
+    
+    
+    public List<Object[]> cargarDocumentos() {
+    List<Object[]> documentos = new ArrayList<>();
+    try {
+        String sql = "SELECT id, codigo_doc, fecha_doc, fecha_registro FROM tbl_documentos";
+        Connection conexion = claseConexion.iniciarConexion();
+        PreparedStatement stmt = conexion.prepareStatement(sql);
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next()) {
+            documentos.add(new Object[]{
+                rs.getInt("id"),
+                rs.getString("codigo_doc"),
+                rs.getDate("fecha_doc"),
+                rs.getDate("fecha_registro")
+            });
+        }
+
+        rs.close();
+        stmt.close();
+        conexion.close();
+    } catch (SQLException ex) {
+        Logger.getLogger(documentos.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    return documentos;
+}
 }
