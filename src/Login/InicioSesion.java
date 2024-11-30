@@ -52,9 +52,9 @@ public class InicioSesion extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         txt_Usuario = new javax.swing.JTextField();
-        txt_contra = new javax.swing.JTextField();
         btnCerrar = new javax.swing.JButton();
         btn_Ingresar = new javax.swing.JButton();
+        txt_contra = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,10 +80,6 @@ public class InicioSesion extends javax.swing.JFrame {
         txt_Usuario.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
         txt_Usuario.setForeground(new java.awt.Color(0, 0, 0));
         txt_Usuario.setBorder(null);
-
-        txt_contra.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
-        txt_contra.setForeground(new java.awt.Color(0, 0, 0));
-        txt_contra.setBorder(null);
 
         btnCerrar.setBackground(new java.awt.Color(255, 51, 51));
         btnCerrar.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
@@ -137,27 +133,24 @@ public class InicioSesion extends javax.swing.JFrame {
         Panel_IncioSesionLayout.setVerticalGroup(
             Panel_IncioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Panel_IncioSesionLayout.createSequentialGroup()
-                .addGap(76, 76, 76)
+                .addGap(77, 77, 77)
                 .addGroup(Panel_IncioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(Panel_IncioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblUser, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblUser2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Panel_IncioSesionLayout.createSequentialGroup()
-                        .addComponent(txt_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(Panel_IncioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(18, 18, 18)
+                .addGroup(Panel_IncioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblPass2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblpass, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(Panel_IncioSesionLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(Panel_IncioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblPass2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblpass, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(Panel_IncioSesionLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txt_contra, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(7, 7, 7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(Panel_IncioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCerrar)
                     .addComponent(btn_Ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -181,7 +174,7 @@ public class InicioSesion extends javax.swing.JFrame {
     private void btn_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_IngresarActionPerformed
         
     String name = txt_Usuario.getText().trim();
-    String pass = txt_contra.getText().trim();
+   String pass = new String(txt_contra.getPassword()).trim();
     
     boolean encontrado = false;
 
@@ -254,6 +247,6 @@ public class InicioSesion extends javax.swing.JFrame {
     private javax.swing.JLabel lblUser2;
     private javax.swing.JLabel lblpass;
     private javax.swing.JTextField txt_Usuario;
-    private javax.swing.JTextField txt_contra;
+    private javax.swing.JPasswordField txt_contra;
     // End of variables declaration//GEN-END:variables
 }
