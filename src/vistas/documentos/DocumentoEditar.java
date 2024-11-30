@@ -26,21 +26,170 @@ public class DocumentoEditar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        btnInicio = new javax.swing.JButton();
+        lbl_Codigo = new javax.swing.JLabel();
+        lbl_FechaDoc = new javax.swing.JLabel();
+        lbl_FechaRes = new javax.swing.JLabel();
+        txtcodigo_Cambio = new javax.swing.JTextField();
+        txtfechareg_Cambio = new javax.swing.JTextField();
+        txtfechadoc_Cambio = new javax.swing.JTextField();
+        btn_Cancelar = new javax.swing.JButton();
+        btn_GuardarCambios = new javax.swing.JButton();
+        lbl_id = new javax.swing.JLabel();
+        lbl_ID_Cambio = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        btnInicio.setBackground(new java.awt.Color(181, 229, 29));
+        btnInicio.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
+        btnInicio.setText("Inicio");
+        btnInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInicioActionPerformed(evt);
+            }
+        });
+
+        lbl_Codigo.setBackground(new java.awt.Color(0, 0, 0));
+        lbl_Codigo.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
+        lbl_Codigo.setText("Codigo:");
+
+        lbl_FechaDoc.setBackground(new java.awt.Color(0, 0, 0));
+        lbl_FechaDoc.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
+        lbl_FechaDoc.setText("Fecha documento:");
+
+        lbl_FechaRes.setBackground(new java.awt.Color(0, 0, 0));
+        lbl_FechaRes.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
+        lbl_FechaRes.setText("Fecha del registro:");
+
+        btn_Cancelar.setBackground(new java.awt.Color(255, 102, 51));
+        btn_Cancelar.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
+        btn_Cancelar.setText("Cancelar");
+        btn_Cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_CancelarActionPerformed(evt);
+            }
+        });
+
+        btn_GuardarCambios.setBackground(new java.awt.Color(0, 204, 204));
+        btn_GuardarCambios.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
+        btn_GuardarCambios.setText("Guardar Cambios");
+        btn_GuardarCambios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_GuardarCambiosActionPerformed(evt);
+            }
+        });
+
+        lbl_id.setBackground(new java.awt.Color(0, 0, 0));
+        lbl_id.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
+        lbl_id.setText("Id:");
+
+        lbl_ID_Cambio.setBackground(new java.awt.Color(0, 0, 0));
+        lbl_ID_Cambio.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
+        lbl_ID_Cambio.setText("id");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(btn_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_GuardarCambios, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lbl_FechaDoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnInicio, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                        .addGap(373, 373, 373))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_Codigo)
+                            .addComponent(lbl_FechaRes)
+                            .addComponent(lbl_id))
+                        .addGap(61, 61, 61)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lbl_ID_Cambio)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txtfechadoc_Cambio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
+                                    .addComponent(txtfechareg_Cambio, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtcodigo_Cambio))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_id)
+                    .addComponent(lbl_ID_Cambio))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_Codigo)
+                    .addComponent(txtcodigo_Cambio, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_FechaDoc)
+                    .addComponent(txtfechadoc_Cambio, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_FechaRes)
+                    .addComponent(txtfechareg_Cambio, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(52, 52, 52)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_GuardarCambios, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(79, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
+        DocumentosVista ini = new DocumentosVista();
+        ini.show();
+        this.dispose();
+    }//GEN-LAST:event_btnInicioActionPerformed
+
+    private void btn_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CancelarActionPerformed
+        docu.setCodigo_doc(txtcodigo_Cambio.getText());
+        docu.setFecha_doc(txtfechadoc.getText());
+        docu.setFecha_registro_doc(txtfechareg_Cambio.getText());
+
+        if(docu.insertDocumento(docu)>0){
+            System.out.println("Se agrego el documento.");
+        }else{
+            System.out.println("No se agrego.");
+        }
+    }//GEN-LAST:event_btn_CancelarActionPerformed
+
+    private void btn_GuardarCambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GuardarCambiosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_GuardarCambiosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +227,17 @@ public class DocumentoEditar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnInicio;
+    private javax.swing.JButton btn_Cancelar;
+    private javax.swing.JButton btn_GuardarCambios;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lbl_Codigo;
+    private javax.swing.JLabel lbl_FechaDoc;
+    private javax.swing.JLabel lbl_FechaRes;
+    private javax.swing.JLabel lbl_ID_Cambio;
+    private javax.swing.JLabel lbl_id;
+    private javax.swing.JTextField txtcodigo_Cambio;
+    private javax.swing.JTextField txtfechadoc_Cambio;
+    private javax.swing.JTextField txtfechareg_Cambio;
     // End of variables declaration//GEN-END:variables
 }
