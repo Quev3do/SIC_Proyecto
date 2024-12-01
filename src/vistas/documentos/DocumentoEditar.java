@@ -5,6 +5,8 @@
 package vistas.documentos;
 
 import com.github.lgooddatepicker.components.DatePickerSettings;
+import javax.swing.JOptionPane;
+import modelos.documentos;
 
 /**
  *
@@ -45,58 +47,54 @@ public class DocumentoEditar extends javax.swing.JFrame {
         btn_Cancelar = new javax.swing.JButton();
         btn_GuardarCambios = new javax.swing.JButton();
         lbl_id = new javax.swing.JLabel();
-        lbl_ID_Cambio = new javax.swing.JLabel();
         datePickerDoc_Cambio = new com.github.lgooddatepicker.components.DatePicker();
         datePickerReg_Cambio = new com.github.lgooddatepicker.components.DatePicker();
+        txt_ID = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        btnInicio.setText("Regresar");
         btnInicio.setBackground(new java.awt.Color(181, 229, 29));
         btnInicio.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
-        btnInicio.setText("Regresar");
         btnInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInicioActionPerformed(evt);
             }
         });
 
+        lbl_Codigo.setText("Codigo:");
         lbl_Codigo.setBackground(new java.awt.Color(0, 0, 0));
         lbl_Codigo.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
-        lbl_Codigo.setText("Codigo:");
 
+        lbl_FechaDoc.setText("Fecha documento:");
         lbl_FechaDoc.setBackground(new java.awt.Color(0, 0, 0));
         lbl_FechaDoc.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
-        lbl_FechaDoc.setText("Fecha documento:");
 
+        lbl_FechaRes.setText("Fecha del registro:");
         lbl_FechaRes.setBackground(new java.awt.Color(0, 0, 0));
         lbl_FechaRes.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
-        lbl_FechaRes.setText("Fecha del registro:");
 
+        btn_Cancelar.setText("Cancelar");
         btn_Cancelar.setBackground(new java.awt.Color(255, 102, 51));
         btn_Cancelar.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
-        btn_Cancelar.setText("Cancelar");
         btn_Cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_CancelarActionPerformed(evt);
             }
         });
 
+        btn_GuardarCambios.setText("Guardar Cambios");
         btn_GuardarCambios.setBackground(new java.awt.Color(0, 204, 204));
         btn_GuardarCambios.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
-        btn_GuardarCambios.setText("Guardar Cambios");
         btn_GuardarCambios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_GuardarCambiosActionPerformed(evt);
             }
         });
 
+        lbl_id.setText("Id:");
         lbl_id.setBackground(new java.awt.Color(0, 0, 0));
         lbl_id.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
-        lbl_id.setText("Id:");
-
-        lbl_ID_Cambio.setBackground(new java.awt.Color(0, 0, 0));
-        lbl_ID_Cambio.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
-        lbl_ID_Cambio.setText("id");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -118,15 +116,11 @@ public class DocumentoEditar extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbl_FechaRes)
                             .addComponent(lbl_id))
+                        .addGap(91, 91, 91)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(61, 61, 61)
-                                .addComponent(lbl_ID_Cambio)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(91, 91, 91)
-                                .addComponent(datePickerReg_Cambio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(datePickerReg_Cambio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -144,14 +138,14 @@ public class DocumentoEditar extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
+                .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_id)
-                    .addComponent(lbl_ID_Cambio))
+                    .addComponent(txt_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_id))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_Codigo)
-                    .addComponent(txtcodigo_Cambio, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtcodigo_Cambio, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_Codigo))
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_FechaDoc)
@@ -191,19 +185,29 @@ public class DocumentoEditar extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInicioActionPerformed
 
     private void btn_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CancelarActionPerformed
-        docu.setCodigo_doc(txtcodigo_Cambio.getText());
-        docu.setFecha_doc(txtfechadoc.getText());
-        docu.setFecha_registro_doc(txtfechareg_Cambio.getText());
-
-        if(docu.insertDocumento(docu)>0){
-            System.out.println("Se agrego el documento.");
-        }else{
-            System.out.println("No se agrego.");
-        }
+       this.dispose();
     }//GEN-LAST:event_btn_CancelarActionPerformed
 
     private void btn_GuardarCambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GuardarCambiosActionPerformed
-        // TODO add your handling code here:
+        // Obtener el ID del documento a editar
+    int idDocumento = Integer.parseInt(txt_ID.getText().trim());  // Asegúrate de que este campo tenga el ID correcto
+
+    // Crear un objeto documentos con los datos del formulario
+    documentos documentoEditado = new documentos();
+    documentoEditado.setCodigo_doc(txtcodigo_Cambio.getText().trim()); // Código modificado
+    documentoEditado.setFecha_doc(datePickerDoc_Cambio.getDate().toString()); // Fecha documento modificada
+    documentoEditado.setFecha_registro_doc(datePickerReg_Cambio.getDate().toString()); // Fecha registro modificada
+
+    // Llamar al método updateDocumento para actualizar en la base de datos
+    documentos modeloDocumento = new documentos();
+    int resultado = modeloDocumento.updateDocumento(idDocumento, documentoEditado);
+
+    // Mostrar mensaje dependiendo del resultado
+    if (resultado > 0) {
+        JOptionPane.showMessageDialog(this, "Documento actualizado exitosamente.");
+    } else {
+        JOptionPane.showMessageDialog(this, "Error al actualizar el documento.");
+    }
     }//GEN-LAST:event_btn_GuardarCambiosActionPerformed
 
     /**
@@ -251,8 +255,8 @@ public class DocumentoEditar extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_Codigo;
     private javax.swing.JLabel lbl_FechaDoc;
     private javax.swing.JLabel lbl_FechaRes;
-    private javax.swing.JLabel lbl_ID_Cambio;
     private javax.swing.JLabel lbl_id;
+    private javax.swing.JTextField txt_ID;
     private javax.swing.JTextField txtcodigo_Cambio;
     // End of variables declaration//GEN-END:variables
 }

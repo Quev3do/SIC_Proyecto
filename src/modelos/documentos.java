@@ -109,39 +109,69 @@ public class documentos {
     return 0;
 }
 
-    
-    public int editDocumento(documentos itemE){
+public int updateDocumento(int idDocumento, documentos documentoEditado) {
+    try {
+        String sql = "UPDATE tbl_documentos SET codigo_doc = ?, fecha_doc = ?, fecha_registro = ? WHERE id_documento = ?";
+        conexionDB = claseConexion.iniciarConexion();
+        pstm = conexionDB.prepareStatement(sql);
+
+        // Establecer los valores
+        pstm.setString(1, documentoEditado.getCodigo_doc());
+        pstm.setDate(2, java.sql.Date.valueOf(documentoEditado.getFecha_doc())); // Fecha de documento
+        pstm.setDate(3, java.sql.Date.valueOf(documentoEditado.getFecha_registro_doc())); // Fecha de registro
+        pstm.setInt(4, idDocumento); // ID del documento que se va a actualizar
+
+        // Ejecutar la actualización
+        int resultado = pstm.executeUpdate();
+        return resultado;
+    } catch (SQLException ex) {
+        Logger.getLogger(documentos.class.getName()).log(Level.SEVERE, null, ex);
+        return 0;
+    } finally {
+        // Cerrar conexión
         try {
-          String sql = "UPDATE tbl_documentos SET codigo_doc = ?, fecha_doc = ?, fecha_registro = ? WHERE id_documento = ?";
-            this.conexionDB = this.claseConexion.iniciarConexion();
-            pstm = this.conexionDB.prepareStatement(sql);
-            pstm.setString(1, itemE.getCodigo_doc());
-            pstm.setString(2, itemE.getFecha_doc());
-            pstm.setString(3, itemE.getFecha_registro_doc());
-            pstm.setInt(4, itemE.getId_documento());
-            int respuesta = pstm.executeUpdate();
-            
-            return respuesta;
+            if (pstm != null) pstm.close();
+            if (conexionDB != null) conexionDB.close();
         } catch (SQLException ex) {
             Logger.getLogger(documentos.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return 0;
     }
+}
+
+
     
-    public int deleteDocumento(int itemD){
+   public int deleteDocumento(int idDocumento) {
+    try {
+        // Verificar si el documento existe
+        documentos existente = getById(idDocumento);
+        if (existente == null) {
+            System.out.println("El documento con ID " + idDocumento + " no existe.");
+            return 0; // Indicar que no se realizó la eliminación
+        }
+
+        // Si existe, proceder a eliminar
+        String sql = "DELETE FROM tbl_documentos WHERE id_documento = ?";
+        conexionDB = claseConexion.iniciarConexion();
+        pstm = conexionDB.prepareStatement(sql);
+        pstm.setInt(1, idDocumento);
+
+        int respuesta = pstm.executeUpdate();
+        System.out.println("Documento eliminado correctamente.");
+        return respuesta;
+    } catch (SQLException ex) {
+        Logger.getLogger(documentos.class.getName()).log(Level.SEVERE, null, ex);
+    } finally {
+        // Cerrar recursos
         try {
-            conexionDB = claseConexion.iniciarConexion();
-            String sql = "DELETE FROM tbl_documentos WHERE id_documento = ?";
-            pstm = conexionDB.prepareStatement(sql);
-            pstm.setInt(1, itemD);
-            int respuesta = pstm.executeUpdate();
-            
-            return respuesta;
+            if (pstm != null) pstm.close();
+            if (conexionDB != null) conexionDB.close();
         } catch (SQLException ex) {
             Logger.getLogger(documentos.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return 0;
     }
+    return 0; // Retornar 0 en caso de error
+}
+
     
     
     public List<Object[]> cargarDocumentos() {
