@@ -14,6 +14,9 @@ import vistas.documentos.DocumentosVista;
 
 import java.time.LocalDate;
 
+import java.util.Date;
+import java.time.format.DateTimeFormatter;
+
 /**
  *
  * @author jajon
@@ -151,6 +154,14 @@ public class CrearDocumento extends javax.swing.JFrame {
 
     private void btningresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btningresarActionPerformed
         docu.setCodigo_doc(txtcodigo.getText());
+        
+        /*------------------IGNORARRRRRR-----------------
+        String string = txtfechadoc.getText();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-DD", Locale.ENGLISH);
+        LocalDate date = LocalDate.parse(string, formatter);
+        System.out.println(date);
+        */
+        
         docu.setFecha_doc(txtfechadoc.getText());
         docu.setFecha_registro_doc(txtfechareg.getText());
         
