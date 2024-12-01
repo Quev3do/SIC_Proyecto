@@ -90,27 +90,29 @@ public class documentos {
         return null;
     }
     
-    public int insertDocumento(documentos itemI){
-        try {
-            String sql = "INSERT INTO tbl_documentos(codigo_doc, fecha_doc, fecha_registro) VALUES(?,?,?)";
-            this.conexionDB = this.claseConexion.iniciarConexion();
-            pstm = this.conexionDB.prepareStatement(sql);
-            pstm.setString(1, itemI.getCodigo_doc());
-            pstm.setString(2, itemI.getFecha_doc());
-            pstm.setString(3, itemI.getFecha_registro_doc());
-            int respuesta = pstm.executeUpdate();
-            
-            return respuesta;
-        } catch (SQLException ex) {
-            Logger.getLogger(documentos.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 0;
+   public int insertDocumento(documentos itemI) {
+    try {
+        String sql = "INSERT INTO tbl_documentos(codigo_doc, fecha_doc, fecha_registro) VALUES(?,?,?)";
+        this.conexionDB = this.claseConexion.iniciarConexion();
+        pstm = this.conexionDB.prepareStatement(sql);
+        pstm.setString(1, itemI.getCodigo_doc());
+
+        // Convertir las fechas de String a java.sql.Date
+        pstm.setDate(2, java.sql.Date.valueOf(itemI.getFecha_doc())); 
+        pstm.setDate(3, java.sql.Date.valueOf(itemI.getFecha_registro_doc()));
+
+        int respuesta = pstm.executeUpdate();
+        return respuesta;
+    } catch (SQLException ex) {
+        Logger.getLogger(documentos.class.getName()).log(Level.SEVERE, null, ex);
     }
+    return 0;
+}
+
     
     public int editDocumento(documentos itemE){
         try {
-            String sql = "UPDATE tbl_documentos set codigo_doc = ?, fecha_doc = ?, fecha_registro = ?,  "
-                    + "where id_documento = ?";
+          String sql = "UPDATE tbl_documentos SET codigo_doc = ?, fecha_doc = ?, fecha_registro = ? WHERE id_documento = ?";
             this.conexionDB = this.claseConexion.iniciarConexion();
             pstm = this.conexionDB.prepareStatement(sql);
             pstm.setString(1, itemE.getCodigo_doc());

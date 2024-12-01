@@ -5,6 +5,7 @@
 package vistas.documentos;
 
 import com.github.lgooddatepicker.components.DatePickerSettings;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 import vistas.documentos.DocumentosVista;
@@ -149,7 +150,7 @@ public class CrearDocumento extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInicioActionPerformed
 
     private void btningresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btningresarActionPerformed
-         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+ DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     // Validar que los campos no estén vacíos
     if (txtcodigo.getText().isEmpty() || datePickerDoc.getDate() == null || datePickerReg.getDate() == null) {
@@ -158,13 +159,16 @@ public class CrearDocumento extends javax.swing.JFrame {
     }
 
     // Obtener y formatear las fechas
-    String fechaDoc = datePickerDoc.getDate().format(formatter);
-    String fechaReg = datePickerReg.getDate().format(formatter);
+    LocalDate localFechaDoc = datePickerDoc.getDate();
+    LocalDate localFechaReg = datePickerReg.getDate();
+    
+    java.sql.Date fechaDoc = java.sql.Date.valueOf(localFechaDoc);
+    java.sql.Date fechaReg = java.sql.Date.valueOf(localFechaReg);
 
     // Asignar valores al objeto documento
     docu.setCodigo_doc(txtcodigo.getText());
-    docu.setFecha_doc(fechaDoc);
-    docu.setFecha_registro_doc(fechaReg);
+    docu.setFecha_doc(fechaDoc.toString());
+    docu.setFecha_registro_doc(fechaReg.toString());
 
     // Intentar insertar el documento en la base de datos
     if (docu.insertDocumento(docu) > 0) {
@@ -177,6 +181,7 @@ public class CrearDocumento extends javax.swing.JFrame {
     } else {
         JOptionPane.showMessageDialog(this, "Hubo un error al agregar el documento. Inténtalo nuevamente.", "Error", JOptionPane.ERROR_MESSAGE);
     }
+
 
     }//GEN-LAST:event_btningresarActionPerformed
 
