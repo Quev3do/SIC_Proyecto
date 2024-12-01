@@ -228,7 +228,7 @@ public class LibroMayorVista extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
-        Inicio ini = new Inicio();
+        Inicio ini = new Inicio(User);
         ini.show();
         this.dispose();
     }//GEN-LAST:event_btnInicioActionPerformed
@@ -273,7 +273,7 @@ public class LibroMayorVista extends javax.swing.JFrame {
         listaCuentas = cuenta1.getCuentas();
         
         for(cuentas item : listaCuentas){
-            System.out.println(item.getTipo_cuenta());
+            System.out.println(item.getNombre_cuenta() + " :: " + item.getTipo_cuenta() + " : " + item.getSaldo());
             
             double debe, haber;
             
