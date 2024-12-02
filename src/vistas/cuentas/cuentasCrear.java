@@ -4,6 +4,7 @@
  */
 package vistas.cuentas;
 
+import java.time.LocalDate;
 import modelos.*;
 
 import vistas.cuentas.cuentasVista;
@@ -96,6 +97,8 @@ public class cuentasCrear extends javax.swing.JFrame {
             }
         });
 
+        txtsaldo.setText("0.00");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -154,44 +157,52 @@ public class cuentasCrear extends javax.swing.JFrame {
     private void btnborrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnborrarActionPerformed
         txtnombrecuenta.setText("");
 
-        txtsaldo.setText("");
+        txtsaldo.setText("0.00");
 
     }//GEN-LAST:event_btnborrarActionPerformed
 
     private void btncrear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncrear1ActionPerformed
-        String str = txtsaldo.getText();
-        if(isNumericD(str)){
-            cuenta.setNombre_cuenta(txtnombrecuenta.getText());
-            
-            Double saldo = Double.parseDouble(str);
-            
-            if(saldo==0.00){
-                cuenta.setSaldo(0.00);
-            }else{
-                cuenta.setSaldo(saldo);
-            }
-            
-            cuenta.setTipo_cuenta(String.valueOf(cmbtipos.getSelectedItem()));
-
-            if(user.insertUser(user) > 0){
-                System.out.println("Se agrego al usuario: " + user.getUser_name());
-
-                logs log = new logs();
-
-                LocalDate ahora = LocalDate.now();//fecha ahora
-
-                log.setFecha_log(String.valueOf(ahora));
-                log.setId_user(SuperUser.getId_user());
-                log.setAccion("Crear un nuevo usuario.");
-
-                if(log.insertLog(log)>0){
-                    System.out.println("Se agrego el log.");
-                }
-            }else{
-                System.out.println("No se agrego.");
-            }
+        String stra = txtsaldo.getText();
+        if(stra.equals("")){
+            System.out.println("No puede ser vacio.");
         }else{
-            System.out.println("Error, no es un numero");
+            String str = txtsaldo.getText();
+            if(isNumericD(str)){
+                cuenta.setNombre_cuenta(txtnombrecuenta.getText());
+            
+                Double saldo = Double.parseDouble(str);
+            
+                if(saldo==0.00){
+                    cuenta.setSaldo(0.00);
+                }else{
+                    cuenta.setSaldo(saldo);
+                }
+            
+                cuenta.setTipo_cuenta(String.valueOf(cmbtipos.getSelectedItem()));
+                
+                if(cuenta.insertCuenta(cuenta)>0){
+                    System.out.println("Se agrego la cuenta.");
+                    
+                    logs log = new logs();
+                    
+                    log.setAccion("Crear cuenta nueva.");
+                    LocalDate fecha_ahora = LocalDate.now();
+        
+                    log.setFecha_log(String.valueOf(fecha_ahora));
+                    
+                    log.setId_user(this.User.getId_user());
+                    
+                    if(log.insertLog(log)>0){
+                        System.out.println("Se agrego el log.");
+                    }else{
+                        System.out.println("No se agrego el log.");
+                    }
+                }
+
+            
+            }else{
+                System.out.println("Error, no es un numero");
+            }
         }
 
     }//GEN-LAST:event_btncrear1ActionPerformed

@@ -208,7 +208,7 @@ public class cuentasVista extends javax.swing.JFrame {
     }//GEN-LAST:event_btnaddDocActionPerformed
 
     private void btnAddCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCuentaActionPerformed
-        cuentasCrear cnn = new cuentasCrear();
+        cuentasCrear cnn = new cuentasCrear(this.User);
         cnn.show();
         this.dispose();
     }//GEN-LAST:event_btnAddCuentaActionPerformed
