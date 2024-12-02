@@ -4,9 +4,14 @@
  */
 package vistas.cuentas;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import modelos.cuentas;
+import modelos.documentos;
+import modelos.logs;
 import modelos.users;
-
 import vistas.Inicio.Inicio;
+import vistas.documentos.CrearDocumento;
 
 import ExportExcel.ExportExcel;
 import java.io.IOException;
@@ -18,11 +23,38 @@ import java.io.IOException;
 public class cuentasVista extends javax.swing.JFrame {
 
     users User;
+    
+    public ArrayList<cuentas> ListaCuentas;
+    
+    cuentas cuenta;
     /**
      * Creates new form cuentasVista
      */
     public cuentasVista() {
         initComponents();
+    }
+    
+    public cuentasVista(users Us) {
+        this.User = Us;
+        
+        cuenta = new cuentas();
+        
+        initComponents();
+        
+        lblUser.setText(this.User.getUser_name());
+        
+        String rol = User.getUser_rol();
+        
+        if(rol.equals("Gerente")){
+            btnAddCuenta.setVisible(false);
+            btnAddCuenta.disable();
+        }
+        if(rol.equals("Contador y Auxiliar")){
+            btnAddCuenta.setVisible(false);
+            btnAddCuenta.disable();
+        }
+        
+        cargarTabla();
     }
 
     /**
@@ -35,11 +67,13 @@ public class cuentasVista extends javax.swing.JFrame {
     private void initComponents() {
 
         btnaddDoc = new javax.swing.JButton();
+        lblBalance = new javax.swing.JLabel();
         btnInicio = new javax.swing.JButton();
         btnAplicarFiltro = new javax.swing.JButton();
         btnAddCuenta = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCuentas = new javax.swing.JTable();
+        lblUser = new javax.swing.JLabel();
 
         btnaddDoc.setBackground(new java.awt.Color(37, 150, 190));
         btnaddDoc.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
@@ -50,6 +84,10 @@ public class cuentasVista extends javax.swing.JFrame {
                 btnaddDocActionPerformed(evt);
             }
         });
+
+        lblBalance.setBackground(new java.awt.Color(0, 0, 0));
+        lblBalance.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
+        lblBalance.setText("Balance:");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -100,6 +138,10 @@ public class cuentasVista extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblCuentas);
 
+        lblUser.setBackground(new java.awt.Color(0, 0, 0));
+        lblUser.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
+        lblUser.setText("NoN");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -107,29 +149,36 @@ public class cuentasVista extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAplicarFiltro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAddCuenta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblUser)
+                        .addGap(0, 588, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnAddCuenta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAplicarFiltro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblUser))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(197, 197, 197)
                         .addComponent(btnAddCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(82, 82, 82)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnAplicarFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(12, 12, 12)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -146,7 +195,7 @@ public class cuentasVista extends javax.swing.JFrame {
 
         try {
             EXXC = new ExportExcel();
-            EXXC.exportarExcel(tblCuentas, "Documentos");
+            EXXC.exportarExcel(tblCuentas, "Cuentas");
         } catch (IOException ex) {
             System.out.println("Error: " + ex);
         }
@@ -160,6 +209,25 @@ public class cuentasVista extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnAddCuentaActionPerformed
 
+    public void cargarTabla(){
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo = (DefaultTableModel)this.tblCuentas.getModel();
+        modelo.setRowCount(0);
+        
+        ListaCuentas = cuenta.getCuentas();
+        
+        for(cuentas item : ListaCuentas){
+            modelo.addRow(new Object[]{
+                item.getId_cuenta(),
+                item.getTipo_cuenta(),
+                item.getNombre_cuenta(),
+                item.getSaldo()
+            });
+        }
+        
+        this.tblCuentas.setModel(modelo);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -201,6 +269,8 @@ public class cuentasVista extends javax.swing.JFrame {
     private javax.swing.JButton btnInicio;
     private javax.swing.JButton btnaddDoc;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblBalance;
+    private javax.swing.JLabel lblUser;
     private javax.swing.JTable tblCuentas;
     // End of variables declaration//GEN-END:variables
 }

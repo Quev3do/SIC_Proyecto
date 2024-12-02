@@ -12,6 +12,7 @@ import vistas.libro_mayor.LibroMayorVista;
 import vistas.libro_diario.LibroDiarioVista;
 import vistas.documentos.DocumentosVista;
 import vista.user.VistaUsers;
+import vistas.cuentas.cuentasVista;
 
 /**
  *
@@ -238,7 +239,9 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnusersActionPerformed
 
     private void btncuentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncuentasActionPerformed
-        //fuck
+        cuentasVista cnV = new cuentasVista(this.user);
+        cnV.show();
+        this.dispose();
     }//GEN-LAST:event_btncuentasActionPerformed
 
     /**
