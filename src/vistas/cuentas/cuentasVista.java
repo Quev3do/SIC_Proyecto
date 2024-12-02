@@ -13,6 +13,8 @@ import modelos.users;
 import vistas.Inicio.Inicio;
 import vistas.documentos.CrearDocumento;
 
+import vistas.cuentas.cuentasCrear;
+
 import ExportExcel.ExportExcel;
 import java.io.IOException;
 
@@ -206,7 +208,9 @@ public class cuentasVista extends javax.swing.JFrame {
     }//GEN-LAST:event_btnaddDocActionPerformed
 
     private void btnAddCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCuentaActionPerformed
-        
+        cuentasCrear cnn = new cuentasCrear();
+        cnn.show();
+        this.dispose();
     }//GEN-LAST:event_btnAddCuentaActionPerformed
 
     public void cargarTabla(){
