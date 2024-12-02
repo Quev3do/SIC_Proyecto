@@ -221,7 +221,7 @@ public class LibroDiarioVista extends javax.swing.JFrame {
         
         try {
             EXXC = new ExportExcel();
-            EXXC.exportarExcel(tblLibDiario, "Documentos");
+            EXXC.exportarExcel(tblLibDiario, "Libro_Diario");
         } catch (IOException ex) {
             System.out.println("Error: " + ex);
         }

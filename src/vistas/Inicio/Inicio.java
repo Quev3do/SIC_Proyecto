@@ -110,6 +110,11 @@ public class Inicio extends javax.swing.JFrame {
         btncuentas.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
         btncuentas.setForeground(new java.awt.Color(255, 255, 255));
         btncuentas.setText("Cuentas");
+        btncuentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncuentasActionPerformed(evt);
+            }
+        });
 
         btnlibroD.setBackground(new java.awt.Color(154, 217, 234));
         btnlibroD.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
@@ -231,6 +236,10 @@ public class Inicio extends javax.swing.JFrame {
         usss.show();
         this.dispose();
     }//GEN-LAST:event_btnusersActionPerformed
+
+    private void btncuentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncuentasActionPerformed
+        //fuck
+    }//GEN-LAST:event_btncuentasActionPerformed
 
     /**
      * @param args the command line arguments

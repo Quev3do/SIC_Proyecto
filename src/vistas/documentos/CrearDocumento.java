@@ -147,7 +147,7 @@ public class CrearDocumento extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
-        DocumentosVista ini = new DocumentosVista();
+        DocumentosVista ini = new DocumentosVista(User);
         ini.show();
         this.dispose();
     }//GEN-LAST:event_btnInicioActionPerformed

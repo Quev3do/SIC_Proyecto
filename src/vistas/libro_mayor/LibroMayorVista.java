@@ -274,7 +274,7 @@ public class LibroMayorVista extends javax.swing.JFrame {
         
         try {
             EXXC = new ExportExcel();
-            EXXC.exportarExcel(tblLibroMayor, "Documentos");
+            EXXC.exportarExcel(tblLibroMayor, "Libro_Mayor");
         } catch (IOException ex) {
             System.out.println("Error: " + ex);
         }
