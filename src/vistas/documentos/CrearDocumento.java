@@ -23,15 +23,19 @@ import vistas.documentos.DocumentosVista;
 public class CrearDocumento extends javax.swing.JFrame {
     
     documentos docu;
-
+        users User;
     /**
      * Creates new form CrearDocumento
      */
-    public CrearDocumento() {
-        docu = new documentos();
         
+         public CrearDocumento(){
         initComponents();
-        
+    }
+         
+    public CrearDocumento(users us) {
+        docu = new documentos();
+         this.User = us;
+        initComponents();
         DatePickerSettings dateSettingsDoc = new DatePickerSettings();
         dateSettingsDoc.setFormatForDatesCommonEra("yyyy-MM-dd");
         datePickerDoc.setSettings(dateSettingsDoc);
@@ -39,6 +43,7 @@ public class CrearDocumento extends javax.swing.JFrame {
         DatePickerSettings dateSettingsReg = new DatePickerSettings();
         dateSettingsReg.setFormatForDatesCommonEra("yyyy-MM-dd"); 
         datePickerReg.setSettings(dateSettingsReg);
+       
         
     }
 
@@ -144,7 +149,7 @@ public class CrearDocumento extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
-        DocumentosVista ini = new DocumentosVista();
+        DocumentosVista ini = new DocumentosVista(User);
         ini.show();
         this.dispose();
     }//GEN-LAST:event_btnInicioActionPerformed

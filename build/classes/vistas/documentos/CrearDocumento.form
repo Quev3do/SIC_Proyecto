@@ -84,13 +84,13 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="btnInicio">
       <Properties>
+        <Property name="text" type="java.lang.String" value="Regresar"/>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="1d" green="e5" red="b5" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Meiryo UI" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Regresar"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInicioActionPerformed"/>

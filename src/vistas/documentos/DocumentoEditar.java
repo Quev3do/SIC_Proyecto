@@ -7,19 +7,28 @@ package vistas.documentos;
 import com.github.lgooddatepicker.components.DatePickerSettings;
 import javax.swing.JOptionPane;
 import modelos.documentos;
+import modelos.users;
 
 /**
  *
  * @author jajon
  */
 public class DocumentoEditar extends javax.swing.JFrame {
+    
+     users User;
 
     /**
      * Creates new form DocumentoEditar
      */
-    public DocumentoEditar() {
+     
+     public DocumentoEditar(){
         initComponents();
+    }
+         
+    public DocumentoEditar(users us) {
         
+        this.User = us;
+        initComponents();
          DatePickerSettings dateSettingsDoc_Cambio = new DatePickerSettings();
         dateSettingsDoc_Cambio.setFormatForDatesCommonEra("yyyy-MM-dd");
         datePickerDoc_Cambio.setSettings(dateSettingsDoc_Cambio);
@@ -179,7 +188,7 @@ public class DocumentoEditar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
-        DocumentosVista ini = new DocumentosVista();
+        DocumentosVista ini = new DocumentosVista(User);
         ini.show();
         this.dispose();
     }//GEN-LAST:event_btnInicioActionPerformed
