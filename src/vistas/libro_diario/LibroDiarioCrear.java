@@ -249,7 +249,7 @@ public class LibroDiarioCrear extends javax.swing.JFrame {
     }//GEN-LAST:event_cuenta1cmbActionPerformed
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
-        LibroDiarioVista ini = new LibroDiarioVista();
+        LibroDiarioVista ini = new LibroDiarioVista(this.user1);
         ini.show();
         this.dispose();
     }//GEN-LAST:event_btnInicioActionPerformed
@@ -328,18 +328,20 @@ public class LibroDiarioCrear extends javax.swing.JFrame {
                 
                 if(tipo.equals("activo") || tipo.equals("patrimonio")){
                     System.out.println("aqui");
+                    double valorS = itm.getSaldo();
                     libroDiario1.setDebe(valor);
-                    double db = (valor - cuenta1.getSaldo());
+                    double db = (valorS - valor);
                     cuenta1.setSaldo(db);
-                    libroDiario1.setBalance(cuenta1.getSaldo());
+                    libroDiario1.setBalance(db);
                     cuenta1.setTipo_cuenta(itm.getTipo_cuenta());
                     cuenta1.setNombre_cuenta(itm.getNombre_cuenta());
                 }
                 if(tipo.equals("pasivo") || tipo.equals("gastos") || tipo.equals("ingresos")){
                     libroDiario1.setHaber(valor);
-                    double hb = (valor - cuenta1.getSaldo());
+                    double valorS = itm.getSaldo();
+                    double hb = (valorS - valor);
                     cuenta1.setSaldo(hb);
-                    libroDiario1.setBalance(cuenta1.getSaldo());
+                    libroDiario1.setBalance(hb);
                     cuenta1.setTipo_cuenta(itm.getTipo_cuenta());
                     cuenta1.setNombre_cuenta(itm.getNombre_cuenta());
                 }
@@ -351,22 +353,24 @@ public class LibroDiarioCrear extends javax.swing.JFrame {
                 String tipo = itm.getTipo_cuenta();
                 if(tipo.equals("activo") || tipo.equals("patrimonio")){
                     libroDiario2.setDebe(valor);
-                    double db = (valor - cuenta2.getSaldo());
+                    double valorS = itm.getSaldo();
+                    double db = (valor + valorS);
                     cuenta2.setSaldo(db);
-                    libroDiario2.setBalance(cuenta2.getSaldo());
-                    //cuenta2.setTipo_cuenta(itm.getTipo_cuenta());
-                    //cuenta2.setNombre_cuenta(itm.getNombre_cuenta());
-                    libroDiario2.setBalance(cuenta1.getSaldo());
+                    libroDiario2.setBalance(db);
+                    cuenta2.setTipo_cuenta(itm.getTipo_cuenta());
+                    cuenta2.setNombre_cuenta(itm.getNombre_cuenta());
+                    //libroDiario2.setBalance(cuenta1.getSaldo());
                 }
                 if(tipo.equals("pasivo") || tipo.equals("gastos") || tipo.equals("ingresos")){
                     libroDiario2.setHaber(valor);
-                    double hb = (valor - cuenta2.getSaldo());
+                    double valorS = itm.getSaldo();
+                    double hb = (valor + valorS);
                     
                     cuenta2.setSaldo(hb);
-                    libroDiario2.setBalance(cuenta2.getSaldo());
-                    //cuenta2.setTipo_cuenta(itm.getTipo_cuenta());
-                    //cuenta2.setNombre_cuenta(itm.getNombre_cuenta());
-                    libroDiario1.setBalance(cuenta2.getSaldo());
+                    libroDiario2.setBalance(hb);
+                    cuenta2.setTipo_cuenta(itm.getTipo_cuenta());
+                    cuenta2.setNombre_cuenta(itm.getNombre_cuenta());
+                    //libroDiario1.setBalance(cuenta2.getSaldo());
                 }
             }
         }
@@ -389,7 +393,7 @@ public class LibroDiarioCrear extends javax.swing.JFrame {
             System.out.println("No se agrego.");
         }
         
-        if(libroDiario1.insertLibroD(libroDiario2)>0){
+        if(libroDiario2.insertLibroD(libroDiario2)>0){
             System.out.println("Se ha agregado el registro 2.");
             comunicar.setText((comunicar.getText() + "- ld2"));
             
