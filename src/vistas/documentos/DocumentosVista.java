@@ -13,6 +13,9 @@ import modelos.users;
 import vistas.Inicio.Inicio;
 import vistas.documentos.CrearDocumento;
 
+import ExportExcel.ExportExcel;
+import java.io.IOException;
+
 /**
  *
  * @author Usuario
@@ -94,6 +97,11 @@ public class DocumentosVista extends javax.swing.JFrame {
         btnAplicarFiltro.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
         btnAplicarFiltro.setForeground(new java.awt.Color(0, 0, 0));
         btnAplicarFiltro.setText("Excel");
+        btnAplicarFiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAplicarFiltroActionPerformed(evt);
+            }
+        });
 
         btnaddDoc.setBackground(new java.awt.Color(37, 150, 190));
         btnaddDoc.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
@@ -151,6 +159,17 @@ public class DocumentosVista extends javax.swing.JFrame {
         cdoc.show();
         this.dispose();
     }//GEN-LAST:event_btnaddDocActionPerformed
+
+    private void btnAplicarFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAplicarFiltroActionPerformed
+        ExportExcel EXXC;
+        
+        try {
+            EXXC = new ExportExcel();
+            EXXC.exportarExcel(tblDocumentos, "Documentos");
+        } catch (IOException ex) {
+            System.out.println("Error: " + ex);
+        }
+    }//GEN-LAST:event_btnAplicarFiltroActionPerformed
 
     public void cargarTabla(){
         DefaultTableModel modelo = new DefaultTableModel();
