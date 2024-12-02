@@ -4,6 +4,7 @@
  */
 package vistas.libro_diario;
 
+import ExportExcel.ExportExcel;
 import vistas.libro_mayor.*;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -12,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
 //import Utilidades_configuracion.CustomCellLabelTable;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 
 import modelos.cuentas;
 import modelos.documentos;
@@ -59,11 +61,11 @@ public class LibroDiarioVista extends javax.swing.JFrame {
         
         cargarTabla();
         
-        tblLibroMayor.addMouseListener(new MouseAdapter(){
+        tblLibDiario.addMouseListener(new MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent e){
-                int fila = tblLibroMayor.rowAtPoint(e.getPoint());
-                int col = tblLibroMayor.columnAtPoint(e.getPoint());
+                int fila = tblLibDiario.rowAtPoint(e.getPoint());
+                int col = tblLibDiario.columnAtPoint(e.getPoint());
                 
                 if(fila>=0 && col==8){
                     //editar
@@ -88,7 +90,7 @@ public class LibroDiarioVista extends javax.swing.JFrame {
         Jpanel_LibroMayor = new javax.swing.JPanel();
         btnInicio = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblLibroMayor = new javax.swing.JTable();
+        tblLibDiario = new javax.swing.JTable();
         btncerrar = new javax.swing.JButton();
         btnExportarExcel = new javax.swing.JButton();
         btnagregar = new javax.swing.JButton();
@@ -107,7 +109,7 @@ public class LibroDiarioVista extends javax.swing.JFrame {
             }
         });
 
-        tblLibroMayor.setModel(new javax.swing.table.DefaultTableModel(
+        tblLibDiario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -123,7 +125,7 @@ public class LibroDiarioVista extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblLibroMayor);
+        jScrollPane1.setViewportView(tblLibDiario);
 
         btncerrar.setBackground(new java.awt.Color(220, 101, 57));
         btncerrar.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
@@ -133,6 +135,11 @@ public class LibroDiarioVista extends javax.swing.JFrame {
         btnExportarExcel.setBackground(new java.awt.Color(181, 229, 29));
         btnExportarExcel.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
         btnExportarExcel.setText("Excel");
+        btnExportarExcel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExportarExcelActionPerformed(evt);
+            }
+        });
 
         btnagregar.setBackground(new java.awt.Color(37, 150, 190));
         btnagregar.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
@@ -209,9 +216,20 @@ public class LibroDiarioVista extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnagregarActionPerformed
 
+    private void btnExportarExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportarExcelActionPerformed
+        ExportExcel EXXC;
+        
+        try {
+            EXXC = new ExportExcel();
+            EXXC.exportarExcel(tblLibDiario, "Documentos");
+        } catch (IOException ex) {
+            System.out.println("Error: " + ex);
+        }
+    }//GEN-LAST:event_btnExportarExcelActionPerformed
+
     public void cargarTabla(){
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo = (DefaultTableModel)this.tblLibroMayor.getModel();
+        modelo = (DefaultTableModel)this.tblLibDiario.getModel();
         modelo.setRowCount(0);
         
         listaCuentas = cuenta1.getCuentas();
@@ -258,7 +276,7 @@ public class LibroDiarioVista extends javax.swing.JFrame {
             });
         }
         
-        this.tblLibroMayor.setModel(modelo);
+        this.tblLibDiario.setModel(modelo);
     }
     
     public void diseñoTabla(){
@@ -312,7 +330,7 @@ public class LibroDiarioVista extends javax.swing.JFrame {
     private javax.swing.JButton btncerrar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbluser;
-    private javax.swing.JTable tblLibroMayor;
+    private javax.swing.JTable tblLibDiario;
     private javax.swing.JLabel txtuser;
     // End of variables declaration//GEN-END:variables
 }   

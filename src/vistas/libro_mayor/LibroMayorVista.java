@@ -4,6 +4,7 @@
  */
 package vistas.libro_mayor;
 
+import ExportExcel.ExportExcel;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -11,6 +12,7 @@ import javax.swing.table.DefaultTableModel;
 //import Utilidades_configuracion.CustomCellLabelTable;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 import javax.swing.JOptionPane;
 import modelos.balance;
 
@@ -118,6 +120,11 @@ public class LibroMayorVista extends javax.swing.JFrame {
         btnExportarExcel.setBackground(new java.awt.Color(181, 229, 29));
         btnExportarExcel.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
         btnExportarExcel.setText("Excel");
+        btnExportarExcel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExportarExcelActionPerformed(evt);
+            }
+        });
 
         btnAplicarFiltro.setBackground(new java.awt.Color(37, 150, 190));
         btnAplicarFiltro.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
@@ -261,6 +268,17 @@ public class LibroMayorVista extends javax.swing.JFrame {
     private void btnQuitarFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarFiltroActionPerformed
         cargarTabla();
     }//GEN-LAST:event_btnQuitarFiltroActionPerformed
+
+    private void btnExportarExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportarExcelActionPerformed
+        ExportExcel EXXC;
+        
+        try {
+            EXXC = new ExportExcel();
+            EXXC.exportarExcel(tblLibroMayor, "Documentos");
+        } catch (IOException ex) {
+            System.out.println("Error: " + ex);
+        }
+    }//GEN-LAST:event_btnExportarExcelActionPerformed
 
     public void cargarTabla(){
         DefaultTableModel modelo = (DefaultTableModel)this.tblLibroMayor.getModel();
