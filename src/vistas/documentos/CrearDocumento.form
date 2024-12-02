@@ -28,28 +28,23 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="lblDesdeMes3" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="btningresar" pref="207" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                              <Component id="txtfechareg" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <EmptySpace min="-2" pref="188" max="-2" attributes="0"/>
+                      <Component id="btningresar" pref="192" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="btnInicio" alignment="0" max="32767" attributes="0"/>
-                          <Component id="lblDesdeMes2" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblDesdeMes4" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="btnInicio" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblDesdeMes2" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblDesdeMes4" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="lblDesdeMes3" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="txtfechadoc" pref="202" max="32767" attributes="0"/>
-                          <Component id="txtcodigo" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="datePickerReg" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtcodigo" min="-2" pref="202" max="-2" attributes="0"/>
+                          <Component id="datePickerDoc" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -64,22 +59,22 @@
               <Component id="btnInicio" min="-2" pref="43" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="txtfechareg" min="-2" pref="35" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblDesdeMes2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtcodigo" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblDesdeMes4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtfechadoc" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                      </Group>
                       <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                      <Component id="lblDesdeMes3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblDesdeMes4" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="datePickerDoc" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblDesdeMes3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="datePickerReg" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
               <Component id="btningresar" min="-2" pref="43" max="-2" attributes="0"/>
               <EmptySpace pref="55" max="32767" attributes="0"/>
           </Group>
@@ -89,13 +84,13 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="btnInicio">
       <Properties>
+        <Property name="text" type="java.lang.String" value="Regresar"/>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="1d" green="e5" red="b5" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Meiryo UI" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Regresar"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInicioActionPerformed"/>
@@ -134,10 +129,6 @@
         <Property name="text" type="java.lang.String" value="Fecha documento:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtfechadoc">
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtfechareg">
-    </Component>
     <Component class="javax.swing.JTextField" name="txtcodigo">
     </Component>
     <Component class="javax.swing.JButton" name="btningresar">
@@ -153,6 +144,18 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btningresarActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="com.github.lgooddatepicker.components.DatePicker" name="datePickerReg">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.github.lgooddatepicker.components.DatePicker()"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+      </AuxValues>
+    </Component>
+    <Component class="com.github.lgooddatepicker.components.DatePicker" name="datePickerDoc">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.github.lgooddatepicker.components.DatePicker()"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
