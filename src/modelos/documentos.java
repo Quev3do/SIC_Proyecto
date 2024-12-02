@@ -140,23 +140,22 @@ public int updateDocumento(int idDocumento, documentos documentoEditado) {
 
 
     
-   public int deleteDocumento(int idDocumento) {
+ public int deleteDocumento(int idDocumento) {
     try {
-        // Verificar si el documento existe
-        documentos existente = getById(idDocumento);
-        if (existente == null) {
-            System.out.println("El documento con ID " + idDocumento + " no existe.");
-            return 0; // Indicar que no se realizó la eliminación
-        }
-
-        // Si existe, proceder a eliminar
+        // Intentar eliminar el documento directamente
         String sql = "DELETE FROM tbl_documentos WHERE id_documento = ?";
         conexionDB = claseConexion.iniciarConexion();
         pstm = conexionDB.prepareStatement(sql);
         pstm.setInt(1, idDocumento);
 
         int respuesta = pstm.executeUpdate();
-        System.out.println("Documento eliminado correctamente.");
+        
+        if (respuesta > 0) {
+            System.out.println("Documento eliminado correctamente.");
+        } else {
+            System.out.println("No se encontró el documento con ID " + idDocumento);
+        }
+        
         return respuesta;
     } catch (SQLException ex) {
         Logger.getLogger(documentos.class.getName()).log(Level.SEVERE, null, ex);
@@ -172,19 +171,20 @@ public int updateDocumento(int idDocumento, documentos documentoEditado) {
     return 0; // Retornar 0 en caso de error
 }
 
+
     
     
     public List<Object[]> cargarDocumentos() {
     List<Object[]> documentos = new ArrayList<>();
     try {
-        String sql = "SELECT id, codigo_doc, fecha_doc, fecha_registro FROM tbl_documentos";
+        String sql = "SELECT id_documento, codigo_doc, fecha_doc, fecha_registro FROM tbl_documentos";
         Connection conexion = claseConexion.iniciarConexion();
         PreparedStatement stmt = conexion.prepareStatement(sql);
         ResultSet rs = stmt.executeQuery();
 
         while (rs.next()) {
-            documentos.add(new Object[]{
-                rs.getInt("id"),
+            documentos.add(new Object[] {
+                rs.getInt("id_documento"),
                 rs.getString("codigo_doc"),
                 rs.getDate("fecha_doc"),
                 rs.getDate("fecha_registro")
