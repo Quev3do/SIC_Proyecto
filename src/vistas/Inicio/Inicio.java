@@ -49,7 +49,12 @@ public class Inicio extends javax.swing.JFrame {
         }
         
         if(rol.equals("Administrador")){
+            btnlogs.disable();
+            //btncuentas.setBackground(Color.gray);
+            btnlogs.setVisible(false);
             
+            btnusers.setVisible(false);
+            btnusers.disable();
         }
         
         if(rol.equals("Contador y Auxiliar")){
