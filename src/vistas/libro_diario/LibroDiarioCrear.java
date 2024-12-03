@@ -313,7 +313,7 @@ public class LibroDiarioCrear extends javax.swing.JFrame {
                     System.out.println("aqui");
                     double valorS = itm.getSaldo();
                     libroDiario1.setDebe(valor);
-                    double db = (valorS - valor);
+                    double db = (valorS + valor);
                     cuenta1.setSaldo(db);
                     libroDiario1.setBalance(db);
                     cuenta1.setTipo_cuenta(itm.getTipo_cuenta());
@@ -322,7 +322,7 @@ public class LibroDiarioCrear extends javax.swing.JFrame {
                 if(tipo.equals("pasivo") || tipo.equals("gastos") || tipo.equals("ingresos")){
                     libroDiario1.setHaber(valor);
                     double valorS = itm.getSaldo();
-                    double hb = (valorS - valor);
+                    double hb = (valorS + valor);
                     cuenta1.setSaldo(hb);
                     libroDiario1.setBalance(hb);
                     cuenta1.setTipo_cuenta(itm.getTipo_cuenta());
