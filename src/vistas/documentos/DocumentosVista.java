@@ -101,7 +101,6 @@ public class DocumentosVista extends javax.swing.JFrame {
 
         btnEliminar.setBackground(new java.awt.Color(102, 255, 0));
         btnEliminar.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
-        btnEliminar.setForeground(new java.awt.Color(0, 0, 0));
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,8 +130,12 @@ public class DocumentosVista extends javax.swing.JFrame {
 
         btnAplicarFiltro1.setBackground(new java.awt.Color(102, 255, 0));
         btnAplicarFiltro1.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
-        btnAplicarFiltro1.setForeground(new java.awt.Color(0, 0, 0));
         btnAplicarFiltro1.setText("Excel");
+        btnAplicarFiltro1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAplicarFiltro1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -224,6 +227,10 @@ public class DocumentosVista extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Selecciona un documento para eliminar.", "Advertencia", JOptionPane.WARNING_MESSAGE);
     }
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnAplicarFiltro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAplicarFiltro1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAplicarFiltro1ActionPerformed
 
     public void cargarTabla(){
        // Limpiar la tabla antes de agregar los nuevos datos
