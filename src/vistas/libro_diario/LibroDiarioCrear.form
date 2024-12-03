@@ -23,57 +23,45 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="lblDesdeMes1" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblDesdeMes" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="47" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="cuenta1cmb" alignment="1" min="-2" pref="320" max="-2" attributes="0"/>
-                          <Component id="cuenta2cmb" alignment="1" min="-2" pref="320" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="185" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="lblDesdeMes3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblDesdeMes2" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-          </Group>
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
-                      <Component id="lblDesdeMes4" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                              <Component id="btningresar" pref="217" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="txtvalor" alignment="0" max="32767" attributes="0"/>
-                          <Component id="coddoccmb" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtfecha" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="comunicar" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnagregardoc" min="-2" pref="165" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="lblDesdeMes" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnInicio" min="-2" pref="154" max="-2" attributes="0"/>
+                          <Component id="lblDesdeMes2" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnInicio" min="-2" pref="154" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="lblDesdeMes4" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblDesdeMes3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="cuenta1cmb" min="-2" pref="320" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                                      <Component id="btningresar" pref="217" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="txtvalor" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="coddoccmb" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtfecha" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="comunicar" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnagregardoc" min="-2" pref="165" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="37" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -87,38 +75,36 @@
                   <Component id="cuenta1cmb" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                   <Component id="lblDesdeMes" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="txtvalor" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="lblDesdeMes2" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="lblDesdeMes1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblDesdeMes2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtvalor" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="coddoccmb" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                           <Component id="lblDesdeMes3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnagregardoc" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                          <Component id="coddoccmb" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="41" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblDesdeMes4" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtfecha" alignment="1" min="-2" pref="33" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="comunicar" min="-2" max="-2" attributes="0"/>
-                          <Component id="btningresar" min="-2" pref="43" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                      <EmptySpace pref="52" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="cuenta2cmb" min="-2" pref="33" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btnagregardoc" min="-2" pref="43" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                   </Group>
               </Group>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="txtfecha" min="-2" pref="33" max="-2" attributes="0"/>
+                  <Component id="lblDesdeMes4" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btningresar" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                  <Component id="comunicar" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -173,7 +159,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Meiryo UI" size="14" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="cuenta a retirar"/>
+        <Property name="text" type="java.lang.String" value="cuenta a efectuar"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblDesdeMes2">
@@ -251,30 +237,6 @@
           <Font name="Meiryo UI" size="14" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="###"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="cuenta2cmb">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cuenta2cmbActionPerformed"/>
-      </Events>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblDesdeMes1">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="0" type="rgb"/>
-        </Property>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Meiryo UI" size="14" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="cuenta a abonar"/>
       </Properties>
     </Component>
   </SubComponents>

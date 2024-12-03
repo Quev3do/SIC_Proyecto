@@ -63,7 +63,7 @@ public class LibroDiarioCrear extends javax.swing.JFrame {
         
         for(cuentas item : listaCuentas){
             this.cuenta1cmb.addItem(item.getNombre_cuenta());
-            this.cuenta2cmb.addItem(item.getNombre_cuenta());
+            //this.cuenta2cmb.addItem(item.getNombre_cuenta());
         }
         
         //for(users item : listaUsers){
@@ -96,8 +96,6 @@ public class LibroDiarioCrear extends javax.swing.JFrame {
         txtfecha = new javax.swing.JFormattedTextField();
         btnagregardoc = new javax.swing.JButton();
         comunicar = new javax.swing.JLabel();
-        cuenta2cmb = new javax.swing.JComboBox<>();
-        lblDesdeMes1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -127,7 +125,7 @@ public class LibroDiarioCrear extends javax.swing.JFrame {
 
         lblDesdeMes.setBackground(new java.awt.Color(0, 0, 0));
         lblDesdeMes.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
-        lblDesdeMes.setText("cuenta a retirar");
+        lblDesdeMes.setText("cuenta a efectuar");
 
         lblDesdeMes2.setBackground(new java.awt.Color(0, 0, 0));
         lblDesdeMes2.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
@@ -152,58 +150,39 @@ public class LibroDiarioCrear extends javax.swing.JFrame {
         comunicar.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
         comunicar.setText("###");
 
-        cuenta2cmb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cuenta2cmbActionPerformed(evt);
-            }
-        });
-
-        lblDesdeMes1.setBackground(new java.awt.Color(0, 0, 0));
-        lblDesdeMes1.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
-        lblDesdeMes1.setText("cuenta a abonar");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblDesdeMes1)
-                            .addComponent(lblDesdeMes))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cuenta1cmb, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cuenta2cmb, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(185, 185, 185))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblDesdeMes3)
-                            .addComponent(lblDesdeMes2))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(118, 118, 118)
-                        .addComponent(lblDesdeMes4)
-                        .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addComponent(btningresar, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE))
-                            .addComponent(txtvalor, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(coddoccmb, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtfecha))
-                        .addGap(75, 75, 75)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(comunicar)
-                            .addComponent(btnagregardoc, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblDesdeMes)
+                            .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblDesdeMes2)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblDesdeMes4)
+                            .addComponent(lblDesdeMes3))
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cuenta1cmb, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGap(4, 4, 4)
+                                        .addComponent(btningresar, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE))
+                                    .addComponent(txtvalor, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(coddoccmb, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtfecha))
+                                .addGap(75, 75, 75)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(comunicar)
+                                    .addComponent(btnagregardoc, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,31 +193,29 @@ public class LibroDiarioCrear extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cuenta1cmb, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblDesdeMes))
-                .addGap(18, 18, 18)
+                .addGap(56, 56, 56)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtvalor, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDesdeMes2))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblDesdeMes1)
-                        .addGap(62, 62, 62)
+                        .addGap(50, 50, 50)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblDesdeMes2)
-                            .addComponent(txtvalor, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(coddoccmb, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblDesdeMes3)
-                            .addComponent(btnagregardoc, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblDesdeMes4, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtfecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(comunicar)
-                            .addComponent(btningresar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(51, 51, 51))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(cuenta2cmb, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(coddoccmb, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnagregardoc, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtfecha, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDesdeMes4))
+                .addGap(54, 54, 54)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btningresar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comunicar))
+                .addGap(27, 27, 27))
         );
 
         pack();
@@ -268,7 +245,7 @@ public class LibroDiarioCrear extends javax.swing.JFrame {
         //patrimonio = activo - pasivo
         
         String cuenta111 = String.valueOf(cuenta1cmb.getSelectedItem());
-        String cuenta222 = String.valueOf(cuenta2cmb.getSelectedItem());
+        //String cuenta222 = String.valueOf(cuenta2cmb.getSelectedItem());
         
         Integer id_c1 = 0, id_c2 = 0;
         
@@ -277,9 +254,11 @@ public class LibroDiarioCrear extends javax.swing.JFrame {
             if(cuenta111.equals(aux1)){
                 id_c1 = item.getId_cuenta();
             }
+            /*
             if(cuenta222.equals(aux1)){
                 id_c2 = item.getId_cuenta();
             }
+            */
         }
         
         String cod_doc = String.valueOf(coddoccmb.getSelectedItem());
@@ -294,17 +273,19 @@ public class LibroDiarioCrear extends javax.swing.JFrame {
         }
         
         cuenta1.setId_cuenta(id_c1);
-        cuenta2.setId_cuenta(id_c2);
+        //cuenta2.setId_cuenta(id_c2);
         
         for(cuentas item : listaCuentas){
             if(cuenta1.getId_cuenta() == item.getId_cuenta()){
                 cuenta1.setNombre_cuenta(item.getNombre_cuenta());
                 cuenta1.setTipo_cuenta(item.getTipo_cuenta());
             }
+            /*
             if(cuenta2.getId_cuenta() == item.getId_cuenta()){
                 cuenta2.setNombre_cuenta(item.getNombre_cuenta());
                 cuenta2.setTipo_cuenta(item.getTipo_cuenta());
             }
+            */
         }
         
         valor = Double.parseDouble(txtvalor.getText());
@@ -315,10 +296,12 @@ public class LibroDiarioCrear extends javax.swing.JFrame {
         libroDiario1.setFecha(txtfecha.getText());
         libroDiario1.setId_documento(coddocA);
         
+        /*
         libroDiario2.setId_cuenta(id_c2);
         libroDiario2.setId_user(this.user1.getId_user());
         libroDiario2.setFecha(txtfecha.getText());
         libroDiario2.setId_documento(coddocA);
+        */
         
         //--------- EDITAR CON CUIDADO, ES IMPORTANTE SABER COMO ACTUALIZARAS LA BD EN SU CONJUNTO
         
@@ -347,7 +330,7 @@ public class LibroDiarioCrear extends javax.swing.JFrame {
                 }
             }
         }
-        
+        /*
         for(cuentas itm : listaCuentas){
             if(libroDiario2.getId_cuenta() == itm.getId_cuenta()){
                 String tipo = itm.getTipo_cuenta();
@@ -374,6 +357,7 @@ public class LibroDiarioCrear extends javax.swing.JFrame {
                 }
             }
         }
+        */
         
         comunicar.setText(" ");
         
@@ -387,12 +371,12 @@ public class LibroDiarioCrear extends javax.swing.JFrame {
             log1.setAccion("Ingreso de LD");
             
             if(log1.insertLog(log1)>0){
-                System.out.println("Se ha agregado el registro el log 1.");
+                System.out.println("Se ha agregado el registro del log 1.");
             }
         }else{
             System.out.println("No se agrego.");
         }
-        
+        /*
         if(libroDiario2.insertLibroD(libroDiario2)>0){
             System.out.println("Se ha agregado el registro 2.");
             comunicar.setText((comunicar.getText() + "- ld2"));
@@ -408,6 +392,7 @@ public class LibroDiarioCrear extends javax.swing.JFrame {
         }else{
             System.out.println("No se agrego.");
         }
+        */
         
         //////
         
@@ -417,20 +402,17 @@ public class LibroDiarioCrear extends javax.swing.JFrame {
         }else{
             System.out.println("No se actualizo.");
         }
-        
+        /*
         if(cuenta2.editCuenta(cuenta2)>0){
            System.out.println("Se ha actualizado la cuenta 2 saldo");
            comunicar.setText((comunicar.getText() + "- c2"));
         }else{
             System.out.println("No se actualizo.");
         }
+        */
         
         
     }//GEN-LAST:event_btningresarActionPerformed
-
-    private void cuenta2cmbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuenta2cmbActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cuenta2cmbActionPerformed
 
     /**
      * @param args the command line arguments
@@ -474,9 +456,7 @@ public class LibroDiarioCrear extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> coddoccmb;
     private javax.swing.JLabel comunicar;
     private javax.swing.JComboBox<String> cuenta1cmb;
-    private javax.swing.JComboBox<String> cuenta2cmb;
     private javax.swing.JLabel lblDesdeMes;
-    private javax.swing.JLabel lblDesdeMes1;
     private javax.swing.JLabel lblDesdeMes2;
     private javax.swing.JLabel lblDesdeMes3;
     private javax.swing.JLabel lblDesdeMes4;
