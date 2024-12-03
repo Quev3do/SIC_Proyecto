@@ -16,6 +16,7 @@ import modelos.logs;
 
 import vistas.documentos.DocumentosVista;
 
+
 /**
  *
  * @author jajon
