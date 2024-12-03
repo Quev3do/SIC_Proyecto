@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import vistas.Inicio.Inicio;
+import Login.InicioSesion;
 import vistas.users.usersCrear;
 
 /**
@@ -25,14 +26,14 @@ public class SIC_Contable {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        users user = new users();
-        ArrayList<users> listaU = user.getUsers();
-        
         Inicio ini = new Inicio();
         //ini.show();
         
         usersCrear ucr = new usersCrear();
-        ucr.show();
+        //ucr.show();
+        
+        InicioSesion iniaa = new InicioSesion();
+        iniaa.show();
     }
     
 }

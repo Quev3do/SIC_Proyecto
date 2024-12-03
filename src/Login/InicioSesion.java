@@ -29,6 +29,8 @@ public class InicioSesion extends javax.swing.JFrame {
         user = new users();
         
         initComponents();
+        
+        cargarUsers();
     }
 
     /**
@@ -42,32 +44,21 @@ public class InicioSesion extends javax.swing.JFrame {
 
         Panel_IncioSesion = new javax.swing.JPanel();
         lblPass2 = new javax.swing.JLabel();
-        jPanelTitulo = new javax.swing.JPanel();
-        lblCreate_Doc = new javax.swing.JLabel();
         lblUser2 = new javax.swing.JLabel();
         lblpass = new javax.swing.JLabel();
         lblUser = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         txt_Usuario = new javax.swing.JTextField();
-        txt_contra = new javax.swing.JTextField();
         btnCerrar = new javax.swing.JButton();
         btn_Ingresar = new javax.swing.JButton();
+        txt_contra = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblPass2.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
         lblPass2.setForeground(new java.awt.Color(0, 0, 0));
         lblPass2.setText("Ingrese su Contraseña:");
-
-        jPanelTitulo.setBackground(new java.awt.Color(153, 153, 255));
-        jPanelTitulo.setForeground(new java.awt.Color(255, 204, 204));
-        jPanelTitulo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblCreate_Doc.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 24)); // NOI18N
-        lblCreate_Doc.setForeground(new java.awt.Color(255, 255, 255));
-        lblCreate_Doc.setText("Inicio de Sesion");
-        jPanelTitulo.add(lblCreate_Doc, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, -1, 40));
 
         lblUser2.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
         lblUser2.setForeground(new java.awt.Color(0, 0, 0));
@@ -88,13 +79,14 @@ public class InicioSesion extends javax.swing.JFrame {
         txt_Usuario.setForeground(new java.awt.Color(0, 0, 0));
         txt_Usuario.setBorder(null);
 
-        txt_contra.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
-        txt_contra.setForeground(new java.awt.Color(0, 0, 0));
-        txt_contra.setBorder(null);
-
         btnCerrar.setBackground(new java.awt.Color(255, 51, 51));
         btnCerrar.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
         btnCerrar.setText("Cerrar");
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarActionPerformed(evt);
+            }
+        });
 
         btn_Ingresar.setBackground(new java.awt.Color(181, 229, 29));
         btn_Ingresar.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
@@ -109,13 +101,12 @@ public class InicioSesion extends javax.swing.JFrame {
         Panel_IncioSesion.setLayout(Panel_IncioSesionLayout);
         Panel_IncioSesionLayout.setHorizontalGroup(
             Panel_IncioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 568, Short.MAX_VALUE)
             .addGroup(Panel_IncioSesionLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(Panel_IncioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_IncioSesionLayout.createSequentialGroup()
                         .addComponent(btn_Ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 260, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 291, Short.MAX_VALUE)
                         .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Panel_IncioSesionLayout.createSequentialGroup()
                         .addGroup(Panel_IncioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -124,24 +115,26 @@ public class InicioSesion extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(Panel_IncioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(Panel_IncioSesionLayout.createSequentialGroup()
-                                .addComponent(lblPass2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(Panel_IncioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
-                                    .addComponent(txt_contra)))
-                            .addGroup(Panel_IncioSesionLayout.createSequentialGroup()
                                 .addComponent(lblUser2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(Panel_IncioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jSeparator1)
-                                    .addComponent(txt_Usuario, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE))))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(txt_Usuario, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)))
+                            .addGroup(Panel_IncioSesionLayout.createSequentialGroup()
+                                .addComponent(lblPass2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(Panel_IncioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(Panel_IncioSesionLayout.createSequentialGroup()
+                                        .addComponent(txt_contra)
+                                        .addGap(6, 6, 6)))))
+                        .addGap(31, 31, 31)))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         Panel_IncioSesionLayout.setVerticalGroup(
             Panel_IncioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Panel_IncioSesionLayout.createSequentialGroup()
-                .addComponent(jPanelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(76, 76, 76)
                 .addGroup(Panel_IncioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(Panel_IncioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblUser, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -150,18 +143,14 @@ public class InicioSesion extends javax.swing.JFrame {
                         .addComponent(txt_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(Panel_IncioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Panel_IncioSesionLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(Panel_IncioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblPass2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblpass, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(Panel_IncioSesionLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txt_contra, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(7, 7, 7)
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addGap(13, 13, 13)
+                .addGroup(Panel_IncioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txt_contra, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPass2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblpass, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(Panel_IncioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCerrar)
                     .addComponent(btn_Ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -176,28 +165,36 @@ public class InicioSesion extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Panel_IncioSesion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Panel_IncioSesion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_IngresarActionPerformed
-        listaUsers = user.getUsers();
+        
         
         String name = txt_Usuario.getText();
         String pass = txt_contra.getText();
         
         for(users item : listaUsers){
             if(name.equals(item.getUser_name()) && pass.equals(item.getUser_pass())){
-                Inicio ini = new Inicio();
+                Inicio ini = new Inicio(item);
                 ini.show();
                 this.dispose();
             }else{
-                System.out.println("Meh, error, user o password no sirven.");
+                //System.out.println("Meh, error, user o password no sirven.");
             }
         }
     }//GEN-LAST:event_btn_IngresarActionPerformed
+
+    public void cargarUsers(){
+        listaUsers = user.getUsers();
+    }
+    
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCerrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -238,15 +235,13 @@ public class InicioSesion extends javax.swing.JFrame {
     private javax.swing.JPanel Panel_IncioSesion;
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btn_Ingresar;
-    private javax.swing.JPanel jPanelTitulo;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JLabel lblCreate_Doc;
     private javax.swing.JLabel lblPass2;
     private javax.swing.JLabel lblUser;
     private javax.swing.JLabel lblUser2;
     private javax.swing.JLabel lblpass;
     private javax.swing.JTextField txt_Usuario;
-    private javax.swing.JTextField txt_contra;
+    private javax.swing.JPasswordField txt_contra;
     // End of variables declaration//GEN-END:variables
 }

@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -89,54 +90,113 @@ public class documentos {
         return null;
     }
     
-    public int insertDocumento(documentos itemI){
+   public int insertDocumento(documentos itemI) {
+    try {
+        String sql = "INSERT INTO tbl_documentos(codigo_doc, fecha_doc, fecha_registro) VALUES(?,?,?)";
+        this.conexionDB = this.claseConexion.iniciarConexion();
+        pstm = this.conexionDB.prepareStatement(sql);
+        pstm.setString(1, itemI.getCodigo_doc());
+
+        // Convertir las fechas de String a java.sql.Date
+        pstm.setDate(2, java.sql.Date.valueOf(itemI.getFecha_doc())); 
+        pstm.setDate(3, java.sql.Date.valueOf(itemI.getFecha_registro_doc()));
+
+        int respuesta = pstm.executeUpdate();
+        return respuesta;
+    } catch (SQLException ex) {
+        Logger.getLogger(documentos.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    return 0;
+}
+
+public int updateDocumento(int idDocumento, documentos documentoEditado) {
+    try {
+        String sql = "UPDATE tbl_documentos SET codigo_doc = ?, fecha_doc = ?, fecha_registro = ? WHERE id_documento = ?";
+        conexionDB = claseConexion.iniciarConexion();
+        pstm = conexionDB.prepareStatement(sql);
+
+        // Establecer los valores
+        pstm.setString(1, documentoEditado.getCodigo_doc());
+        pstm.setDate(2, java.sql.Date.valueOf(documentoEditado.getFecha_doc())); // Fecha de documento
+        pstm.setDate(3, java.sql.Date.valueOf(documentoEditado.getFecha_registro_doc())); // Fecha de registro
+        pstm.setInt(4, idDocumento); // ID del documento que se va a actualizar
+
+        // Ejecutar la actualización
+        int resultado = pstm.executeUpdate();
+        return resultado;
+    } catch (SQLException ex) {
+        Logger.getLogger(documentos.class.getName()).log(Level.SEVERE, null, ex);
+        return 0;
+    } finally {
+        // Cerrar conexión
         try {
-            String sql = "INSERT INTO tbl_documentos(codigo_doc, fecha_doc, fecha_registro) VALUES(?,?,?)";
-            this.conexionDB = this.claseConexion.iniciarConexion();
-            pstm = this.conexionDB.prepareStatement(sql);
-            pstm.setString(1, itemI.getCodigo_doc());
-            pstm.setString(2, itemI.getFecha_doc());
-            pstm.setString(3, itemI.getFecha_registro_doc());
-            int respuesta = pstm.executeUpdate();
-            
-            return respuesta;
+            if (pstm != null) pstm.close();
+            if (conexionDB != null) conexionDB.close();
         } catch (SQLException ex) {
             Logger.getLogger(documentos.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return 0;
     }
+}
+
+
     
-    public int editDocumento(documentos itemE){
+ public int deleteDocumento(int idDocumento) {
+    try {
+        // Intentar eliminar el documento directamente
+        String sql = "DELETE FROM tbl_documentos WHERE id_documento = ?";
+        conexionDB = claseConexion.iniciarConexion();
+        pstm = conexionDB.prepareStatement(sql);
+        pstm.setInt(1, idDocumento);
+
+        int respuesta = pstm.executeUpdate();
+        
+        if (respuesta > 0) {
+            System.out.println("Documento eliminado correctamente.");
+        } else {
+            System.out.println("No se encontró el documento con ID " + idDocumento);
+        }
+        
+        return respuesta;
+    } catch (SQLException ex) {
+        Logger.getLogger(documentos.class.getName()).log(Level.SEVERE, null, ex);
+    } finally {
+        // Cerrar recursos
         try {
-            String sql = "UPDATE tbl_documentos set codigo_doc = ?, fecha_doc = ?, fecha_registro = ?,  "
-                    + "where id_documento = ?";
-            this.conexionDB = this.claseConexion.iniciarConexion();
-            pstm = this.conexionDB.prepareStatement(sql);
-            pstm.setString(1, itemE.getCodigo_doc());
-            pstm.setString(2, itemE.getFecha_doc());
-            pstm.setString(3, itemE.getFecha_registro_doc());
-            pstm.setInt(4, itemE.getId_documento());
-            int respuesta = pstm.executeUpdate();
-            
-            return respuesta;
+            if (pstm != null) pstm.close();
+            if (conexionDB != null) conexionDB.close();
         } catch (SQLException ex) {
             Logger.getLogger(documentos.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return 0;
     }
+    return 0; // Retornar 0 en caso de error
+}
+
+
     
-    public int deleteDocumento(int itemD){
-        try {
-            conexionDB = claseConexion.iniciarConexion();
-            String sql = "DELETE FROM tbl_documentos WHERE id_documento = ?";
-            pstm = conexionDB.prepareStatement(sql);
-            pstm.setInt(1, itemD);
-            int respuesta = pstm.executeUpdate();
-            
-            return respuesta;
-        } catch (SQLException ex) {
-            Logger.getLogger(documentos.class.getName()).log(Level.SEVERE, null, ex);
+    
+    public List<Object[]> cargarDocumentos() {
+    List<Object[]> documentos = new ArrayList<>();
+    try {
+        String sql = "SELECT id_documento, codigo_doc, fecha_doc, fecha_registro FROM tbl_documentos";
+        Connection conexion = claseConexion.iniciarConexion();
+        PreparedStatement stmt = conexion.prepareStatement(sql);
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next()) {
+            documentos.add(new Object[] {
+                rs.getInt("id_documento"),
+                rs.getString("codigo_doc"),
+                rs.getDate("fecha_doc"),
+                rs.getDate("fecha_registro")
+            });
         }
-        return 0;
+
+        rs.close();
+        stmt.close();
+        conexion.close();
+    } catch (SQLException ex) {
+        Logger.getLogger(documentos.class.getName()).log(Level.SEVERE, null, ex);
     }
+    return documentos;
+}
 }

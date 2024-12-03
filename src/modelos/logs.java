@@ -77,7 +77,7 @@ public class logs {
                 logs log = new logs();
                 log.setId_log(consulta.getInt("id_log"));
                 log.setId_user(consulta.getInt("id_user"));
-                log.setFecha_log(consulta.getString("fecha_log"));
+                log.setFecha_log(consulta.getString("fecha"));
                 log.setAccion(consulta.getString("accion"));
                 this.listalogs.add(log);
             }
@@ -90,7 +90,7 @@ public class logs {
     
     public int insertLog(logs itemI){
         try {
-            String sql = "INSERT INTO tbl_logs(id_user, fecha_log, accion) VALUES(?,?,?)";
+            String sql = "INSERT INTO tbl_logs(id_user, fecha, accion) VALUES(?,?,?)";
             this.conexionDB = this.claseConexion.iniciarConexion();
             pstm = this.conexionDB.prepareStatement(sql);
             pstm.setInt(1, itemI.getId_user());
@@ -107,7 +107,7 @@ public class logs {
     
     public int editLog(logs itemE){
         try {
-            String sql = "UPDATE tbl_logs set id_user = ?, fecha_log = ?, accion = ?, where id_log = ?";
+            String sql = "UPDATE tbl_logs set id_user = ?, fecha = ?, accion = ?, where id_log = ?";
             this.conexionDB = this.claseConexion.iniciarConexion();
             pstm = this.conexionDB.prepareStatement(sql);
             pstm.setInt(1, itemE.getId_user());

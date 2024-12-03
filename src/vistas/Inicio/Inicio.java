@@ -4,8 +4,15 @@
  */
 package vistas.Inicio;
 
+import java.awt.Color;
+import modelos.users;
+
 import vistas.documentos.DocumentosVista;
 import vistas.libro_mayor.LibroMayorVista;
+import vistas.libro_diario.LibroDiarioVista;
+import vistas.documentos.DocumentosVista;
+import vista.user.VistaUsers;
+import vistas.cuentas.cuentasVista;
 
 /**
  *
@@ -13,11 +20,46 @@ import vistas.libro_mayor.LibroMayorVista;
  */
 public class Inicio extends javax.swing.JFrame {
 
+    users user;
     /**
      * Creates new form Inicio
      */
-    public Inicio() {
+    public Inicio(){
         initComponents();
+    }
+    
+    public Inicio(users user) {
+        this.user = user;
+        initComponents();
+        
+        String rol = user.getUser_rol();
+        
+        lblUser.setText(user.getUser_name());
+        
+        if(rol.equals("Gerente")){
+            btnlogs.disable();
+            //btncuentas.setBackground(Color.gray);
+            btnlogs.setVisible(false);
+            
+            btnusers.setVisible(false);
+            btnusers.disable();
+            
+            btndocus.disable();
+            btndocus.setVisible(false);
+        }
+        
+        if(rol.equals("Administrador")){
+            
+        }
+        
+        if(rol.equals("Contador y Auxiliar")){
+            btnlogs.disable();
+            //btncuentas.setBackground(Color.gray);
+            btnlogs.setVisible(false);
+            
+            btnusers.setVisible(false);
+            btnusers.disable();
+        }
     }
 
     /**
@@ -31,15 +73,13 @@ public class Inicio extends javax.swing.JFrame {
 
         Panel_Inicio = new javax.swing.JPanel();
         btnCerrar2 = new javax.swing.JButton();
-        btnAgregar_Transaccion = new javax.swing.JButton();
+        btnlibroM = new javax.swing.JButton();
         lblUser = new javax.swing.JLabel();
-        jPanelTitulo = new javax.swing.JPanel();
-        lblInicio = new javax.swing.JLabel();
-        btnAgregar_Transaccion1 = new javax.swing.JButton();
-        btnAgregar_Transaccion2 = new javax.swing.JButton();
-        btnAgregar_Transaccion3 = new javax.swing.JButton();
-        btnAgregar_Transaccion4 = new javax.swing.JButton();
-        btnAgregar_Transaccion5 = new javax.swing.JButton();
+        btncuentas = new javax.swing.JButton();
+        btnlibroD = new javax.swing.JButton();
+        btndocus = new javax.swing.JButton();
+        btnlogs = new javax.swing.JButton();
+        btnusers = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -53,13 +93,13 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
 
-        btnAgregar_Transaccion.setBackground(new java.awt.Color(51, 204, 0));
-        btnAgregar_Transaccion.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
-        btnAgregar_Transaccion.setForeground(new java.awt.Color(255, 255, 255));
-        btnAgregar_Transaccion.setText("Libro Mayor");
-        btnAgregar_Transaccion.addActionListener(new java.awt.event.ActionListener() {
+        btnlibroM.setBackground(new java.awt.Color(51, 204, 0));
+        btnlibroM.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
+        btnlibroM.setForeground(new java.awt.Color(255, 255, 255));
+        btnlibroM.setText("Libro Mayor");
+        btnlibroM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregar_TransaccionActionPerformed(evt);
+                btnlibroMActionPerformed(evt);
             }
         });
 
@@ -67,90 +107,92 @@ public class Inicio extends javax.swing.JFrame {
         lblUser.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
         lblUser.setText("User");
 
-        jPanelTitulo.setBackground(new java.awt.Color(153, 153, 255));
-        jPanelTitulo.setForeground(new java.awt.Color(255, 204, 204));
-        jPanelTitulo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblInicio.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 24)); // NOI18N
-        lblInicio.setForeground(new java.awt.Color(255, 255, 255));
-        lblInicio.setText("Inicio");
-        jPanelTitulo.add(lblInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 150, 40));
-
-        btnAgregar_Transaccion1.setBackground(new java.awt.Color(255, 51, 51));
-        btnAgregar_Transaccion1.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
-        btnAgregar_Transaccion1.setForeground(new java.awt.Color(255, 255, 255));
-        btnAgregar_Transaccion1.setText("Cuentas");
-
-        btnAgregar_Transaccion2.setBackground(new java.awt.Color(154, 217, 234));
-        btnAgregar_Transaccion2.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
-        btnAgregar_Transaccion2.setText("Libro Diario");
-
-        btnAgregar_Transaccion3.setBackground(new java.awt.Color(51, 153, 255));
-        btnAgregar_Transaccion3.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
-        btnAgregar_Transaccion3.setForeground(new java.awt.Color(255, 255, 255));
-        btnAgregar_Transaccion3.setText("Documentos");
-        btnAgregar_Transaccion3.addActionListener(new java.awt.event.ActionListener() {
+        btncuentas.setBackground(new java.awt.Color(255, 51, 51));
+        btncuentas.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
+        btncuentas.setForeground(new java.awt.Color(255, 255, 255));
+        btncuentas.setText("Cuentas");
+        btncuentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregar_Transaccion3ActionPerformed(evt);
+                btncuentasActionPerformed(evt);
             }
         });
 
-        btnAgregar_Transaccion4.setBackground(new java.awt.Color(204, 204, 0));
-        btnAgregar_Transaccion4.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
-        btnAgregar_Transaccion4.setForeground(new java.awt.Color(255, 255, 255));
-        btnAgregar_Transaccion4.setText("Logs");
+        btnlibroD.setBackground(new java.awt.Color(154, 217, 234));
+        btnlibroD.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
+        btnlibroD.setText("Libro Diario");
+        btnlibroD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnlibroDActionPerformed(evt);
+            }
+        });
 
-        btnAgregar_Transaccion5.setBackground(new java.awt.Color(102, 102, 255));
-        btnAgregar_Transaccion5.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
-        btnAgregar_Transaccion5.setForeground(new java.awt.Color(255, 255, 255));
-        btnAgregar_Transaccion5.setText("Users");
+        btndocus.setBackground(new java.awt.Color(51, 153, 255));
+        btndocus.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
+        btndocus.setForeground(new java.awt.Color(255, 255, 255));
+        btndocus.setText("Documentos");
+        btndocus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btndocusActionPerformed(evt);
+            }
+        });
+
+        btnlogs.setBackground(new java.awt.Color(204, 204, 0));
+        btnlogs.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
+        btnlogs.setForeground(new java.awt.Color(255, 255, 255));
+        btnlogs.setText("Logs");
+
+        btnusers.setBackground(new java.awt.Color(102, 102, 255));
+        btnusers.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
+        btnusers.setForeground(new java.awt.Color(255, 255, 255));
+        btnusers.setText("Users");
+        btnusers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnusersActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Panel_InicioLayout = new javax.swing.GroupLayout(Panel_Inicio);
         Panel_Inicio.setLayout(Panel_InicioLayout);
         Panel_InicioLayout.setHorizontalGroup(
             Panel_InicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Panel_InicioLayout.createSequentialGroup()
-                .addComponent(jPanelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_InicioLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(Panel_InicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(Panel_InicioLayout.createSequentialGroup()
                         .addComponent(lblUser, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
                         .addComponent(btnCerrar2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Panel_InicioLayout.createSequentialGroup()
                         .addGroup(Panel_InicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnAgregar_Transaccion2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnAgregar_Transaccion4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnAgregar_Transaccion5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnlibroD, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnlogs, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnusers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(Panel_InicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnAgregar_Transaccion1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnAgregar_Transaccion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnAgregar_Transaccion3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE))))
+                            .addComponent(btncuentas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnlibroM, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btndocus, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE))))
                 .addGap(19, 19, 19))
         );
         Panel_InicioLayout.setVerticalGroup(
             Panel_InicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Panel_InicioLayout.createSequentialGroup()
-                .addComponent(jPanelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
+                .addGap(63, 63, 63)
                 .addGroup(Panel_InicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCerrar2)
                     .addComponent(lblUser, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addGroup(Panel_InicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAgregar_Transaccion2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregar_Transaccion, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnlibroD, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnlibroM, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(Panel_InicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAgregar_Transaccion4, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregar_Transaccion1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnlogs, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btncuentas, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(Panel_InicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAgregar_Transaccion5, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregar_Transaccion3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnusers, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btndocus, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -158,35 +200,49 @@ public class Inicio extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(Panel_Inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(Panel_Inicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(Panel_Inicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(Panel_Inicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAgregar_Transaccion3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregar_Transaccion3ActionPerformed
-        DocumentosVista docv = new DocumentosVista();
+    private void btndocusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndocusActionPerformed
+        DocumentosVista docv = new DocumentosVista(this.user);
         docv.show();
         this.dispose();
-    }//GEN-LAST:event_btnAgregar_Transaccion3ActionPerformed
+    }//GEN-LAST:event_btndocusActionPerformed
 
     private void btnCerrar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrar2ActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCerrar2ActionPerformed
 
-    private void btnAgregar_TransaccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregar_TransaccionActionPerformed
-        LibroMayorVista sisi = new LibroMayorVista();
+    private void btnlibroMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlibroMActionPerformed
+        LibroMayorVista sisi = new LibroMayorVista(this.user);
         sisi.show();
         this.dispose();
-    }//GEN-LAST:event_btnAgregar_TransaccionActionPerformed
+    }//GEN-LAST:event_btnlibroMActionPerformed
+
+    private void btnlibroDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlibroDActionPerformed
+        LibroDiarioVista lidd = new LibroDiarioVista(this.user);
+        lidd.show();
+        this.dispose();
+    }//GEN-LAST:event_btnlibroDActionPerformed
+
+    private void btnusersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnusersActionPerformed
+        VistaUsers usss = new VistaUsers();
+        usss.show();
+        this.dispose();
+    }//GEN-LAST:event_btnusersActionPerformed
+
+    private void btncuentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncuentasActionPerformed
+        cuentasVista cnV = new cuentasVista(this.user);
+        cnV.show();
+        this.dispose();
+    }//GEN-LAST:event_btncuentasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -225,15 +281,13 @@ public class Inicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Panel_Inicio;
-    private javax.swing.JButton btnAgregar_Transaccion;
-    private javax.swing.JButton btnAgregar_Transaccion1;
-    private javax.swing.JButton btnAgregar_Transaccion2;
-    private javax.swing.JButton btnAgregar_Transaccion3;
-    private javax.swing.JButton btnAgregar_Transaccion4;
-    private javax.swing.JButton btnAgregar_Transaccion5;
     private javax.swing.JButton btnCerrar2;
-    private javax.swing.JPanel jPanelTitulo;
-    private javax.swing.JLabel lblInicio;
+    private javax.swing.JButton btncuentas;
+    private javax.swing.JButton btndocus;
+    private javax.swing.JButton btnlibroD;
+    private javax.swing.JButton btnlibroM;
+    private javax.swing.JButton btnlogs;
+    private javax.swing.JButton btnusers;
     private javax.swing.JLabel lblUser;
     // End of variables declaration//GEN-END:variables
 }
