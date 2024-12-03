@@ -72,9 +72,9 @@ public class DocumentosVista extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        btnInicio.setText("Inicio");
         btnInicio.setBackground(new java.awt.Color(181, 229, 29));
         btnInicio.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
-        btnInicio.setText("Inicio");
         btnInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInicioActionPerformed(evt);
@@ -99,40 +99,40 @@ public class DocumentosVista extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblDocumentos);
 
-        btnEliminar.setBackground(new java.awt.Color(102, 255, 0));
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setBackground(new java.awt.Color(255, 102, 102));
         btnEliminar.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(0, 0, 0));
-        btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
             }
         });
 
+        btnaddDoc.setText("Agregar Documento");
         btnaddDoc.setBackground(new java.awt.Color(37, 150, 190));
         btnaddDoc.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
         btnaddDoc.setForeground(new java.awt.Color(255, 255, 255));
-        btnaddDoc.setText("Agregar Documento");
         btnaddDoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnaddDocActionPerformed(evt);
             }
         });
 
-        btnaddDoc1.setBackground(new java.awt.Color(255, 102, 51));
+        btnaddDoc1.setText("Editar Documento");
+        btnaddDoc1.setBackground(new java.awt.Color(255, 153, 102));
         btnaddDoc1.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
         btnaddDoc1.setForeground(new java.awt.Color(255, 255, 255));
-        btnaddDoc1.setText("Editar Documento");
         btnaddDoc1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnaddDoc1ActionPerformed(evt);
             }
         });
 
+        btnAplicarFiltro1.setText("Excel");
         btnAplicarFiltro1.setBackground(new java.awt.Color(102, 255, 0));
         btnAplicarFiltro1.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
         btnAplicarFiltro1.setForeground(new java.awt.Color(0, 0, 0));
-        btnAplicarFiltro1.setText("Excel");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -143,17 +143,13 @@ public class DocumentosVista extends javax.swing.JFrame {
                 .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnaddDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnaddDoc1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addComponent(btnaddDoc1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnaddDoc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(532, Short.MAX_VALUE)
@@ -167,12 +163,12 @@ public class DocumentosVista extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
                         .addComponent(btnaddDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
+                        .addGap(18, 18, 18)
                         .addComponent(btnaddDoc1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(86, 86, 86))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(98, 98, 98))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
